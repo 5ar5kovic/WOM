@@ -4,196 +4,346 @@
  * You should not use this file in production.
  * This file is for demo purposes only.
  */
-(function ($) {
+$(function () {
   'use strict'
 
-  var $sidebar   = $('.control-sidebar')
-  var $container = $('<div />', {
-    class: 'p-3'
-  })
+  /**
+   * Get access to plugins
+   */
 
-  $sidebar.append($container)
+  $('[data-toggle="control-sidebar"]').controlSidebar()
+  $('[data-toggle="push-menu"]').pushMenu()
 
-  var navbar_dark_skins = [
-    'bg-primary',
-    'bg-info',
-    'bg-success',
-    'bg-danger'
+  var $pushMenu       = $('[data-toggle="push-menu"]').data('lte.pushmenu')
+  var $controlSidebar = $('[data-toggle="control-sidebar"]').data('lte.controlsidebar')
+  var $layout         = $('body').data('lte.layout')
+
+  /**
+   * List of all the available skins
+   *
+   * @type Array
+   */
+  var mySkins = [
+    'skin-blue',
+    'skin-black',
+    'skin-red',
+    'skin-yellow',
+    'skin-purple',
+    'skin-green',
+    'skin-blue-light',
+    'skin-black-light',
+    'skin-red-light',
+    'skin-yellow-light',
+    'skin-purple-light',
+    'skin-green-light'
   ]
 
-  var navbar_light_skins = [
-    'bg-warning',
-    'bg-white',
-    'bg-gray-light'
-  ]
-
-  $container.append(
-    '<h5>Customize AdminLTE</h5><hr class="mb-2"/>'
-    + '<h6>Navbar Variants</h6>'
-  )
-
-  var $navbar_variants        = $('<div />', {
-    'class': 'd-flex'
-  })
-  var navbar_all_colors       = navbar_dark_skins.concat(navbar_light_skins)
-  var $navbar_variants_colors = createSkinBlock(navbar_all_colors, function (e) {
-    var color = $(this).data('color')
-    console.log('Adding ' + color)
-    var $main_header = $('.main-header')
-    $main_header.removeClass('navbar-dark').removeClass('navbar-light')
-    navbar_all_colors.map(function (color) {
-      $main_header.removeClass(color)
-    })
-
-    if (navbar_dark_skins.indexOf(color) > -1) {
-      $main_header.addClass('navbar-dark')
-      console.log('AND navbar-dark')
+  /**
+   * Get a prestored setting
+   *
+   * @param String name Name of of the setting
+   * @returns String The value of the setting | null
+   */
+  function get(name) {
+    if (typeof (Storage) !== 'undefined') {
+      return localStorage.getItem(name)
     } else {
-      console.log('AND navbar-light')
-      $main_header.addClass('navbar-light')
+      window.alert('Please use a modern browser to properly view this template!')
     }
+  }
 
-    $main_header.addClass(color)
-  })
-
-  $navbar_variants.append($navbar_variants_colors)
-
-  $container.append($navbar_variants)
-
-  var $checkbox_container = $('<div />', {
-    'class': 'mb-4'
-  })
-  var $navbar_border = $('<input />', {
-    type   : 'checkbox',
-    value  : 1,
-    checked: $('.main-header').hasClass('border-bottom'),
-    'class': 'mr-1'
-  }).on('click', function () {
-    if ($(this).is(':checked')) {
-      $('.main-header').addClass('border-bottom')
+  /**
+   * Store a new settings in the browser
+   *
+   * @param String name Name of the setting
+   * @param String val Value of the setting
+   * @returns void
+   */
+  function store(name, val) {
+    if (typeof (Storage) !== 'undefined') {
+      localStorage.setItem(name, val)
     } else {
-      $('.main-header').removeClass('border-bottom')
+      window.alert('Please use a modern browser to properly view this template!')
     }
-    console.log($(this).is(':checked'), 'hi')
-  })
-  $checkbox_container.append($navbar_border)
-  $checkbox_container.append('<span>Navbar border</span>')
-  $container.append($checkbox_container)
+  }
 
+  /**
+   * Toggles layout classes
+   *
+   * @param String cls the layout class to toggle
+   * @returns void
+   */
+  function changeLayout(cls) {
+    $('body').toggleClass(cls)
+    $layout.fixSidebar()
+    if ($('body').hasClass('fixed') && cls == 'fixed') {
+      $pushMenu.expandOnHover()
+      $layout.activate()
+    }
+    $controlSidebar.fix()
+  }
 
-  var sidebar_colors = [
-    'bg-primary',
-    'bg-warning',
-    'bg-info',
-    'bg-danger',
-    'bg-success'
-  ]
-
-  var sidebar_skins = [
-    'sidebar-dark-primary',
-    'sidebar-dark-warning',
-    'sidebar-dark-info',
-    'sidebar-dark-danger',
-    'sidebar-dark-success',
-    'sidebar-light-primary',
-    'sidebar-light-warning',
-    'sidebar-light-info',
-    'sidebar-light-danger',
-    'sidebar-light-success'
-  ]
-
-  $container.append('<h6>Dark Sidebar Variants</h6>')
-  var $sidebar_variants = $('<div />', {
-    'class': 'd-flex'
-  })
-  $container.append($sidebar_variants)
-  $container.append(createSkinBlock(sidebar_colors, function () {
-    var color         = $(this).data('color')
-    var sidebar_class = 'sidebar-dark-' + color.replace('bg-', '')
-    var $sidebar      = $('.main-sidebar')
-    sidebar_skins.map(function (skin) {
-      $sidebar.removeClass(skin)
+  /**
+   * Replaces the old skin with the new skin
+   * @param String cls the new skin class
+   * @returns Boolean false to prevent link's default action
+   */
+  function changeSkin(cls) {
+    $.each(mySkins, function (i) {
+      $('body').removeClass(mySkins[i])
     })
 
-    $sidebar.addClass(sidebar_class)
-    console.log('added ' + sidebar_class)
-  }))
+    $('body').addClass(cls)
+    store('skin', cls)
+    return false
+  }
 
-  $container.append('<h6>Light Sidebar Variants</h6>')
-  var $sidebar_variants = $('<div />', {
-    'class': 'd-flex'
-  })
-  $container.append($sidebar_variants)
-  $container.append(createSkinBlock(sidebar_colors, function () {
-    var color         = $(this).data('color')
-    var sidebar_class = 'sidebar-light-' + color.replace('bg-', '')
-    var $sidebar      = $('.main-sidebar')
-    sidebar_skins.map(function (skin) {
-      $sidebar.removeClass(skin)
+  /**
+   * Retrieve default settings and apply them to the template
+   *
+   * @returns void
+   */
+  function setup() {
+    var tmp = get('skin')
+    if (tmp && $.inArray(tmp, mySkins))
+      changeSkin(tmp)
+
+    // Add the change skin listener
+    $('[data-skin]').on('click', function (e) {
+      if ($(this).hasClass('knob'))
+        return
+      e.preventDefault()
+      changeSkin($(this).data('skin'))
     })
 
-    $sidebar.addClass(sidebar_class)
-    console.log('added ' + sidebar_class)
-  }))
-
-  var logo_skins = navbar_all_colors
-  $container.append('<h6>Brand Logo Variants</h6>')
-  var $logo_variants = $('<div />', {
-    'class': 'd-flex'
-  })
-  $container.append($logo_variants)
-  var $clear_btn = $('<a />', {
-    href: 'javascript:void(0)'
-  }).text('clear').on('click', function () {
-    var $logo = $('.brand-link')
-    logo_skins.map(function (skin) {
-      $logo.removeClass(skin)
-    })
-  })
-  $container.append(createSkinBlock(logo_skins, function () {
-    var color = $(this).data('color')
-    var $logo = $('.brand-link')
-    logo_skins.map(function (skin) {
-      $logo.removeClass(skin)
-    })
-    $logo.addClass(color)
-  }).append($clear_btn))
-
-  function createSkinBlock(colors, callback) {
-    var $block = $('<div />', {
-      'class': 'd-flex flex-wrap mb-3'
+    // Add the layout manager
+    $('[data-layout]').on('click', function () {
+      changeLayout($(this).data('layout'))
     })
 
-    colors.map(function (color) {
-      var $color = $('<div />', {
-        'class': (typeof color === 'object' ? color.join(' ') : color) + ' elevation-2'
-      })
+    $('[data-controlsidebar]').on('click', function () {
+      changeLayout($(this).data('controlsidebar'))
+      var slide = !$controlSidebar.options.slide
 
-      $block.append($color)
+      $controlSidebar.options.slide = slide
+      if (!slide)
+        $('.control-sidebar').removeClass('control-sidebar-open')
+    })
 
-      $color.data('color', color)
-
-      $color.css({
-        width       : '40px',
-        height      : '20px',
-        borderRadius: '25px',
-        marginRight : 10,
-        marginBottom: 10,
-        opacity     : 0.8,
-        cursor      : 'pointer'
-      })
-
-      $color.hover(function () {
-        $(this).css({ opacity: 1 }).removeClass('elevation-2').addClass('elevation-4')
-      }, function () {
-        $(this).css({ opacity: 0.8 }).removeClass('elevation-4').addClass('elevation-2')
-      })
-
-      if (callback) {
-        $color.on('click', callback)
+    $('[data-sidebarskin="toggle"]').on('click', function () {
+      var $sidebar = $('.control-sidebar')
+      if ($sidebar.hasClass('control-sidebar-dark')) {
+        $sidebar.removeClass('control-sidebar-dark')
+        $sidebar.addClass('control-sidebar-light')
+      } else {
+        $sidebar.removeClass('control-sidebar-light')
+        $sidebar.addClass('control-sidebar-dark')
       }
     })
 
-    return $block
+    $('[data-enable="expandOnHover"]').on('click', function () {
+      $(this).attr('disabled', true)
+      $pushMenu.expandOnHover()
+      if (!$('body').hasClass('sidebar-collapse'))
+        $('[data-layout="sidebar-collapse"]').click()
+    })
+
+    //  Reset options
+    if ($('body').hasClass('fixed')) {
+      $('[data-layout="fixed"]').attr('checked', 'checked')
+    }
+    if ($('body').hasClass('layout-boxed')) {
+      $('[data-layout="layout-boxed"]').attr('checked', 'checked')
+    }
+    if ($('body').hasClass('sidebar-collapse')) {
+      $('[data-layout="sidebar-collapse"]').attr('checked', 'checked')
+    }
+
   }
-})(jQuery)
+
+  // Create the new tab
+  var $tabPane = $('<div />', {
+    'id'   : 'control-sidebar-theme-demo-options-tab',
+    'class': 'tab-pane active'
+  })
+
+  // Create the tab button
+  var $tabButton = $('<li />', { 'class': 'active' })
+    .html('<a href=\'#control-sidebar-theme-demo-options-tab\' data-toggle=\'tab\'>'
+      + '<i class="fa fa-wrench"></i>'
+      + '</a>')
+
+  // Add the tab button to the right sidebar tabs
+  $('[href="#control-sidebar-home-tab"]')
+    .parent()
+    .before($tabButton)
+
+  // Create the menu
+  var $demoSettings = $('<div />')
+
+  // Layout options
+  $demoSettings.append(
+    '<h4 class="control-sidebar-heading">'
+    + 'Layout Options'
+    + '</h4>'
+    // Fixed layout
+    + '<div class="form-group">'
+    + '<label class="control-sidebar-subheading">'
+    + '<input type="checkbox"data-layout="fixed"class="pull-right"/> '
+    + 'Fixed layout'
+    + '</label>'
+    + '<p>Activate the fixed layout. You can\'t use fixed and boxed layouts together</p>'
+    + '</div>'
+    // Boxed layout
+    + '<div class="form-group">'
+    + '<label class="control-sidebar-subheading">'
+    + '<input type="checkbox"data-layout="layout-boxed" class="pull-right"/> '
+    + 'Boxed Layout'
+    + '</label>'
+    + '<p>Activate the boxed layout</p>'
+    + '</div>'
+    // Sidebar Toggle
+    + '<div class="form-group">'
+    + '<label class="control-sidebar-subheading">'
+    + '<input type="checkbox"data-layout="sidebar-collapse"class="pull-right"/> '
+    + 'Toggle Sidebar'
+    + '</label>'
+    + '<p>Toggle the left sidebar\'s state (open or collapse)</p>'
+    + '</div>'
+    // Sidebar mini expand on hover toggle
+    + '<div class="form-group">'
+    + '<label class="control-sidebar-subheading">'
+    + '<input type="checkbox"data-enable="expandOnHover"class="pull-right"/> '
+    + 'Sidebar Expand on Hover'
+    + '</label>'
+    + '<p>Let the sidebar mini expand on hover</p>'
+    + '</div>'
+    // Control Sidebar Toggle
+    + '<div class="form-group">'
+    + '<label class="control-sidebar-subheading">'
+    + '<input type="checkbox"data-controlsidebar="control-sidebar-open"class="pull-right"/> '
+    + 'Toggle Right Sidebar Slide'
+    + '</label>'
+    + '<p>Toggle between slide over content and push content effects</p>'
+    + '</div>'
+    // Control Sidebar Skin Toggle
+    + '<div class="form-group">'
+    + '<label class="control-sidebar-subheading">'
+    + '<input type="checkbox"data-sidebarskin="toggle"class="pull-right"/> '
+    + 'Toggle Right Sidebar Skin'
+    + '</label>'
+    + '<p>Toggle between dark and light skins for the right sidebar</p>'
+    + '</div>'
+  )
+  var $skinsList = $('<ul />', { 'class': 'list-unstyled clearfix' })
+
+  // Dark sidebar skins
+  var $skinBlue =
+        $('<li />', { style: 'float:left; width: 33.33333%; padding: 5px;' })
+          .append('<a href="javascript:void(0)" data-skin="skin-blue" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">'
+            + '<div><span style="display:block; width: 20%; float: left; height: 7px; background: #367fa9"></span><span class="bg-light-blue" style="display:block; width: 80%; float: left; height: 7px;"></span></div>'
+            + '<div><span style="display:block; width: 20%; float: left; height: 20px; background: #222d32"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span></div>'
+            + '</a>'
+            + '<p class="text-center no-margin">Blue</p>')
+  $skinsList.append($skinBlue)
+  var $skinBlack =
+        $('<li />', { style: 'float:left; width: 33.33333%; padding: 5px;' })
+          .append('<a href="javascript:void(0)" data-skin="skin-black" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">'
+            + '<div style="box-shadow: 0 0 2px rgba(0,0,0,0.1)" class="clearfix"><span style="display:block; width: 20%; float: left; height: 7px; background: #fefefe"></span><span style="display:block; width: 80%; float: left; height: 7px; background: #fefefe"></span></div>'
+            + '<div><span style="display:block; width: 20%; float: left; height: 20px; background: #222"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span></div>'
+            + '</a>'
+            + '<p class="text-center no-margin">Black</p>')
+  $skinsList.append($skinBlack)
+  var $skinPurple =
+        $('<li />', { style: 'float:left; width: 33.33333%; padding: 5px;' })
+          .append('<a href="javascript:void(0)" data-skin="skin-purple" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">'
+            + '<div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-purple-active"></span><span class="bg-purple" style="display:block; width: 80%; float: left; height: 7px;"></span></div>'
+            + '<div><span style="display:block; width: 20%; float: left; height: 20px; background: #222d32"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span></div>'
+            + '</a>'
+            + '<p class="text-center no-margin">Purple</p>')
+  $skinsList.append($skinPurple)
+  var $skinGreen =
+        $('<li />', { style: 'float:left; width: 33.33333%; padding: 5px;' })
+          .append('<a href="javascript:void(0)" data-skin="skin-green" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">'
+            + '<div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-green-active"></span><span class="bg-green" style="display:block; width: 80%; float: left; height: 7px;"></span></div>'
+            + '<div><span style="display:block; width: 20%; float: left; height: 20px; background: #222d32"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span></div>'
+            + '</a>'
+            + '<p class="text-center no-margin">Green</p>')
+  $skinsList.append($skinGreen)
+  var $skinRed =
+        $('<li />', { style: 'float:left; width: 33.33333%; padding: 5px;' })
+          .append('<a href="javascript:void(0)" data-skin="skin-red" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">'
+            + '<div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-red-active"></span><span class="bg-red" style="display:block; width: 80%; float: left; height: 7px;"></span></div>'
+            + '<div><span style="display:block; width: 20%; float: left; height: 20px; background: #222d32"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span></div>'
+            + '</a>'
+            + '<p class="text-center no-margin">Red</p>')
+  $skinsList.append($skinRed)
+  var $skinYellow =
+        $('<li />', { style: 'float:left; width: 33.33333%; padding: 5px;' })
+          .append('<a href="javascript:void(0)" data-skin="skin-yellow" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">'
+            + '<div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-yellow-active"></span><span class="bg-yellow" style="display:block; width: 80%; float: left; height: 7px;"></span></div>'
+            + '<div><span style="display:block; width: 20%; float: left; height: 20px; background: #222d32"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span></div>'
+            + '</a>'
+            + '<p class="text-center no-margin">Yellow</p>')
+  $skinsList.append($skinYellow)
+
+  // Light sidebar skins
+  var $skinBlueLight =
+        $('<li />', { style: 'float:left; width: 33.33333%; padding: 5px;' })
+          .append('<a href="javascript:void(0)" data-skin="skin-blue-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">'
+            + '<div><span style="display:block; width: 20%; float: left; height: 7px; background: #367fa9"></span><span class="bg-light-blue" style="display:block; width: 80%; float: left; height: 7px;"></span></div>'
+            + '<div><span style="display:block; width: 20%; float: left; height: 20px; background: #f9fafc"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span></div>'
+            + '</a>'
+            + '<p class="text-center no-margin" style="font-size: 12px">Blue Light</p>')
+  $skinsList.append($skinBlueLight)
+  var $skinBlackLight =
+        $('<li />', { style: 'float:left; width: 33.33333%; padding: 5px;' })
+          .append('<a href="javascript:void(0)" data-skin="skin-black-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">'
+            + '<div style="box-shadow: 0 0 2px rgba(0,0,0,0.1)" class="clearfix"><span style="display:block; width: 20%; float: left; height: 7px; background: #fefefe"></span><span style="display:block; width: 80%; float: left; height: 7px; background: #fefefe"></span></div>'
+            + '<div><span style="display:block; width: 20%; float: left; height: 20px; background: #f9fafc"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span></div>'
+            + '</a>'
+            + '<p class="text-center no-margin" style="font-size: 12px">Black Light</p>')
+  $skinsList.append($skinBlackLight)
+  var $skinPurpleLight =
+        $('<li />', { style: 'float:left; width: 33.33333%; padding: 5px;' })
+          .append('<a href="javascript:void(0)" data-skin="skin-purple-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">'
+            + '<div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-purple-active"></span><span class="bg-purple" style="display:block; width: 80%; float: left; height: 7px;"></span></div>'
+            + '<div><span style="display:block; width: 20%; float: left; height: 20px; background: #f9fafc"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span></div>'
+            + '</a>'
+            + '<p class="text-center no-margin" style="font-size: 12px">Purple Light</p>')
+  $skinsList.append($skinPurpleLight)
+  var $skinGreenLight =
+        $('<li />', { style: 'float:left; width: 33.33333%; padding: 5px;' })
+          .append('<a href="javascript:void(0)" data-skin="skin-green-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">'
+            + '<div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-green-active"></span><span class="bg-green" style="display:block; width: 80%; float: left; height: 7px;"></span></div>'
+            + '<div><span style="display:block; width: 20%; float: left; height: 20px; background: #f9fafc"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span></div>'
+            + '</a>'
+            + '<p class="text-center no-margin" style="font-size: 12px">Green Light</p>')
+  $skinsList.append($skinGreenLight)
+  var $skinRedLight =
+        $('<li />', { style: 'float:left; width: 33.33333%; padding: 5px;' })
+          .append('<a href="javascript:void(0)" data-skin="skin-red-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">'
+            + '<div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-red-active"></span><span class="bg-red" style="display:block; width: 80%; float: left; height: 7px;"></span></div>'
+            + '<div><span style="display:block; width: 20%; float: left; height: 20px; background: #f9fafc"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span></div>'
+            + '</a>'
+            + '<p class="text-center no-margin" style="font-size: 12px">Red Light</p>')
+  $skinsList.append($skinRedLight)
+  var $skinYellowLight =
+        $('<li />', { style: 'float:left; width: 33.33333%; padding: 5px;' })
+          .append('<a href="javascript:void(0)" data-skin="skin-yellow-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">'
+            + '<div><span style="display:block; width: 20%; float: left; height: 7px;" class="bg-yellow-active"></span><span class="bg-yellow" style="display:block; width: 80%; float: left; height: 7px;"></span></div>'
+            + '<div><span style="display:block; width: 20%; float: left; height: 20px; background: #f9fafc"></span><span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span></div>'
+            + '</a>'
+            + '<p class="text-center no-margin" style="font-size: 12px">Yellow Light</p>')
+  $skinsList.append($skinYellowLight)
+
+  $demoSettings.append('<h4 class="control-sidebar-heading">Skins</h4>')
+  $demoSettings.append($skinsList)
+
+  $tabPane.append($demoSettings)
+  $('#control-sidebar-home-tab').after($tabPane)
+
+  setup()
+
+  $('[data-toggle="tooltip"]').tooltip()
+})

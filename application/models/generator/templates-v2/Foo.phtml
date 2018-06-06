@@ -1,0 +1,58 @@
+<?php
+require_once 'FooFunctions.php';
+
+echo "<?php\n";?>
+
+namespace <?=$this->_namespace?>\Model;
+
+use Zend\InputFilter\InputFilter;
+use Zend\InputFilter\Factory as InputFactory;
+use Zend\InputFilter\InputFilterAwareInterface;
+use Zend\InputFilter\InputFilterInterface;
+
+
+class <?=$this->_className?> implements InputFilterAwareInterface
+{
+    protected $inputFilter;
+
+    public function setInputFilter(InputFilterInterface $inputFilter)
+    {
+        throw new \Exception("Not used");
+    }
+
+    public function getInputFilter()
+    {
+        if (!$this->inputFilter) {
+            $inputFilter = new InputFilter();
+
+            $factory = new InputFactory();
+            
+<?php foreach ($this->_columns as $column) { 
+			$fieldName=$column['field'];
+			if ($fieldName == $this->_primaryKey) {
+				inputFilterPrimaryKey($this->_columns,$fieldName);
+			} else {
+				//TODO: timestamp is shown as phptype string. probably a new filter should be created
+				switch ($column['phptype']) {
+					case 'string':
+						inputFilterString($this->_columns,$fieldName,$this->_charset);
+						break;
+					case 'int':
+						inputFilterInt($this->_columns,$fieldName);
+						break;
+					case 'boolean':
+						inputFilterBoolean($this->_columns,$fieldName);
+						break;
+					default:
+						
+				}
+			}
+	  }
+?> 
+
+            $this->inputFilter = $inputFilter;        
+        }
+
+        return $this->inputFilter;
+    }
+}

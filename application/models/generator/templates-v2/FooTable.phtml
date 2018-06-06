@@ -1,0 +1,192 @@
+<?php
+$columnsWithoutPrimaryKeys = array();
+$columnsWithoutPrimaryKeysAsVars = array();
+
+$columnsRequired = array();
+$columnsNotRequired = array();
+
+foreach ($this->_columns as $column) {
+	$field = $column['field'];
+	if ($field != $this->_primaryKey['field']) {
+		array_push($columnsWithoutPrimaryKeys,$field);
+		array_push($columnsWithoutPrimaryKeysAsVars,'$'.$field);
+		if ($column['required']) {
+			array_push($columnsRequired,$field);
+		} else {
+			array_push($columnsNotRequired,$field);
+		}
+	}
+}
+
+$parametersForFunctionArray=array();
+
+foreach ($columnsRequired as $field) {
+	$parametersForFunctionArray[]="$".$field;
+}
+foreach ($columnsNotRequired as $field) {
+	$parametersForFunctionArray[]="$".$field." = null";
+}
+
+$paramsForFunction=join(", ",$parametersForFunctionArray);
+
+echo "<?php\n";?>
+namespace <?= $this->_namespace ?>\Model;
+
+use Zend\Db\TableGateway\AbstractTableGateway,
+    Zend\Db\Adapter\Adapter,
+    Zend\Db\ResultSet\ResultSet,
+    Zend\Db\Sql\Select;
+
+class <?=$this->_className?>Table extends AbstractTableGateway
+{
+    protected $table ='<?=$this->_tbname?>';
+    protected $tableName ='<?=$this->_tbname?>';
+
+    public function qi($name)  { return $this->adapter->platform->quoteIdentifier($name); }
+    
+    public function fp($name) { return $this->adapter->driver->formatParameterName($name); }
+
+
+    public function __construct(Adapter $adapter)
+    {
+        $this->adapter = $adapter;
+        $this->resultSetPrototype = new ResultSet(new <?=$this->_className?>);
+
+        $this->initialize();
+    }
+
+    public function fetchAll()
+    {
+        $resultSet = $this->select();
+        return $resultSet;
+    }
+    
+   	public function newSelect() {
+    	return new Select;
+    }
+    
+    public function getSelect(&$select,$columnsArray=array()) 
+    {
+    	$select = new Select;
+    	return $select->from('<?=$this->_tbname?>')->columns($columnsArray);    	
+    }
+    
+    public function createIfNotExist($checkColumnsArray,$optionalColumns=array(),&$isRowCreated=null) {
+			$rowset=$this->select($checkColumnsArray);
+    		$row = $rowset->current();
+    		$id=null;
+    		if ($row == null) {
+    			$allColumns=array_merge($checkColumnsArray,$optionalColumns);
+    			$affectedRows = $this->insert($allColumns);
+    			if ($affectedRows != 1) {
+    				throw new \Exception("error: could not add line to db");
+    			}
+    			$id=$this->lastInsertValue;
+    			$isRowCreated=true;
+    		} else {
+    			$id=$row-><?=$this->_primaryKey['field']?>;
+    			$isRowCreated=false;
+    		}
+    		return $id;
+    }
+    
+    //http://stackoverflow.com/questions/6156942/how-do-i-insert-an-empty-row-but-have-the-autonumber-update-correctly
+    
+    public function createEmptyRow() {
+    	$row=array(
+    	'<?=$this->_primaryKey['field']?>' => null
+    	);
+    	$affectedRows=$this->insert($row);
+ 		if ($affectedRows != 1) {
+    		throw new \Exception("error: could not add empty row to db");
+    	}
+    	$id=$this->lastInsertValue;
+    	return $id;
+	}
+    
+    public function get<?=$this->_className?>($id)
+    {
+        $id  = (int) $id;
+        $rowset = $this->select(array('<?=$this->_primaryKey['field']?>' => $id));
+        $row = $rowset->current();
+        if (!$row) {
+            throw new \Exception("Could not find row $id");
+        }
+        return $row;
+    }
+    
+     public function match<?=$this->_className?>(<?= join($columnsWithoutPrimaryKeysAsVars,", ");?>)
+    {
+        $select = $this->getSelect();
+        <?php foreach ($columnsWithoutPrimaryKeys as $column): ?>
+        if ($<?=$column?> != null) {
+        	$select->where->like('<?=$column?>' ,'%'.$<?=$column?>.'%');
+        }
+        <?php endforeach;?>
+        $statement = $this->getSql()->prepareStatementForSqlObject($select);
+        $result = $statement->execute();
+        $ret = $result->current();
+        if ($ret !== false) {
+        	$ret = array($ret);
+            while (($line=$result->next()) !== false ) {
+        		$ret[]=$line;
+        	}
+        }
+        return $ret;
+    }
+    
+
+    public function save<?=$this->_className?>(<?=$this->_className?> $<?=$this->_tbname?>)
+    {
+        $data = array(
+        	<?php foreach ($columnsWithoutPrimaryKeys as $column): ?>
+            '<?= $column?>' => $<?=$this->_tbname?>-><?= $column?>,
+            <?php endforeach; ?>
+        );
+
+        $id = (int)$<?=$this->_tbname?>->id;
+        if ($id == 0) {
+            $this->insert($data);
+        } else {
+            if ($this->get<?=$this->_className?>($id)) {
+                $this->update($data, array('<?= $this->_primaryKey['field']?>' => $id));
+            } else {
+                throw new \Exception('Form id does not exit');
+            }
+        }
+    }
+
+    public function add<?=$this->_className?>(<?= $paramsForFunction ?>)
+    {
+        $data = array(<?php foreach ($columnsWithoutPrimaryKeys as $column): ?>
+            '<?= $column?>' => $<?= $column?>,
+            <?php endforeach; ?>
+        );
+        $affectedRows=$this->insert($data);
+        <?php if ($this->_returnId):?>
+        if ($affectedRows != 1) {
+        	return null;
+        }
+        return $this->lastInsertValue;
+        <?php else:?>
+        return $affectedRows;
+        <?php endif;?>
+    }
+    
+   
+    public function update<?=$this->_className?>($<?=$this->_primaryKey['field']?>, <?= join($columnsWithoutPrimaryKeysAsVars,", "); ?>)
+    {
+        $data = array(
+        	<?php foreach ($columnsWithoutPrimaryKeys as $column): ?>
+            '<?= $column?>' => $<?=$this->_tbname?>-><?= $column?>,
+            <?php endforeach; ?>
+                );
+        $this->update($data, array(<?= $this->_primaryKey['field']?> => $id));
+    }
+
+    public function delete<?=$this->_className?>($id)
+    {
+        $this->delete(array('<?= $this->_primaryKey['field']?>' => $id));
+    }
+
+}
