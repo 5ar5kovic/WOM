@@ -13,15 +13,15 @@ class AdministracijaController extends Zend_Controller_Action
         // action body
     }
     
-    public function operativniSistemiPrikazAction() {
-        $myMapperOperativniSistemi = new Application_Model_Mymapper_OperativniSistemi();
-        $operativniSistemi = $myMapperOperativniSistemi->operativniSistemiSelect();
-        $this->view->operativniSistemi = $operativniSistemi;        
+    public function operativniSistemPrikazAction() {
+        $myMapper = new Application_Model_Mymapper_OperativniSistem();
+        $operativniSistemi = $myMapper->operativniSistemSelect();
+        $this->view->operativniSistemi = $operativniSistemi;
     }
     
-    public function operativniSistemiUnosAction() {}
+    public function operativniSistemUnosAction() {}
     
-    public function operativniSistemiBrisanjeAction() {}
+    public function operativniSistemBrisanjeAction() {}
 
 
 }

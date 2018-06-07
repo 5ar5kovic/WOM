@@ -13,6 +13,8 @@ class IndexController extends Zend_Controller_Action
         global $dbUpdate;
         require_once '../data/dbupdate.php';
         
+        //$myMapper = new MyMapper_DbupdateHistory();
+        
         $myMapper = new Application_Model_Mymapper_DbupdateHistory();
         
         $poslednjiBrojUpitaIzSkripte = sizeof($dbUpdate);
