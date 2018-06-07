@@ -22,7 +22,6 @@ class Application_Model_Paginator extends Zend_Paginator_Adapter_DbSelect
     /**
      * Object mapper
      *
-     * @var Application_Model_MapperAbstract
      */
     protected $_mapper = null;
 
@@ -30,7 +29,6 @@ class Application_Model_Paginator extends Zend_Paginator_Adapter_DbSelect
      * Constructor.
      *
      * @param Zend_Db_Select $select The select query
-     * @param Application_Model_MapperAbstract $mapper The mapper associated with the object type
      */
     public function __construct(Zend_Db_Select $select, Application_Model_Mapper_MapperAbstract $mapper)
     {

@@ -18,7 +18,7 @@
  * @subpackage Model
  * @author SpecNaz Team 9815
  */
-class Application_Model_OperativniSistemi extends Application_Model_ModelAbstract
+class Application_Model_Procesor extends Application_Model_ModelAbstract
 {
 
     /**
@@ -59,7 +59,7 @@ class Application_Model_OperativniSistemi extends Application_Model_ModelAbstrac
      * Sets column id
      *
      * @param int $data
-     * @return Application_Model_OperativniSistemi
+     * @return Application_Model_Procesor
      */
     public function setId($data)
     {
@@ -81,7 +81,7 @@ class Application_Model_OperativniSistemi extends Application_Model_ModelAbstrac
      * Sets column naziv
      *
      * @param string $data
-     * @return Application_Model_OperativniSistemi
+     * @return Application_Model_Procesor
      */
     public function setNaziv($data)
     {
@@ -102,12 +102,12 @@ class Application_Model_OperativniSistemi extends Application_Model_ModelAbstrac
     /**
      * Returns the mapper class for this model
      *
-     * @return Application_Model_Mapper_OperativniSistemi
+     * @return Application_Model_Mapper_Procesor
      */
     public function getMapper()
     {
         if ($this->_mapper === null) {
-            $this->setMapper(new Application_Model_Mapper_OperativniSistemi());
+            $this->setMapper(new Application_Model_Mapper_Procesor());
         }
 
         return $this->_mapper;
@@ -116,7 +116,7 @@ class Application_Model_OperativniSistemi extends Application_Model_ModelAbstrac
     /**
      * Deletes current row by deleting the row that matches the primary key
      *
-	 * @see Application_Model_Mapper_OperativniSistemi::delete
+	 * @see Application_Model_Mapper_Procesor::delete
      * @return int|boolean Number of rows deleted or boolean if doing soft delete
      */
     public function deleteRowByPrimaryKey()

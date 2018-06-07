@@ -3,8 +3,7 @@ class Application_Model_Mymapper_DbupdateHistory extends Application_Model_Mappe
     
     
     public function insert(Application_Model_DbupdateHistory $model, $useTransaction = true)
-    {
-        
+    {        
         $data = $model->toArray();
         if ($useTransaction) {
             $this->getDbTable()->getAdapter()->beginTransaction();
@@ -23,6 +22,15 @@ class Application_Model_Mymapper_DbupdateHistory extends Application_Model_Mappe
             $success = false;
         }
         return $success;
-    }    
+    }
+    
+    //vraca poslednji id iz tabele dbupdate_history
+    public function getLastId() {        
+        $lastId = $this->getDbTable()->countAllRows();        
+        return $lastId;
+    }
+    
+    
+    
     
 }

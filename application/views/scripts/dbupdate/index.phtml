@@ -1,13 +1,20 @@
+<div class="text-center text-orange">
+	<h1>Dopuna baze podataka</h1>
+</div>
+
 <div>
 	<br />
 	<br />
 	<div style="padding: 10px;">
-		<h1 style="padding-bottom:10px;">Dopuna baze podataka</h1>
 		<?php foreach ($this->dbUpdate as $query):?>
+		
 		<p>Redni broj upita: <?php echo $query['id']; ?></p>
+		
 		<p>Opis: <?php echo $query['opis']; ?></p>
+		
 		<p>Poruka: <?php if($this->poruke[$query['id']]==1){ ?>
-				<span style="color:green">Upit je USPEŠNO izvršen!</span>
+		
+			<span style="color:green">Upit je USPEŠNO izvršen!</span>
 			   <?php }else{ ?> 
 			   <?php echo $this->poruke[$query['id']];?>
 			   <?php };?>
@@ -15,4 +22,8 @@
 	<hr />
 	<?php endforeach;?>
 </div>
+</div>
+
+<div class="text-center">
+	<h3 class="text-blue"><a href="<?php echo URL_PREFIX;?>/index">VRATITE SE NA ADMIN STRANU</a></h3>
 </div>

@@ -11,20 +11,20 @@
  */
 
 /**
- * Table definition for operativni_sistemi
+ * Table definition for maticna_ploca
  *
  * @package Application_Model
  * @subpackage DbTable
  * @author SpecNaz Team 9815
  */
-class Application_Model_DbTable_OperativniSistemi extends Application_Model_DbTable_TableAbstract
+class Application_Model_DbTable_MaticnaPloca extends Application_Model_DbTable_TableAbstract
 {
     /**
      * $_name - name of database table
      *
      * @var string
      */
-    protected $_name = 'operativni_sistemi';
+    protected $_name = 'maticna_ploca';
 
     /**
      * $_id - this is the primary key name

@@ -11,23 +11,23 @@
  */
 
 /**
- * Data Mapper implementation for Application_Model_OperativniSistemi
+ * Data Mapper implementation for Application_Model_OperativniSistem
  *
  * @package Application_Model
  * @subpackage Mapper
  * @author SpecNaz Team 9815
  */
-class Application_Model_Mapper_OperativniSistemi extends Application_Model_Mapper_MapperAbstract
+class Application_Model_Mapper_OperativniSistem extends Application_Model_Mapper_MapperAbstract
 {
     /**
      * Returns an array, keys are the field names.
      *
-     * @param Application_Model_OperativniSistemi $model
+     * @param Application_Model_OperativniSistem $model
      * @return array
      */
     public function toArray($model)
     {
-        if (! $model instanceof Application_Model_OperativniSistemi) {
+        if (! $model instanceof Application_Model_OperativniSistem) {
             throw new Exception('Unable to create array: invalid model passed to mapper');
         }
 
@@ -42,12 +42,12 @@ class Application_Model_Mapper_OperativniSistemi extends Application_Model_Mappe
     /**
      * Returns the DbTable class associated with this mapper
      *
-     * @return Application_Model_DbTable_OperativniSistemi
+     * @return Application_Model_DbTable_OperativniSistem
      */
     public function getDbTable()
     {
         if ($this->_dbTable === null) {
-            $this->setDbTable('Application_Model_DbTable_OperativniSistemi');
+            $this->setDbTable('Application_Model_DbTable_OperativniSistem');
         }
 
         return $this->_dbTable;
@@ -56,14 +56,14 @@ class Application_Model_Mapper_OperativniSistemi extends Application_Model_Mappe
     /**
      * Deletes the current model
      *
-     * @param Application_Model_OperativniSistemi $model The model to delete
+     * @param Application_Model_OperativniSistem $model The model to delete
      * @param boolean $useTransaction Flag to indicate if delete should be done inside a database transaction
      * @see Application_Model_DbTable_TableAbstract::delete()
      * @return int
      */
     public function delete($model, $useTransaction = true)
     {
-        if (! $model instanceof Application_Model_OperativniSistemi) {
+        if (! $model instanceof Application_Model_OperativniSistem) {
             throw new Exception('Unable to delete: invalid model passed to mapper');
         }
 
@@ -90,13 +90,13 @@ class Application_Model_Mapper_OperativniSistemi extends Application_Model_Mappe
     /**
      * Saves current row, and optionally dependent rows
      *
-     * @param Application_Model_OperativniSistemi $model
+     * @param Application_Model_OperativniSistem $model
      * @param boolean $ignoreEmptyValues Should empty values saved
      * @param boolean $recursive Should the object graph be walked for all related elements
      * @param boolean $useTransaction Flag to indicate if save should be done inside a database transaction
      * @return boolean If the save action was successful
      */
-    public function save(Application_Model_OperativniSistemi $model,
+    public function save(Application_Model_OperativniSistem $model,
         $ignoreEmptyValues = true, $recursive = false, $useTransaction = true
     ) {
         $data = $model->toArray();
@@ -156,8 +156,8 @@ class Application_Model_Mapper_OperativniSistemi extends Application_Model_Mappe
      * Finds row by primary key
      *
      * @param int $primary_key
-     * @param Application_Model_OperativniSistemi|null $model
-     * @return Application_Model_OperativniSistemi|null The object provided or null if not found
+     * @param Application_Model_OperativniSistem|null $model
+     * @return Application_Model_OperativniSistem|null The object provided or null if not found
      */
     public function find($primary_key, $model)
     {
@@ -178,13 +178,13 @@ class Application_Model_Mapper_OperativniSistemi extends Application_Model_Mappe
      * Loads the model specific data into the model object
      *
      * @param Zend_Db_Table_Row_Abstract|array $data The data as returned from a Zend_Db query
-     * @param Application_Model_OperativniSistemi|null $entry The object to load the data into, or null to have one created
-     * @return Application_Model_OperativniSistemi The model with the data provided
+     * @param Application_Model_OperativniSistem|null $entry The object to load the data into, or null to have one created
+     * @return Application_Model_OperativniSistem The model with the data provided
      */
     public function loadModel($data, $entry)
     {
         if ($entry === null) {
-            $entry = new Application_Model_OperativniSistemi();
+            $entry = new Application_Model_OperativniSistem();
         }
 
         if (is_array($data)) {

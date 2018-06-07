@@ -20,6 +20,7 @@ class AdministracijaController extends Zend_Controller_Action
     }
     
     public function operativniSistemiUnosAction() {}
+    
     public function operativniSistemiBrisanjeAction() {}
 
 
