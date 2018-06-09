@@ -1,6 +1,66 @@
-<div>
-<h1>OPERATIVNI SITEMI</h1>
-<?php foreach ($this->operativniSistemi as $opSys)?>
-<p><?php echo $opSys['naziv'];?>
 
+<?php $redniBroj = 0;?>
+	<section class="invoice">
+		<div class="row">
+        	<div class="col-xs-12">
+          		<h2 class="page-header">
+            		OPERATIVNI SISTEMI           
+          		</h2>
+        	</div>
+      	</div>
+		<div class="row">
+			<div class="box-body no-padding">
+				<table class="table table-condensed">
+					<tr>
+						<th style="width: 10px">#</th>
+						<th>Naziv</th>
+						<th style="width: 80px">Promena/Brisanje</th>
+					</tr>
+<?php foreach ($this->operativniSistemi as $operativniSistem):?>
+                	<tr>
+						<td><?php echo ++$redniBroj . ".";?></td>
+						<td><?php echo $operativniSistem['naziv'];?></td>
+						<td><i class="fa fa-pencil-square-o text-blue"></i>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<a data-href="/administracija/operativni-sistemi-brisanje?id=<?php echo $operativniSistem['id']; ?>"
+						   		data-toggle="modal" 
+						   		data-target="#confirm-delete"
+						   		data-os="<?php echo $operativniSistem['naziv'];?>"					   		  		
+						   		>
+									<i class="fa fa-minus-square-o text-red"></i>
+							</a>
+						</td>
+					</tr>
+<?php endforeach;?>
+                </table>
+			</div>
+		</div>
+		<hr>
+		<div class="row no-print">
+        	<div class="col-xs-12">
+          		<a href="/administracija/operativni-sistem-unos" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Dodaj novi</a>
+          	</div>
+      	</div>	
+	</section>
+	
+<div class="modal modal-danger fade" id="confirm-delete">
+   	<div class="modal-dialog">
+       	<div class="modal-content">
+           	<div class="modal-header">
+               	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              		<span aria-hidden="true">&times;</span>
+               	</button>
+               	<h4 class="modal-title">Brisanje unetog operativnog sistema</h4>
+           	</div>
+           	<div class="modal-body">
+               	<p>Uneti operativni sistem će biti obrisan&hellip;</p>
+           	</div>
+           	<div class="modal-footer">
+              	<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Doustani</button>
+               	<button type="button" class="btn btn-outline">Obriši</button>
+           	</div>
+        </div>
+	</div>
 </div>
+
+

@@ -108,6 +108,7 @@ create table if not exists korisnicka_podrska (
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `ime` varchar(60) NOT NULL,
     `prezime` varchar(60) NOT NULL,
+    `password` varchar(50) NOT NULL,
     `email` varchar(60) NOT NULL,
     `tel` varchar(50) NOT NULL,
     `id_nivo` int(11) NOT NULL,

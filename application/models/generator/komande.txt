@@ -1,0 +1,12 @@
+Pravljenje kontrolera:
+zf create controller CONTROLLER_NAME index-action-included[=1] MODULE_NAME
+
+Pravljenje action-a:
+zf create action ACTION_NAME CONTROLLER_NAME view-included[=1] MODULE_NAME
+
+Pravljenje forme:
+zf create form FORM_NAME MODULE_NAME
+
+Pravljenje modela:
+Pozicioniras se na direktorijum u kojem je generator, pa onda kucas
+php zend-db-model-generator.php --database IME_BAZE --table IME_TABELE
