@@ -1,4 +1,12 @@
 <?php
+/*
+ * CREATE TABLE dbupdate_history (
+ * id INT(11) NOT NULL AUTO INCREMENT PRIMARY KEY,
+ * query MEDIUMTEXT,
+ * datum_izmene DATETIME,
+ * opos text) 
+ * 
+ * */
 
 
 $dbUpdate = array();
