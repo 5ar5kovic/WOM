@@ -33,6 +33,20 @@ class Application_Model_KorisnickaPodrska extends Application_Model_ModelAbstrac
      *
      * @var string
      */
+    protected $_Username;
+
+    /**
+     * Database var type varchar(50)
+     *
+     * @var string
+     */
+    protected $_Password;
+
+    /**
+     * Database var type varchar(60)
+     *
+     * @var string
+     */
     protected $_Ime;
 
     /**
@@ -61,15 +75,15 @@ class Application_Model_KorisnickaPodrska extends Application_Model_ModelAbstrac
      *
      * @var int
      */
-    protected $_IdNivo;
+    protected $_IdRola;
 
 
     /**
      * Parent relation korisnicka_podrska_ibfk_1
      *
-     * @var Application_Model_Nivo
+     * @var Application_Model_Rola
      */
-    protected $_Nivo;
+    protected $_Rola;
 
 
     /**
@@ -80,17 +94,19 @@ class Application_Model_KorisnickaPodrska extends Application_Model_ModelAbstrac
         parent::init();
         $this->setColumnsList(array(
             'id'=>'Id',
+            'username'=>'Username',
+            'password'=>'Password',
             'ime'=>'Ime',
             'prezime'=>'Prezime',
             'email'=>'Email',
             'tel'=>'Tel',
-            'id_nivo'=>'IdNivo',
+            'id_rola'=>'IdRola',
         ));
 
         $this->setParentList(array(
             'KorisnickaPodrskaIbfk1'=> array(
-                    'property' => 'Nivo',
-                    'table_name' => 'Nivo',
+                    'property' => 'Rola',
+                    'table_name' => 'Rola',
                 ),
         ));
 
@@ -118,6 +134,50 @@ class Application_Model_KorisnickaPodrska extends Application_Model_ModelAbstrac
     public function getId()
     {
         return $this->_Id;
+    }
+
+    /**
+     * Sets column username
+     *
+     * @param string $data
+     * @return Application_Model_KorisnickaPodrska
+     */
+    public function setUsername($data)
+    {
+        $this->_Username = $data;
+        return $this;
+    }
+
+    /**
+     * Gets column username
+     *
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->_Username;
+    }
+
+    /**
+     * Sets column password
+     *
+     * @param string $data
+     * @return Application_Model_KorisnickaPodrska
+     */
+    public function setPassword($data)
+    {
+        $this->_Password = $data;
+        return $this;
+    }
+
+    /**
+     * Gets column password
+     *
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->_Password;
     }
 
     /**
@@ -209,60 +269,60 @@ class Application_Model_KorisnickaPodrska extends Application_Model_ModelAbstrac
     }
 
     /**
-     * Sets column id_nivo
+     * Sets column id_rola
      *
      * @param int $data
      * @return Application_Model_KorisnickaPodrska
      */
-    public function setIdNivo($data)
+    public function setIdRola($data)
     {
-        $this->_IdNivo = $data;
+        $this->_IdRola = $data;
         return $this;
     }
 
     /**
-     * Gets column id_nivo
+     * Gets column id_rola
      *
      * @return int
      */
-    public function getIdNivo()
+    public function getIdRola()
     {
-        return $this->_IdNivo;
+        return $this->_IdRola;
     }
 
     /**
-     * Sets parent relation IdNivo
+     * Sets parent relation IdRola
      *
-     * @param Application_Model_Nivo $data
+     * @param Application_Model_Rola $data
      * @return Application_Model_KorisnickaPodrska
      */
-    public function setNivo(Application_Model_Nivo $data)
+    public function setRola(Application_Model_Rola $data)
     {
-        $this->_Nivo = $data;
+        $this->_Rola = $data;
 
         $primary_key = $data->getPrimaryKey();
         if (is_array($primary_key)) {
             $primary_key = $primary_key['id'];
         }
 
-        $this->setIdNivo($primary_key);
+        $this->setIdRola($primary_key);
 
         return $this;
     }
 
     /**
-     * Gets parent IdNivo
+     * Gets parent IdRola
      *
      * @param boolean $load Load the object if it is not already
-     * @return Application_Model_Nivo
+     * @return Application_Model_Rola
      */
-    public function getNivo($load = true)
+    public function getRola($load = true)
     {
-        if ($this->_Nivo === null && $load) {
+        if ($this->_Rola === null && $load) {
             $this->getMapper()->loadRelated('KorisnickaPodrskaIbfk1', $this);
         }
 
-        return $this->_Nivo;
+        return $this->_Rola;
     }
 
     /**

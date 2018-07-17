@@ -11,29 +11,29 @@
  */
 
 /**
- * Data Mapper implementation for Application_Model_Nivo
+ * Data Mapper implementation for Application_Model_Rola
  *
  * @package Application_Model
  * @subpackage Mapper
  * @author SpecNaz Team 9815
  */
-class Application_Model_Mapper_Nivo extends Application_Model_Mapper_MapperAbstract
+class Application_Model_Mapper_Rola extends Application_Model_Mapper_MapperAbstract
 {
     /**
      * Returns an array, keys are the field names.
      *
-     * @param Application_Model_Nivo $model
+     * @param Application_Model_Rola $model
      * @return array
      */
     public function toArray($model)
     {
-        if (! $model instanceof Application_Model_Nivo) {
+        if (! $model instanceof Application_Model_Rola) {
             throw new Exception('Unable to create array: invalid model passed to mapper');
         }
 
         $result = array(
             'id' => $model->getId(),
-            'nivo' => $model->getNivo(),
+            'rola' => $model->getRola(),
         );
 
         return $result;
@@ -42,12 +42,12 @@ class Application_Model_Mapper_Nivo extends Application_Model_Mapper_MapperAbstr
     /**
      * Returns the DbTable class associated with this mapper
      *
-     * @return Application_Model_DbTable_Nivo
+     * @return Application_Model_DbTable_Rola
      */
     public function getDbTable()
     {
         if ($this->_dbTable === null) {
-            $this->setDbTable('Application_Model_DbTable_Nivo');
+            $this->setDbTable('Application_Model_DbTable_Rola');
         }
 
         return $this->_dbTable;
@@ -56,14 +56,14 @@ class Application_Model_Mapper_Nivo extends Application_Model_Mapper_MapperAbstr
     /**
      * Deletes the current model
      *
-     * @param Application_Model_Nivo $model The model to delete
+     * @param Application_Model_Rola $model The model to delete
      * @param boolean $useTransaction Flag to indicate if delete should be done inside a database transaction
      * @see Application_Model_DbTable_TableAbstract::delete()
      * @return int
      */
     public function delete($model, $useTransaction = true)
     {
-        if (! $model instanceof Application_Model_Nivo) {
+        if (! $model instanceof Application_Model_Rola) {
             throw new Exception('Unable to delete: invalid model passed to mapper');
         }
 
@@ -90,13 +90,13 @@ class Application_Model_Mapper_Nivo extends Application_Model_Mapper_MapperAbstr
     /**
      * Saves current row, and optionally dependent rows
      *
-     * @param Application_Model_Nivo $model
+     * @param Application_Model_Rola $model
      * @param boolean $ignoreEmptyValues Should empty values saved
      * @param boolean $recursive Should the object graph be walked for all related elements
      * @param boolean $useTransaction Flag to indicate if save should be done inside a database transaction
      * @return boolean If the save action was successful
      */
-    public function save(Application_Model_Nivo $model,
+    public function save(Application_Model_Rola $model,
         $ignoreEmptyValues = true, $recursive = false, $useTransaction = true
     ) {
         $data = $model->toArray();
@@ -156,8 +156,8 @@ class Application_Model_Mapper_Nivo extends Application_Model_Mapper_MapperAbstr
      * Finds row by primary key
      *
      * @param int $primary_key
-     * @param Application_Model_Nivo|null $model
-     * @return Application_Model_Nivo|null The object provided or null if not found
+     * @param Application_Model_Rola|null $model
+     * @return Application_Model_Rola|null The object provided or null if not found
      */
     public function find($primary_key, $model)
     {
@@ -178,21 +178,21 @@ class Application_Model_Mapper_Nivo extends Application_Model_Mapper_MapperAbstr
      * Loads the model specific data into the model object
      *
      * @param Zend_Db_Table_Row_Abstract|array $data The data as returned from a Zend_Db query
-     * @param Application_Model_Nivo|null $entry The object to load the data into, or null to have one created
-     * @return Application_Model_Nivo The model with the data provided
+     * @param Application_Model_Rola|null $entry The object to load the data into, or null to have one created
+     * @return Application_Model_Rola The model with the data provided
      */
     public function loadModel($data, $entry)
     {
         if ($entry === null) {
-            $entry = new Application_Model_Nivo();
+            $entry = new Application_Model_Rola();
         }
 
         if (is_array($data)) {
             $entry->setId($data['id'])
-                  ->setNivo($data['nivo']);
+                  ->setRola($data['rola']);
         } elseif ($data instanceof Zend_Db_Table_Row_Abstract || $data instanceof stdClass) {
             $entry->setId($data->id)
-                  ->setNivo($data->nivo);
+                  ->setRola($data->rola);
         }
 
         $entry->setMapper($this);

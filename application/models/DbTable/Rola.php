@@ -11,20 +11,20 @@
  */
 
 /**
- * Table definition for korisnicka_podrska
+ * Table definition for rola
  *
  * @package Application_Model
  * @subpackage DbTable
  * @author SpecNaz Team 9815
  */
-class Application_Model_DbTable_KorisnickaPodrska extends Application_Model_DbTable_TableAbstract
+class Application_Model_DbTable_Rola extends Application_Model_DbTable_TableAbstract
 {
     /**
      * $_name - name of database table
      *
      * @var string
      */
-    protected $_name = 'korisnicka_podrska';
+    protected $_name = 'rola';
 
     /**
      * $_id - this is the primary key name
@@ -35,13 +35,7 @@ class Application_Model_DbTable_KorisnickaPodrska extends Application_Model_DbTa
 
     protected $_sequence = true;
 
-    protected $_referenceMap = array(
-        'KorisnickaPodrskaIbfk1' => array(
-          	'columns' => 'id_rola',
-            'refTableClass' => 'Application_Model_DbTable_Rola',
-            'refColumns' => 'id'
-        )
-    );
+    
     
 
 

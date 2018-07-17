@@ -304,6 +304,7 @@ abstract class Application_Model_ModelAbstract
      * Returns an associative array of column-value pairings if the primary key
      * is an array of values, or the value of the primary key if not
      *
+     * @return any|array
      */
     public function getPrimaryKey()
     {

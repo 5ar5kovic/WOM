@@ -37,6 +37,7 @@ class Application_Model_Mapper_RadniNalog extends Application_Model_Mapper_Mappe
             'id_racunar' => $model->getIdRacunar(),
             'id_kvar' => $model->getIdKvar(),
             'vreme_kreiranja' => $model->getVremeKreiranja(),
+            'id_status' => $model->getIdStatus(),
             'opis_kvara' => $model->getOpisKvara(),
             'opis_resenja' => $model->getOpisResenja(),
             'vreme_zavrsetka' => $model->getVremeZavrsetka(),
@@ -199,6 +200,7 @@ class Application_Model_Mapper_RadniNalog extends Application_Model_Mapper_Mappe
                   ->setIdRacunar($data['id_racunar'])
                   ->setIdKvar($data['id_kvar'])
                   ->setVremeKreiranja($data['vreme_kreiranja'])
+                  ->setIdStatus($data['id_status'])
                   ->setOpisKvara($data['opis_kvara'])
                   ->setOpisResenja($data['opis_resenja'])
                   ->setVremeZavrsetka($data['vreme_zavrsetka']);
@@ -208,6 +210,7 @@ class Application_Model_Mapper_RadniNalog extends Application_Model_Mapper_Mappe
                   ->setIdRacunar($data->id_racunar)
                   ->setIdKvar($data->id_kvar)
                   ->setVremeKreiranja($data->vreme_kreiranja)
+                  ->setIdStatus($data->id_status)
                   ->setOpisKvara($data->opis_kvara)
                   ->setOpisResenja($data->opis_resenja)
                   ->setVremeZavrsetka($data->vreme_zavrsetka);

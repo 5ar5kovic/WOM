@@ -81,6 +81,7 @@ class Application_Model_Racunar extends Application_Model_ModelAbstract
     /**
      * Parent relation racunar_ibfk_2
      *
+     * @var Application_Model_OperativniSistem
      */
     protected $_OperativniSistem;
 
@@ -330,6 +331,7 @@ class Application_Model_Racunar extends Application_Model_ModelAbstract
     /**
      * Sets parent relation IdOs
      *
+     * @param Application_Model_OperativniSistem $data
      * @return Application_Model_Racunar
      */
     public function setOperativniSistem(Application_Model_OperativniSistem $data)
@@ -350,6 +352,7 @@ class Application_Model_Racunar extends Application_Model_ModelAbstract
      * Gets parent IdOs
      *
      * @param boolean $load Load the object if it is not already
+     * @return Application_Model_OperativniSistem
      */
     public function getOperativniSistem($load = true)
     {

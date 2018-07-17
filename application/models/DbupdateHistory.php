@@ -29,7 +29,7 @@ class Application_Model_DbupdateHistory extends Application_Model_ModelAbstract
     protected $_Id;
 
     /**
-     * Database var type mediumtext
+     * Database var type text
      *
      * @var string
      */

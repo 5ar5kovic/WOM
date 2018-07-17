@@ -20,23 +20,17 @@ class AdministracijaController extends Zend_Controller_Action
         $this->view->operativniSistemi = $operativniSistemi;
     }
     
-    //Unos i izmena operativnog sistema
-    public function operativniSistemUnosAction() {
-        $request = $this->_request;
-        $operativniSistemId = $request->getParam('id');
-        
-        
-    }
-    
-    
     //Brisanje operativnog sistema
     public function operativniSistemBrisanjeAction() {
+        
         $request = $this->_request;
         $operativniSistemId = $request->getParam('id', null);
+        
         $operativniSistemModel = new Application_Model_OperativniSistem();
         $operativniSistemModel->setId($operativniSistemId);
         $operativniSistemModel->deleteRowByPrimaryKey();
-        $this->
+        $this->redirect('/administracija/operativni-sistemi-prikaz');
+        
         
     }
 

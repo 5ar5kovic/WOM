@@ -50,6 +50,11 @@ class Application_Model_DbTable_RadniNalog extends Application_Model_DbTable_Tab
           	'columns' => 'id_kvar',
             'refTableClass' => 'Application_Model_DbTable_Kvar',
             'refColumns' => 'id'
+        ),
+        'RadniNalogIbfk4' => array(
+          	'columns' => 'id_status',
+            'refTableClass' => 'Application_Model_DbTable_Status',
+            'refColumns' => 'id'
         )
     );
     

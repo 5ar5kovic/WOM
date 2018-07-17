@@ -11,20 +11,20 @@
  */
 
 /**
- * Table definition for nivo
+ * Table definition for status
  *
  * @package Application_Model
  * @subpackage DbTable
  * @author SpecNaz Team 9815
  */
-class Application_Model_DbTable_Nivo extends Application_Model_DbTable_TableAbstract
+class Application_Model_DbTable_Status extends Application_Model_DbTable_TableAbstract
 {
     /**
      * $_name - name of database table
      *
      * @var string
      */
-    protected $_name = 'nivo';
+    protected $_name = 'status';
 
     /**
      * $_id - this is the primary key name

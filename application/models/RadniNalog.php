@@ -57,6 +57,13 @@ class Application_Model_RadniNalog extends Application_Model_ModelAbstract
     protected $_VremeKreiranja;
 
     /**
+     * Database var type int(11)
+     *
+     * @var int
+     */
+    protected $_IdStatus;
+
+    /**
      * Database var type text
      *
      * @var string
@@ -99,6 +106,13 @@ class Application_Model_RadniNalog extends Application_Model_ModelAbstract
      */
     protected $_Kvar;
 
+    /**
+     * Parent relation radni_nalog_ibfk_4
+     *
+     * @var Application_Model_Status
+     */
+    protected $_Status;
+
 
     /**
      * Sets up column and relationship lists
@@ -112,6 +126,7 @@ class Application_Model_RadniNalog extends Application_Model_ModelAbstract
             'id_racunar'=>'IdRacunar',
             'id_kvar'=>'IdKvar',
             'vreme_kreiranja'=>'VremeKreiranja',
+            'id_status'=>'IdStatus',
             'opis_kvara'=>'OpisKvara',
             'opis_resenja'=>'OpisResenja',
             'vreme_zavrsetka'=>'VremeZavrsetka',
@@ -129,6 +144,10 @@ class Application_Model_RadniNalog extends Application_Model_ModelAbstract
             'RadniNalogIbfk3'=> array(
                     'property' => 'Kvar',
                     'table_name' => 'Kvar',
+                ),
+            'RadniNalogIbfk4'=> array(
+                    'property' => 'Status',
+                    'table_name' => 'Status',
                 ),
         ));
 
@@ -261,6 +280,28 @@ class Application_Model_RadniNalog extends Application_Model_ModelAbstract
         }
 
         return $this->_VremeKreiranja;
+    }
+
+    /**
+     * Sets column id_status
+     *
+     * @param int $data
+     * @return Application_Model_RadniNalog
+     */
+    public function setIdStatus($data)
+    {
+        $this->_IdStatus = $data;
+        return $this;
+    }
+
+    /**
+     * Gets column id_status
+     *
+     * @return int
+     */
+    public function getIdStatus()
+    {
+        return $this->_IdStatus;
     }
 
     /**
@@ -449,6 +490,41 @@ class Application_Model_RadniNalog extends Application_Model_ModelAbstract
         }
 
         return $this->_Kvar;
+    }
+
+    /**
+     * Sets parent relation IdStatus
+     *
+     * @param Application_Model_Status $data
+     * @return Application_Model_RadniNalog
+     */
+    public function setStatus(Application_Model_Status $data)
+    {
+        $this->_Status = $data;
+
+        $primary_key = $data->getPrimaryKey();
+        if (is_array($primary_key)) {
+            $primary_key = $primary_key['id'];
+        }
+
+        $this->setIdStatus($primary_key);
+
+        return $this;
+    }
+
+    /**
+     * Gets parent IdStatus
+     *
+     * @param boolean $load Load the object if it is not already
+     * @return Application_Model_Status
+     */
+    public function getStatus($load = true)
+    {
+        if ($this->_Status === null && $load) {
+            $this->getMapper()->loadRelated('RadniNalogIbfk4', $this);
+        }
+
+        return $this->_Status;
     }
 
     /**

@@ -18,7 +18,7 @@
  * @subpackage Model
  * @author SpecNaz Team 9815
  */
-class Application_Model_Nivo extends Application_Model_ModelAbstract
+class Application_Model_Rola extends Application_Model_ModelAbstract
 {
 
     /**
@@ -33,7 +33,7 @@ class Application_Model_Nivo extends Application_Model_ModelAbstract
      *
      * @var string
      */
-    protected $_Nivo;
+    protected $_Rola;
 
 
 
@@ -45,7 +45,7 @@ class Application_Model_Nivo extends Application_Model_ModelAbstract
         parent::init();
         $this->setColumnsList(array(
             'id'=>'Id',
-            'nivo'=>'Nivo',
+            'rola'=>'Rola',
         ));
 
         $this->setParentList(array(
@@ -59,7 +59,7 @@ class Application_Model_Nivo extends Application_Model_ModelAbstract
      * Sets column id
      *
      * @param int $data
-     * @return Application_Model_Nivo
+     * @return Application_Model_Rola
      */
     public function setId($data)
     {
@@ -78,36 +78,36 @@ class Application_Model_Nivo extends Application_Model_ModelAbstract
     }
 
     /**
-     * Sets column nivo
+     * Sets column rola
      *
      * @param string $data
-     * @return Application_Model_Nivo
+     * @return Application_Model_Rola
      */
-    public function setNivo($data)
+    public function setRola($data)
     {
-        $this->_Nivo = $data;
+        $this->_Rola = $data;
         return $this;
     }
 
     /**
-     * Gets column nivo
+     * Gets column rola
      *
      * @return string
      */
-    public function getNivo()
+    public function getRola()
     {
-        return $this->_Nivo;
+        return $this->_Rola;
     }
 
     /**
      * Returns the mapper class for this model
      *
-     * @return Application_Model_Mapper_Nivo
+     * @return Application_Model_Mapper_Rola
      */
     public function getMapper()
     {
         if ($this->_mapper === null) {
-            $this->setMapper(new Application_Model_Mapper_Nivo());
+            $this->setMapper(new Application_Model_Mapper_Rola());
         }
 
         return $this->_mapper;
@@ -116,7 +116,7 @@ class Application_Model_Nivo extends Application_Model_ModelAbstract
     /**
      * Deletes current row by deleting the row that matches the primary key
      *
-	 * @see Application_Model_Mapper_Nivo::delete
+	 * @see Application_Model_Mapper_Rola::delete
      * @return int|boolean Number of rows deleted or boolean if doing soft delete
      */
     public function deleteRowByPrimaryKey()
