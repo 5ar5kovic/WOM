@@ -9,6 +9,7 @@ CREATE TABLE `wom`.`dbupdate_history`  (
 ); 
  * */
 
+//Pera, Spale, Johann
 
 $dbUpdate = array();
 
