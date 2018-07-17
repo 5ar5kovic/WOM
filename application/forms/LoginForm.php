@@ -1,5 +1,5 @@
 <?php
-class Form_LoginForm extends Zend_Form {
+class Application_Form_LoginForm extends Zend_Form {
     
     public function __construct($option = null) {
         
@@ -9,7 +9,7 @@ class Form_LoginForm extends Zend_Form {
         
         $username = new Zend_Form_Element_Text('username');
         
-        $username->setLabel('Korisničko ime: ')
+        $username->setLabel('Korisnicko ime: ')
                  ->setRequired();
         
         $password = new Zend_Form_Element_Password('password');

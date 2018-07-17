@@ -19,8 +19,8 @@ class AuthenticationController extends Zend_Controller_Action
             $this->redirect('index/index');
         }
         
-        $requenst = $this->getRequest();
-        $form = new Form_LoginForm();
+        $request = $this->getRequest();
+        $form = new Application_Form_LoginForm();
         if ($request->isPost()) {
             if ($form->isValid($this->_request->getPost())) {
                 $authAdapter = $this->getAuthAdapter();
@@ -43,7 +43,7 @@ class AuthenticationController extends Zend_Controller_Action
             }
         }
         
-        $this->viev->form = $form;
+        $this->view->form = $form;
     }
 
     public function logoutAction()
