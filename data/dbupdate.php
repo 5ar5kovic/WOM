@@ -9,6 +9,8 @@ CREATE TABLE `wom`.`dbupdate_history`  (
 ); 
  * */
 
+//Pera, Spale, Johann
+//SpecNazTeam
 
 $dbUpdate = array();
 
@@ -116,7 +118,7 @@ $dbUpdate[$id]['query'] = "
 create table if not exists korisnicka_podrska (
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `username` varchar(60) NOT NULL,
-    `password` varchar(50) NOT NULL,
+    `password` varchar(100) NOT NULL,
     `ime` varchar(60) NOT NULL,
     `prezime` varchar(60) NOT NULL,    
     `email` varchar(60) NOT NULL,
