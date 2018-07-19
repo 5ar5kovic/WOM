@@ -77,13 +77,6 @@ class Zend_Gdata_Gapps_MemberQuery extends Zend_Gdata_Gapps_Query
         $this->setStartMemberId($startMemberId);
     }
 
-    /**
-     * Set the group id to query for.
-     *
-     * @see getGroupId
-     * @param string $value The group id to filter search results by, or null to
-     *              disable.
-     */
     public function setGroupId($value)
     {
         $this->_groupId = $value;
@@ -103,28 +96,11 @@ class Zend_Gdata_Gapps_MemberQuery extends Zend_Gdata_Gapps_Query
     }
 
 
-    /**
-     * Set the member id to query for. When set, only users with a member id
-     * matching this value will be returned in search results. Set to
-     * null to disable filtering by member id.
-     *
-     * @see getMemberId
-     * @param string $value The member id to filter search results by, or null to
-     *              disable.
-     */
     public function setMemberId($value)
     {
         $this->_memberId = $value;
     }
 
-    /**
-     * Get the member id to query for. If no member id is set, null will be
-     * returned.
-     *
-     * @param string $value The member id to filter search results by, or
-     *          null if disabled.
-     * @return The member id
-     */
     public function getMemberId()
     {
         return $this->_memberId;

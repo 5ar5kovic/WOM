@@ -117,15 +117,6 @@ final class Zend_Mail_Header_HeaderValue
         return true;
     }
 
-    /**
-     * Assert that the header value is valid.
-     *
-     * Raises an exception if invalid.
-     *
-     * @param string $value
-     * @throws Exception\RuntimeException
-     * @return void
-     */
     public static function assertValid($value)
     {
         if (! self::isValid($value)) {

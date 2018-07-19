@@ -67,9 +67,6 @@ abstract class Zend_CodeGenerator_Php_Member_Abstract extends Zend_CodeGenerator
      */
     protected $_isStatic   = false;
 
-    /**
-     * @var const
-     */
     protected $_visibility = self::VISIBILITY_PUBLIC;
 
     /**
@@ -176,23 +173,12 @@ abstract class Zend_CodeGenerator_Php_Member_Abstract extends Zend_CodeGenerator
         return $this->_isStatic;
     }
 
-    /**
-     * setVisitibility()
-     *
-     * @param const $visibility
-     * @return Zend_CodeGenerator_Php_Member_Abstract
-     */
     public function setVisibility($visibility)
     {
         $this->_visibility = $visibility;
         return $this;
     }
 
-    /**
-     * getVisibility()
-     *
-     * @return const
-     */
     public function getVisibility()
     {
         return $this->_visibility;

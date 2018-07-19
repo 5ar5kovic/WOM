@@ -68,12 +68,6 @@ class Zend_Cloud_Infrastructure_ImageList implements Countable, Iterator, ArrayA
         }
     }
 
-    /**
-     * Add an image
-     *
-     * @param  Image
-     * @return ImageList
-     */
     protected function addImage(Zend_Cloud_Infrastructure_Image $image)
     {
         $this->images[] = $image;
@@ -92,13 +86,6 @@ class Zend_Cloud_Infrastructure_ImageList implements Countable, Iterator, ArrayA
         return count($this->images);
     }
 
-    /**
-     * Return the current element
-     *
-     * Implement Iterator::current()
-     *
-     * @return Image
-     */
     public function current()
     {
         return $this->images[$this->iteratorKey];
@@ -169,15 +156,6 @@ class Zend_Cloud_Infrastructure_ImageList implements Countable, Iterator, ArrayA
         return ($offset < $this->count());
     }
 
-    /**
-     * Return value at given offset
-     *
-     * Implement ArrayAccess::offsetGet()
-     *
-     * @param   int     $offset
-     * @throws  Zend_Cloud_Infrastructure_Exception
-     * @return  Image
-     */
     public function offsetGet($offset)
     {
         if (!$this->offsetExists($offset)) {

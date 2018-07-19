@@ -87,10 +87,6 @@ class Zend_Log
      */
     protected $_defaultFormatterNamespace = 'Zend_Log_Formatter';
 
-    /**
-     *
-     * @var callback
-     */
     protected $_origErrorHandler       = null;
 
     /**

@@ -100,14 +100,6 @@ class Zend_EventManager_Event implements Zend_EventManager_EventDescription
         return $this->target;
     }
 
-    /**
-     * Set parameters
-     *
-     * Overwrites parameters
-     * 
-     * @param  array|ArrayAccess|object $params 
-     * @return Event
-     */
     public function setParams($params)
     {
         if (!is_array($params) && !is_object($params)) {

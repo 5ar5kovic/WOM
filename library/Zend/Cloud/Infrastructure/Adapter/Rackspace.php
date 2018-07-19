@@ -173,11 +173,7 @@ class Zend_Cloud_Infrastructure_Adapter_Rackspace extends Zend_Cloud_Infrastruct
         }
         return $result;
     }
-    /**
-     * Return a list of the available instancies
-     *
-     * @return InstanceList|boolean
-     */ 
+    
     public function listInstances() 
     {
         $this->adapterResult = $this->rackspace->listServers(true);
@@ -230,13 +226,7 @@ class Zend_Cloud_Infrastructure_Adapter_Rackspace extends Zend_Cloud_Infrastruct
     {
         return $this->rackspace->rebootServer($id,true);
     }
-    /**
-     * Create a new instance
-     *
-     * @param string $name
-     * @param array $options
-     * @return Instance|boolean
-     */ 
+
     public function createInstance($name, $options)
     {
         if (empty($name)) {
@@ -300,11 +290,7 @@ class Zend_Cloud_Infrastructure_Adapter_Rackspace extends Zend_Cloud_Infrastruct
         $this->adapterResult= $this->rackspace->deleteServer($id);
         return $this->adapterResult;
     }
-    /**
-     * Return a list of all the available instance images
-     *
-     * @return ImageList|boolean
-     */ 
+
     public function imagesInstance()
     {
         $this->adapterResult = $this->rackspace->listImages(true);

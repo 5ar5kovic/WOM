@@ -34,13 +34,6 @@ class Zend_Cloud_Infrastructure_InstanceList implements Countable, Iterator, Arr
      */
     protected $adapter;
 
-    /**
-     * Constructor
-     *
-     * @param  Adapter $adapter
-     * @param  array $instances
-     * @return void
-     */
     public function __construct($adapter, array $instances = null)
     {
         if (!($adapter instanceof Zend_Cloud_Infrastructure_Adapter)) {
@@ -69,12 +62,6 @@ class Zend_Cloud_Infrastructure_InstanceList implements Countable, Iterator, Arr
         }
     }
 
-    /**
-     * Add an instance
-     *
-     * @param  Instance
-     * @return InstanceList
-     */
     protected function addInstance(Zend_Cloud_Infrastructure_Instance $instance)
     {
         $this->instances[] = $instance;
@@ -93,13 +80,7 @@ class Zend_Cloud_Infrastructure_InstanceList implements Countable, Iterator, Arr
         return count($this->instances);
     }
 
-    /**
-     * Return the current element
-     *
-     * Implement Iterator::current()
-     *
-     * @return Instance
-     */
+
     public function current()
     {
         return $this->instances[$this->iteratorKey];
@@ -170,15 +151,6 @@ class Zend_Cloud_Infrastructure_InstanceList implements Countable, Iterator, Arr
         return ($offset < $this->count());
     }
 
-    /**
-     * Return value at given offset
-     *
-     * Implement ArrayAccess::offsetGet()
-     *
-     * @param  int $offset
-     * @return Instance
-     * @throws Zend_Cloud_Infrastructure_Exception
-     */
     public function offsetGet($offset)
     {
         if (!$this->offsetExists($offset)) {

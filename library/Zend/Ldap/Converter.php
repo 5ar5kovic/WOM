@@ -33,16 +33,6 @@ class Zend_Ldap_Converter
     const BOOLEAN          = 1;
     const GENERALIZED_TIME = 2;
 
-    /**
-     * Converts all ASCII chars < 32 to "\HEX"
-     *
-     * @see Net_LDAP2_Util::asc2hex32() from Benedikt Hallinger <beni@php.net>
-     * @link http://pear.php.net/package/Net_LDAP2
-     * @author Benedikt Hallinger <beni@php.net>
-     *
-     * @param  string $string String to convert
-     * @return string
-     */
     public static function ascToHex32($string)
     {
         for ($i = 0; $i<strlen($string); $i++) {
@@ -56,17 +46,6 @@ class Zend_Ldap_Converter
         return $string;
     }
 
-    /**
-     * Converts all Hex expressions ("\HEX") to their original ASCII characters
-     *
-     * @see Net_LDAP2_Util::hex2asc() from Benedikt Hallinger <beni@php.net>,
-     * heavily based on work from DavidSmith@byu.net
-     * @link http://pear.php.net/package/Net_LDAP2
-     * @author Benedikt Hallinger <beni@php.net>, heavily based on work from DavidSmith@byu.net
-     *
-     * @param  string $string String to convert
-     * @return string
-     */
     public static function hex32ToAsc($string)
     {
         // Using a callback, since PHP 5.5 has deprecated the /e modifier in preg_replace.
@@ -138,19 +117,6 @@ class Zend_Ldap_Converter
         }
     }
 
-    /**
-     * Converts a date-entity to an LDAP-compatible date-string
-     *
-     * The date-entity <var>$date</var> can be either a timestamp, a
-     * DateTime Object, a string that is parseable by strtotime() or a Zend_Date
-     * Object.
-     *
-     * @param    integer|string|DateTimt|Zend_Date        $date    The date-entity
-     * @param    boolean                                    $asUtc    Whether to return the LDAP-compatible date-string
-     *                                                          as UTC or as local value
-     * @return    string
-     * @throws    InvalidArgumentException
-     */
     public static function toLdapDateTime($date, $asUtc = true)
     {
         if (!($date instanceof DateTime)) {

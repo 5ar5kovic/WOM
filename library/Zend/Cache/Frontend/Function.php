@@ -69,16 +69,6 @@ class Zend_Cache_Frontend_Function extends Zend_Cache_Core
         $this->setOption('automatic_serialization', true);
     }
 
-    /**
-     * Main method : call the specified function or get the result from cache
-     *
-     * @param  callback $callback         A valid callback
-     * @param  array    $parameters       Function parameters
-     * @param  array    $tags             Cache tags
-     * @param  int      $specificLifetime If != false, set a specific lifetime for this cache record (null => infinite lifetime)
-     * @param  int      $priority         integer between 0 (very low priority) and 10 (maximum priority) used by some particular backends
-     * @return mixed Result
-     */
     public function call($callback, array $parameters = array(), $tags = array(), $specificLifetime = false, $priority = 8)
     {
         if (!is_callable($callback, true, $name)) {
@@ -123,14 +113,6 @@ class Zend_Cache_Frontend_Function extends Zend_Cache_Core
         return $this->makeId($callback, $args);
     }
 
-    /**
-     * Make a cache id from the function name and parameters
-     *
-     * @param  callback $callback A valid callback
-     * @param  array    $args     Function parameters
-     * @throws Zend_Cache_Exception
-     * @return string Cache id
-     */
     public function makeId($callback, array $args = array())
     {
         if (!is_callable($callback, true, $name)) {

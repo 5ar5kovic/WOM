@@ -111,16 +111,7 @@ class Zend_OpenId_Consumer_Storage_File extends Zend_OpenId_Consumer_Storage
         fclose($f);
     }
 
-    /**
-     * Stores information about association identified by $url/$handle
-     *
-     * @param string $url OpenID server URL
-     * @param string $handle assiciation handle
-     * @param string $macFunc HMAC function (sha1 or sha256)
-     * @param string $secret shared secret
-     * @param long $expires expiration UNIX time
-     * @return bool
-     */
+
     public function addAssociation($url, $handle, $macFunc, $secret, $expires)
     {
         $name1 = $this->_dir . '/assoc_url_' . md5($url);
@@ -317,16 +308,6 @@ class Zend_OpenId_Consumer_Storage_File extends Zend_OpenId_Consumer_Storage
         }
     }
 
-    /**
-     * Stores information discovered from identity $id
-     *
-     * @param string $id identity
-     * @param string $realId discovered real identity URL
-     * @param string $server discovered OpenID server URL
-     * @param float $version discovered OpenID protocol version
-     * @param long $expires expiration UNIX time
-     * @return bool
-     */
     public function addDiscoveryInfo($id, $realId, $server, $version, $expires)
     {
         $name = $this->_dir . '/discovery_' . md5($id);

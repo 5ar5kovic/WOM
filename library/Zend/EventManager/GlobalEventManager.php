@@ -76,29 +76,12 @@ class Zend_EventManager_GlobalEventManager
         return self::getEventCollection()->trigger($event, $context, $argv);
     }
 
-    /**
-     * Trigger listeenrs until return value of one causes a callback to evaluate 
-     * to true.
-     * 
-     * @param  string $event 
-     * @param  string|object $context 
-     * @param  array|object $argv 
-     * @param  callback $callback 
-     * @return Zend_EventManager_ResponseCollection
-     */
     public static function triggerUntil($event, $context, $argv, $callback)
     {
         return self::getEventCollection()->triggerUntil($event, $context, $argv, $callback);
     }
 
-    /**
-     * Attach a listener to an event
-     * 
-     * @param  string $event 
-     * @param  callback $callback 
-     * @param  int $priority 
-     * @return Zend_Stdlib_CallbackHandler
-     */
+
     public static function attach($event, $callback, $priority = 1)
     {
         return self::getEventCollection()->attach($event, $callback, $priority);

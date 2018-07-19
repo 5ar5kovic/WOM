@@ -326,11 +326,6 @@ class Zend_Gdata_Analytics_DataQuery extends Zend_Gdata_Query
         return $this;
     }
     
-    /**
-     * @param string $sort
-     * @param boolean[optional] $descending
-     * @return Zend_Gdata_Analytics_DataQuery
-     */
     public function addSort($sort, $descending=false)
     {
         // add to sort storage

@@ -349,15 +349,6 @@ class Zend_Service_LiveDocx_MailMerge extends Zend_Service_LiveDocx
         }
     }
 
-    /**
-     * Retrieve document in specified format
-     *
-     * @param string $format
-     *
-     * @throws Zend_Service_LiveDocx_Exception
-     * @return binary
-     * @since  LiveDocx 1.0
-     */
     public function retrieveDocument($format)
     {
         $this->logIn();
@@ -614,14 +605,6 @@ class Zend_Service_LiveDocx_MailMerge extends Zend_Service_LiveDocx
         }
     }
 
-    /**
-     * Download template file from LiveDocx service
-     *
-     * @param  string $filename
-     * @return binary
-     * @throws Zend_Service_LiveDocx_Exception
-     * @since  LiveDocx 1.0
-     */
     public function downloadTemplate($filename)
     {
         $this->logIn();

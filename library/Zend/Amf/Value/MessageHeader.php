@@ -61,14 +61,6 @@ class Zend_Amf_Value_MessageHeader
      */
     public $data;
 
-    /**
-     * Used to create and store AMF Header data.
-     *
-     * @param String $name
-     * @param Boolean $mustRead
-     * @param misc $content
-     * @param integer $length
-     */
     public function __construct($name, $mustRead, $data, $length=null)
     {
         $this->name     = $name;

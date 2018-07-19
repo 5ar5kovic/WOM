@@ -481,21 +481,6 @@ abstract class Zend_Search_Lucene_Search_Similarity
      */
     abstract public function sloppyFreq($distance);
 
-
-    /**
-     * Computes a score factor for a simple term or a phrase.
-     *
-     * The default implementation is:
-     *   return idfFreq(searcher.docFreq(term), searcher.maxDoc());
-     *
-     * input - the term in question or array of terms
-     * reader - reader the document collection being searched
-     * Returns a score factor for the term
-     *
-     * @param mixed $input
-     * @param Zend_Search_Lucene_Interface $reader
-     * @return a score factor for the term
-     */
     public function idf($input, Zend_Search_Lucene_Interface $reader)
     {
         if (!is_array($input)) {

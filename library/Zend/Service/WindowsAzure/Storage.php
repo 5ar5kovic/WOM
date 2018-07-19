@@ -431,12 +431,6 @@ class Zend_Service_WindowsAzure_Storage
         return $xml;
 	}
 	
-	/**
-	 * Generate metadata headers
-	 * 
-	 * @param array $metadata
-	 * @return HTTP headers containing metadata
-	 */
 	protected function _generateMetadataHeaders($metadata = array())
 	{
 		// Validate

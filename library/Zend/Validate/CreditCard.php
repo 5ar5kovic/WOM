@@ -126,11 +126,6 @@ class Zend_Validate_CreditCard extends Zend_Validate_Abstract
      */
     protected $_type = array();
 
-    /**
-     * Service callback for additional validation
-     *
-     * @var callback
-     */
     protected $_service;
 
     /**
@@ -209,11 +204,6 @@ class Zend_Validate_CreditCard extends Zend_Validate_Abstract
         return $this;
     }
 
-    /**
-     * Returns the actual set service
-     *
-     * @return callback
-     */
     public function getService()
     {
         return $this->_service;

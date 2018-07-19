@@ -129,18 +129,6 @@ class Zend_Service_Twitter_Response
         return !$this->httpResponse->isSuccessful();
     }
 
-    /**
-     * Retrieve the errors.
-     *
-     * Twitter _should_ return a standard error object, which contains an
-     * "errors" property pointing to an array of errors. This method will
-     * return that array if present, and raise an exception if not detected.
-     *
-     * If the response was successful, an empty array is returned.
-     *
-     * @return array
-     * @throws Exception\DomainException if unable to detect structure of error response
-     */
     public function getErrors()
     {
         if (!$this->isError()) {

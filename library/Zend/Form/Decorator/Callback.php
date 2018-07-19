@@ -56,13 +56,6 @@ class Zend_Form_Decorator_Callback extends Zend_Form_Decorator_Abstract
      */
     protected $_callback;
 
-    /**
-     * Set callback
-     *
-     * @param  callback $callback
-     * @return Zend_Form_Decorator_Callback
-     * @throws Zend_Form_Exception
-     */
     public function setCallback($callback)
     {
         if (!is_callable($callback)) {

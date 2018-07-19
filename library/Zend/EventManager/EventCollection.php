@@ -30,50 +30,11 @@ require_once 'Zend/Stdlib/CallbackHandler.php';
  */
 interface Zend_EventManager_EventCollection
 {
-    /**
-     * Trigger an event
-     *
-     * Should allow handling the following scenarios:
-     * - Passing Event object only
-     * - Passing event name and Event object only
-     * - Passing event name, target, and Event object
-     * - Passing event name, target, and array|ArrayAccess of arguments
-     *
-     * Can emulate triggerUntil() if the last argument provided is a callback.
-     * 
-     * @param  string $event 
-     * @param  object|string $target 
-     * @param  array|object $argv 
-     * @param  null|callback $callback 
-     * @return Zend_EventManager_ResponseCollection
-     */
+
     public function trigger($event, $target = null, $argv = array(), $callback = null);
 
-    /**
-     * Trigger an event until the given callback returns a boolean false
-     *
-     * Should allow handling the following scenarios:
-     * - Passing Event object and callback only
-     * - Passing event name, Event object, and callback only
-     * - Passing event name, target, Event object, and callback
-     * - Passing event name, target, array|ArrayAccess of arguments, and callback
-     * 
-     * @param  string $event 
-     * @param  object|string $target 
-     * @param  array|object $argv 
-     * @param  callback $callback 
-     * @return Zend_EventManager_ResponseCollection
-     */
     public function triggerUntil($event, $target, $argv = null, $callback = null);
 
-    /**
-     * Attach a listener to an event
-     * 
-     * @param  string $event 
-     * @param  callback $callback
-     * @param  int $priority Priority at which to register listener
-     * @return Zend_Stdlib_CallbackHandler
-     */
     public function attach($event, $callback = null, $priority = 1);
 
     /**

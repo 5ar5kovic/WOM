@@ -29,11 +29,6 @@ interface Zend_Cloud_Infrastructure_Adapter
      */
     const TIME_STEP_STATUS_CHANGE = 5;
 
-    /**
-     * Return a list of the available instances
-     *
-     * @return InstanceList
-     */ 
     public function listInstances(); 
  
     /**
@@ -103,11 +98,6 @@ interface Zend_Cloud_Infrastructure_Adapter
      */ 
     public function destroyInstance($id); 
  
-    /**
-     * Return all the available instances images
-     *
-     * @return ImageList
-     */ 
     public function imagesInstance(); 
     
     /**

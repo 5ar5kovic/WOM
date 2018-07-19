@@ -695,13 +695,6 @@ class Zend_Db_Select
         return $this->_parts[$part];
     }
 
-    /**
-     * Executes the current select object and returns the result
-     *
-     * @param integer $fetchMode OPTIONAL
-     * @param  mixed  $bind An array of data to bind to the placeholders.
-     * @return PDO_Statement|Zend_Db_Statement
-     */
     public function query($fetchMode = null, $bind = array())
     {
         if (!empty($bind)) {

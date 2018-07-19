@@ -69,15 +69,6 @@ class Zend_Gdata_Gapps_UserQuery extends Zend_Gdata_Gapps_Query
         $this->setStartUsername($startUsername);
     }
 
-    /**
-     * Set the username to query for. When set, only users with a username
-     * matching this value will be returned in search results. Set to
-     * null to disable filtering by username.
-     *
-     * @see getUsername
-     * @param string $value The username to filter search results by, or null to
-     *              disable.
-     */
     public function setUsername($value)
     {
         $this->_username = $value;

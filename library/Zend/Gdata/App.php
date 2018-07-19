@@ -405,14 +405,6 @@ class Zend_Gdata_App
         return self::$_maxRedirects;
     }
 
-    /**
-     * Set the major protocol version that should be used. Values < 1 will
-     * cause a Zend_Gdata_App_InvalidArgumentException to be thrown.
-     *
-     * @see _majorProtocolVersion
-     * @param int $value The major protocol version to use.
-     * @throws Zend_Gdata_App_InvalidArgumentException
-     */
     public function setMajorProtocolVersion($value)
     {
         if (!($value >= 1)) {
@@ -423,26 +415,11 @@ class Zend_Gdata_App
         $this->_majorProtocolVersion = $value;
     }
 
-    /**
-     * Get the major protocol version that is in use.
-     *
-     * @see _majorProtocolVersion
-     * @return int The major protocol version in use.
-     */
     public function getMajorProtocolVersion()
     {
         return $this->_majorProtocolVersion;
     }
 
-    /**
-     * Set the minor protocol version that should be used. If set to NULL, no
-     * minor protocol version will be sent to the server. Values < 0 will
-     * cause a Zend_Gdata_App_InvalidArgumentException to be thrown.
-     *
-     * @see _minorProtocolVersion
-     * @param (int|NULL) $value The minor protocol version to use.
-     * @throws Zend_Gdata_App_InvalidArgumentException
-     */
     public function setMinorProtocolVersion($value)
     {
         if (!($value >= 0)) {
@@ -453,13 +430,6 @@ class Zend_Gdata_App
         $this->_minorProtocolVersion = $value;
     }
 
-    /**
-     * Get the minor protocol version that is in use.
-     *
-     * @see _minorProtocolVersion
-     * @return (int|NULL) The major protocol version in use, or NULL if no
-     *         minor version is specified.
-     */
     public function getMinorProtocolVersion()
     {
         return $this->_minorProtocolVersion;

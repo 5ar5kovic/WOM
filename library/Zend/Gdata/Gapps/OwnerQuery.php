@@ -72,12 +72,6 @@ class Zend_Gdata_Gapps_OwnerQuery extends Zend_Gdata_Gapps_Query
         $this->setOwnerEmail($ownerEmail);
     }
 
-    /**
-     * Set the group id to query for.
-     *
-     * @see getGroupId
-     * @param string $value
-     */
     public function setGroupId($value)
     {
         $this->_groupId = $value;
@@ -94,23 +88,11 @@ class Zend_Gdata_Gapps_OwnerQuery extends Zend_Gdata_Gapps_Query
         return $this->_groupId;
     }
 
-    /**
-     * Set the owner email to query for.
-     *
-     * @see getOwnerEmail
-     * @param string $value
-     */
     public function setOwnerEmail($value)
     {
         $this->_ownerEmail = $value;
     }
 
-    /**
-     * Get the owner email to query for.
-     *
-     * @return string
-     *
-     */
     public function getOwnerEmail()
     {
         return $this->_ownerEmail;

@@ -492,20 +492,6 @@ class Zend_Ldap_Dn implements ArrayAccess
         }
     }
 
-    /**
-     * Escapes a DN value according to RFC 2253
-     *
-     * Escapes the given VALUES according to RFC 2253 so that they can be safely used in LDAP DNs.
-     * The characters ",", "+", """, "\", "<", ">", ";", "#", " = " with a special meaning in RFC 2252
-     * are preceeded by ba backslash. Control characters with an ASCII code < 32 are represented as \hexpair.
-     * Finally all leading and trailing spaces are converted to sequences of \20.
-     * @see Net_LDAP2_Util::escape_dn_value() from Benedikt Hallinger <beni@php.net>
-     * @link http://pear.php.net/package/Net_LDAP2
-     * @author Benedikt Hallinger <beni@php.net>
-     *
-     * @param  string|array $values An array containing the DN values that should be escaped
-     * @return array The array $values, but escaped
-     */
     public static function escapeValue($values = array())
     {
         /**
@@ -536,18 +522,6 @@ class Zend_Ldap_Dn implements ArrayAccess
         return (count($values) == 1) ? $values[0] : $values;
     }
 
-    /**
-     * Undoes the conversion done by {@link escapeValue()}.
-     *
-     * Any escape sequence starting with a baskslash - hexpair or special character -
-     * will be transformed back to the corresponding character.
-     * @see Net_LDAP2_Util::escape_dn_value() from Benedikt Hallinger <beni@php.net>
-     * @link http://pear.php.net/package/Net_LDAP2
-     * @author Benedikt Hallinger <beni@php.net>
-     *
-     * @param  string|array $values Array of DN Values
-     * @return array Same as $values, but unescaped
-     */
     public static function unescapeValue($values = array())
     {
         /**

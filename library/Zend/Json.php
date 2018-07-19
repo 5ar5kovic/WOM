@@ -176,24 +176,6 @@ class Zend_Json
          return $encodedResult;
     }
 
-    /**
-     * Check & Replace Zend_Json_Expr for tmp ids in the valueToEncode
-     *
-     * Check if the value is a Zend_Json_Expr, and if replace its value
-     * with a magic key and save the javascript expression in an array.
-     *
-     * NOTE this method is recursive.
-     *
-     * NOTE: This method is used internally by the encode method.
-     *
-     * @see encode
-     * @param array|object|Zend_Json_Expr $value a string - object property to be encoded
-     * @param array $javascriptExpressions
-     * @param null $currentKey
-     *
-     * @internal param mixed $valueToCheck
-     * @return void
-     */
     protected static function _recursiveJsonExprFinder(&$value, array &$javascriptExpressions, $currentKey = null)
     {
          if ($value instanceof Zend_Json_Expr) {

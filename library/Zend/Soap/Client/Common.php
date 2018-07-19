@@ -30,20 +30,8 @@ if (extension_loaded('soap')) {
  */
 class Zend_Soap_Client_Common extends SoapClient
 {
-    /**
-     * doRequest() pre-processing method
-     *
-     * @var callback
-     */
     protected $_doRequestCallback;
 
-    /**
-     * Common Soap Client constructor
-     *
-     * @param callback $doRequestMethod
-     * @param string $wsdl
-     * @param array $options
-     */
     function __construct($doRequestCallback, $wsdl, $options)
     {
         $this->_doRequestCallback = $doRequestCallback;

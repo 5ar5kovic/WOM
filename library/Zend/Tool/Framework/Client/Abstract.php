@@ -44,9 +44,6 @@ abstract class Zend_Tool_Framework_Client_Abstract implements Zend_Tool_Framewor
      */
     protected $_registry = null;
 
-    /**
-     * @var callback|null
-     */
     protected $_interactiveCallback = null;
 
     /**

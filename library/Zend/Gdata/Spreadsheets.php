@@ -212,12 +212,6 @@ class Zend_Gdata_Spreadsheets extends Zend_Gdata
         return parent::getEntry($uri, 'Zend_Gdata_Spreadsheets_WorksheetEntry');
     }
 
-    /**
-     * Gets a cell feed.
-     *
-     * @param string $location A CellQuery, WorksheetEntry or a URI specifying the feed location.
-     * @return CellFeed
-     */
     public function getCellFeed($location)
     {
         if ($location instanceof Zend_Gdata_Spreadsheets_CellQuery) {
@@ -230,12 +224,6 @@ class Zend_Gdata_Spreadsheets extends Zend_Gdata
         return parent::getFeed($uri, 'Zend_Gdata_Spreadsheets_CellFeed');
     }
 
-    /**
-     * Gets a cell entry.
-     *
-     * @param string $location A CellQuery or a URI specifying the entry location.
-     * @return CellEntry
-     */
     public function getCellEntry($location)
     {
         if ($location instanceof Zend_Gdata_Spreadsheets_CellQuery) {
@@ -247,12 +235,6 @@ class Zend_Gdata_Spreadsheets extends Zend_Gdata
         return parent::getEntry($uri, 'Zend_Gdata_Spreadsheets_CellEntry');
     }
 
-    /**
-     * Gets a list feed.
-     *
-     * @param mixed $location A ListQuery, WorksheetEntry or string URI specifying the feed location.
-     * @return ListFeed
-     */
     public function getListFeed($location)
     {
         if ($location instanceof Zend_Gdata_Spreadsheets_ListQuery) {
@@ -266,12 +248,6 @@ class Zend_Gdata_Spreadsheets extends Zend_Gdata
         return parent::getFeed($uri, 'Zend_Gdata_Spreadsheets_ListFeed');
     }
 
-    /**
-     * Gets a list entry.
-     *
-     * @param string $location A ListQuery or a URI specifying the entry location.
-     * @return ListEntry
-     */
     public function getListEntry($location)
     {
         if ($location instanceof Zend_Gdata_Spreadsheets_ListQuery) {
@@ -283,16 +259,6 @@ class Zend_Gdata_Spreadsheets extends Zend_Gdata
         return parent::getEntry($uri, 'Zend_Gdata_Spreadsheets_ListEntry');
     }
 
-    /**
-     * Updates an existing cell.
-     *
-     * @param int $row The row containing the cell to update
-     * @param int $col The column containing the cell to update
-     * @param int $inputValue The new value for the cell
-     * @param string $key The key for the spreadsheet to be updated
-     * @param string $wkshtId (optional) The worksheet to be updated
-     * @return CellEntry The updated cell entry.
-     */
     public function updateCell($row, $col, $inputValue, $key, $wkshtId = 'default')
     {
         $cell = 'R'.$row.'C'.$col;
@@ -308,14 +274,6 @@ class Zend_Gdata_Spreadsheets extends Zend_Gdata
         return $response;
     }
 
-    /**
-     * Inserts a new row with provided data.
-     *
-     * @param array $rowData An array of column header to row data
-     * @param string $key The key of the spreadsheet to modify
-     * @param string $wkshtId (optional) The worksheet to modify
-     * @return ListEntry The inserted row
-     */
     public function insertRow($rowData, $key, $wkshtId = 'default')
     {
         $newEntry = new Zend_Gdata_Spreadsheets_ListEntry();
@@ -336,12 +294,7 @@ class Zend_Gdata_Spreadsheets extends Zend_Gdata
         return $this->insertEntry($newEntry->saveXML(), $editLink->href, 'Zend_Gdata_Spreadsheets_ListEntry');
     }
 
-    /**
-     * Updates an existing row with provided data.
-     *
-     * @param ListEntry $entry The row entry to update
-     * @param array $newRowData An array of column header to row data
-     */
+
     public function updateRow($entry, $newRowData)
     {
         $newCustomArr = array();
@@ -355,11 +308,6 @@ class Zend_Gdata_Spreadsheets extends Zend_Gdata
         return $entry->save();
     }
 
-    /**
-     * Deletes an existing row .
-     *
-     * @param ListEntry $entry The row to delete
-     */
     public function deleteRow($entry)
     {
         $entry->delete();

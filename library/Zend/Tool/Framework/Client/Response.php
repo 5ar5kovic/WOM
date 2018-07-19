@@ -28,9 +28,6 @@
  */
 class Zend_Tool_Framework_Client_Response
 {
-    /**
-     * @var callback|null
-     */
     protected $_callback = null;
 
     /**
@@ -53,12 +50,6 @@ class Zend_Tool_Framework_Client_Response
      */
     protected $_defaultDecoratorOptions = array();
 
-    /**
-     * setContentCallback()
-     *
-     * @param callback $callback
-     * @return Zend_Tool_Framework_Client_Response
-     */
     public function setContentCallback($callback)
     {
         if (!is_callable($callback)) {

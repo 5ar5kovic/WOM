@@ -168,17 +168,6 @@ class Zend_EventManager_EventManager implements Zend_EventManager_EventCollectio
         return $this;
     }
 
-    /**
-     * Trigger all listeners for a given event
-     *
-     * Can emulate triggerUntil() if the last argument provided is a callback.
-     *
-     * @param  string $event
-     * @param  string|object $target Object calling emit, or symbol describing target (such as static method name)
-     * @param  array|ArrayAccess $argv Array of arguments; typically, should be associative
-     * @param  null|callback $callback
-     * @return Zend_EventManager_ResponseCollection All listener return values
-     */
     public function trigger($event, $target = null, $argv = array(), $callback = null)
     {
         if ($event instanceof Zend_EventManager_EventDescription) {
@@ -250,25 +239,6 @@ class Zend_EventManager_EventManager implements Zend_EventManager_EventCollectio
         return $this->triggerListeners($event, $e, $callback);
     }
 
-    /**
-     * Attach a listener to an event
-     *
-     * The first argument is the event, and the next argument describes a
-     * callback that will respond to that event. A CallbackHandler instance
-     * describing the event listener combination will be returned.
-     *
-     * The last argument indicates a priority at which the event should be
-     * executed. By default, this value is 1; however, you may set it for any
-     * integer value. Higher values have higher priority (i.e., execute first).
-     *
-     * You can specify "*" for the event name. In such cases, the listener will 
-     * be triggered for every event.
-     *
-     * @param  string|array|Zend_EventManager_ListenerAggregate $event An event or array of event names. If a ListenerAggregate, proxies to {@link attachAggregate()}.
-     * @param  callback|int $callback If string $event provided, expects PHP callback; for a ListenerAggregate $event, this will be the priority
-     * @param  int $priority If provided, the priority at which to register the callback
-     * @return Zend_Stdlib_CallbackHandler|mixed CallbackHandler if attaching callback (to allow later unsubscribe); mixed if attaching aggregate
-     */
     public function attach($event, $callback = null, $priority = 1)
     {
         // Proxy ListenerAggregate arguments to attachAggregate()
@@ -425,17 +395,6 @@ class Zend_EventManager_EventManager implements Zend_EventManager_EventCollectio
         return new ArrayObject($args);
     }
 
-    /**
-     * Trigger listeners
-     *
-     * Actual functionality for triggering listeners, to which both trigger() and triggerUntil()
-     * delegate.
-     *
-     * @param  string           $event Event name
-     * @param  EventDescription $e
-     * @param  null|callback    $callback
-     * @return ResponseCollection
-     */
     protected function triggerListeners($event, Zend_EventManager_EventDescription $e, $callback = null)
     {
         $responses = new Zend_EventManager_ResponseCollection;

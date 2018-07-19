@@ -228,13 +228,6 @@ class Zend_Date extends Zend_Date_DateObject
         }
     }
 
-    /**
-     * Sets class wide options, if no option was given, the actual set options will be returned
-     *
-     * @param  array  $options  Options to set
-     * @throws Zend_Date_Exception
-     * @return Options array if no option was given
-     */
     public static function setOptions(array $options = array())
     {
         if (empty($options)) {

@@ -784,24 +784,8 @@ class Zend_Search_Lucene_MultiSearcher implements Zend_Search_Lucene_Interface
     }
 
 
-    /**
-     * Callback used to choose target index for new documents
-     *
-     * Function/method signature:
-     *    Zend_Search_Lucene_Interface  callbackFunction(Zend_Search_Lucene_Document $document, array $indices);
-     *
-     * null means "default documents distributing algorithm"
-     *
-     * @var callback
-     */
     protected $_documentDistributorCallBack = null;
 
-    /**
-     * Set callback for choosing target index.
-     *
-     * @param callback $callback
-     * @throws Zend_Search_Lucene_Exception
-     */
     public function setDocumentDistributorCallback($callback)
     {
         if ($callback !== null  &&  !is_callable($callback)) {
@@ -812,11 +796,6 @@ class Zend_Search_Lucene_MultiSearcher implements Zend_Search_Lucene_Interface
         $this->_documentDistributorCallBack = $callback;
     }
 
-    /**
-     * Get callback for choosing target index.
-     *
-     * @return callback
-     */
     public function getDocumentDistributorCallback()
     {
         return $this->_documentDistributorCallBack;

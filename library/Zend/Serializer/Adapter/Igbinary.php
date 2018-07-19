@@ -77,14 +77,6 @@ class Zend_Serializer_Adapter_Igbinary extends Zend_Serializer_Adapter_AdapterAb
         return $ret;
     }
 
-    /**
-     * Deserialize igbinary string to PHP value
-     *
-     * @param  string|binary $serialized
-     * @param  array $opts
-     * @return mixed
-     * @throws Zend_Serializer_Exception on igbinary error
-     */
     public function unserialize($serialized, array $opts = array())
     {
         $ret = igbinary_unserialize($serialized);

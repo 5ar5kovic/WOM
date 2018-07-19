@@ -393,12 +393,6 @@ class Zend_Http_UserAgent_Mobile extends Zend_Http_UserAgent_AbstractDevice
         return $this->_aFeatures;
     }
 
-    /**
-     * Determine markup language expected
-     *
-     * @access public
-     * @return __TYPE__
-     */
     public function getMarkupLanguage($preferredMarkup = null)
     {
         $return = '';

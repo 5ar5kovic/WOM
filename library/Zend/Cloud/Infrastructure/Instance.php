@@ -73,13 +73,6 @@ class Zend_Cloud_Infrastructure_Instance
         self::INSTANCE_ZONE
     );
 
-    /**
-     * Constructor
-     * 
-     * @param  Adapter $adapter
-     * @param  array $data 
-     * @return void
-     */
     public function __construct($adapter, $data = null)
     {
         if (!($adapter instanceof Zend_Cloud_Infrastructure_Adapter)) {
@@ -115,12 +108,6 @@ class Zend_Cloud_Infrastructure_Instance
         $this->attributes = $data;
     }
 
-    /**
-     * Get Attribute with a specific key
-     *
-     * @param array $data
-     * @return misc|false
-     */
     public function getAttribute($key) 
     {
         if (!empty($this->attributes[$key])) {
@@ -169,33 +156,17 @@ class Zend_Cloud_Infrastructure_Instance
         return $this->attributes[self::INSTANCE_NAME];
     }
 
-    /**
-     * Get the status of the instance
-     * 
-     * @return string|boolean 
-     */
     public function getStatus()
     {
         return $this->adapter->statusInstance($this->attributes[self::INSTANCE_ID]);
     }
 
-    /**
-     * Wait for status $status with a timeout of $timeout seconds
-     * 
-     * @param  string $status
-     * @param  integer $timeout 
-     * @return boolean
-     */
+
     public function waitStatus($status, $timeout = Adapter::TIMEOUT_STATUS_CHANGE)
     {
         return $this->adapter->waitStatusInstance($this->attributes[self::INSTANCE_ID], $status, $timeout);
     }
 
-    /**
-     * Get the public DNS of the instance
-     * 
-     * @return string 
-     */
     public function getPublicDns()
     {
         if (!isset($this->attributes[self::INSTANCE_PUBLICDNS])) {
@@ -204,51 +175,26 @@ class Zend_Cloud_Infrastructure_Instance
         return $this->attributes[self::INSTANCE_PUBLICDNS];
     }
 
-    /**
-     * Get the instance's CPU
-     * 
-     * @return string
-     */
     public function getCpu()
     {
         return $this->attributes[self::INSTANCE_CPU];
     }
 
-    /**
-     * Get the instance's RAM size
-     * 
-     * @return string
-     */
     public function getRamSize()
     {
         return $this->attributes[self::INSTANCE_RAM];
     }
 
-    /**
-     * Get the instance's storage size
-     * 
-     * @return string
-     */
     public function getStorageSize()
     {
         return $this->attributes[self::INSTANCE_STORAGE];
     }
 
-    /**
-     * Get the instance's zone
-     * 
-     * @return string 
-     */
     public function getZone()
     {
         return $this->attributes[self::INSTANCE_ZONE];
     }
 
-    /**
-     * Get the instance's launch time
-     * 
-     * @return string
-     */
     public function getLaunchTime()
     {
         return $this->attributes[self::INSTANCE_LAUNCHTIME];

@@ -132,16 +132,6 @@ abstract class Zend_Service_WindowsAzure_CommandLine_PackageScaffolder_PackageSc
         return true;
     }
     
-    /**
-     * Fully copy a source directory to a target directory.
-     * 
-     * @param string  $sourcePath   Source directory
-     * @param string  $destinationPath   Target directory
-     * @param boolean $abortIfExists Query re-creating target directory if exists
-     * @param octal   $mode           Changes access mode
-     * 
-     * @return boolean
-     */
     protected function copyDirectory($sourcePath, $destinationPath, $abortIfExists = true, $mode = '0775') {
         $mode = $mode & ~0002;
 

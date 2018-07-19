@@ -34,20 +34,8 @@ require_once 'Zend/Pdf/Element.php';
  */
 class Zend_Pdf_Element_Numeric extends Zend_Pdf_Element
 {
-    /**
-     * Object value
-     *
-     * @var numeric
-     */
     public $value;
 
-
-    /**
-     * Object constructor
-     *
-     * @param numeric $val
-     * @throws Zend_Pdf_Exception
-     */
     public function __construct($val)
     {
         if ( !is_numeric($val) ) {
@@ -69,13 +57,6 @@ class Zend_Pdf_Element_Numeric extends Zend_Pdf_Element
         return Zend_Pdf_Element::TYPE_NUMERIC;
     }
 
-
-    /**
-     * Return object as string
-     *
-     * @param Zend_Pdf_Factory $factory
-     * @return string
-     */
     public function toString($factory = null)
     {
         if (is_integer($this->value)) {

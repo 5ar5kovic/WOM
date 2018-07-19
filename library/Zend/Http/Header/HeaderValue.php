@@ -110,13 +110,6 @@ final class Zend_Http_Header_HeaderValue
         return true;
     }
 
-    /**
-     * Assert a header value is valid.
-     *
-     * @param string $value
-     * @throws Exception\RuntimeException for invalid values
-     * @return void
-     */
     public static function assertValid($value)
     {
         if (! self::isValid($value)) {

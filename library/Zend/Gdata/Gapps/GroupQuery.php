@@ -68,15 +68,6 @@ class Zend_Gdata_Gapps_GroupQuery extends Zend_Gdata_Gapps_Query
         $this->setStartGroupId($startGroupId);
     }
 
-    /**
-     * Set the group id to query for. When set, only groups with a group id
-     * matching this value will be returned in search results. Set to
-     * null to disable filtering by group id.
-     *
-     * @see getGroupId
-     * @param string $value The group id to filter search results by, or null to
-     *              disable.
-     */
     public function setGroupId($value)
     {
         $this->_groupId = $value;

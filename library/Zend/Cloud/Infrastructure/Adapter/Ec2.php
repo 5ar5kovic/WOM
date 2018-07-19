@@ -35,32 +35,12 @@ class Zend_Cloud_Infrastructure_Adapter_Ec2 extends Zend_Cloud_Infrastructure_Ad
     const AWS_REGION         = 'aws_region';
     const AWS_SECURITY_GROUP = 'securityGroup';
 
-    /**
-     * Ec2 Instance 
-     * 
-     * @var Ec2Instance
-     */
     protected $ec2;
-
-    /**
-     * Ec2 Image
-     * 
-     * @var Ec2Image
-     */
+    
     protected $ec2Image;
 
-    /**
-     * Ec2 Zone
-     * 
-     * @var Ec2Zone
-     */
     protected $ec2Zone;
 
-    /**
-     * Ec2 Monitor 
-     * 
-     * @var Ec2Monitor
-     */
     protected $ec2Monitor;
 
     /**
@@ -272,13 +252,7 @@ class Zend_Cloud_Infrastructure_Adapter_Ec2 extends Zend_Cloud_Infrastructure_Ad
         return $this->adapterResult;
     }
 
-    /**
-     * Create a new instance
-     *
-     * @param string $name
-     * @param array $options
-     * @return Instance|boolean
-     */ 
+
     public function createInstance($name, $options)
     {
         // @todo instance's name management?
@@ -326,11 +300,6 @@ class Zend_Cloud_Infrastructure_Adapter_Ec2 extends Zend_Cloud_Infrastructure_Ad
         return (!empty($this->adapterResult));
     }
  
-    /**
-     * Return a list of all the available instance images
-     *
-     * @return ImageList
-     */ 
     public function imagesInstance()
     {
         if (!isset($this->ec2Image)) {

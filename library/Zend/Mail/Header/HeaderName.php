@@ -73,15 +73,7 @@ final class Zend_Mail_Header_HeaderName
         return true;
     }
 
-    /**
-     * Assert that the header name is valid.
-     *
-     * Raises an exception if invalid.
-     *
-     * @param string $name
-     * @throws Exception\RuntimeException
-     * @return void
-     */
+
     public static function assertValid($name)
     {
         if (! self::isValid($name)) {

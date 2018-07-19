@@ -39,12 +39,6 @@ interface Zend_EventManager_Filter
      */
     public function run($context, array $params = array());
 
-    /**
-     * Attach an intercepting filter
-     * 
-     * @param  callback $callback 
-     * @return Zend_Stdlib_CallbackHandler
-     */
     public function attach($callback);
 
     /**

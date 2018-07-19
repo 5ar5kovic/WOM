@@ -81,13 +81,6 @@ class Zend_Gdata_Gapps_Error extends Zend_Gdata_App_Base
         $this->_invalidInput = $invalidInput;
     }
 
-    /**
-     * Set the error code for this exception. For more information about
-     * error codes, see getErrorCode.
-     *
-     * @see getErrorCode
-     * @param integer $value The new value for the error code.
-     */
     public function setErrorCode($value) {
        $this->_errorCode = $value;
     }
@@ -132,42 +125,20 @@ class Zend_Gdata_Gapps_Error extends Zend_Gdata_App_Base
         return $this->_errorCode;
     }
 
-    /**
-     * Set human-readable text describing the reason this exception occurred.
-     *
-     * @see getReason
-     * @param string $value The reason this exception occurred.
-     */
     public function setReason($value) {
        $this->_reason = $value;
     }
 
-    /**
-     * Get human-readable text describing the reason this exception occurred.
-     *
-     * @see setReason
-     * @return string The reason this exception occurred.
-     */
     public function getReason() {
        return $this->_reason;
     }
 
-    /**
-     * Set the invalid input which caused this exception.
-     *
-     * @see getInvalidInput
-     * @param string $value The invalid input that triggered this exception.
-     */
+
     public function setInvalidInput($value) {
        $this->_invalidInput = $value;
     }
 
-    /**
-     * Set the invalid input which caused this exception.
-     *
-     * @see setInvalidInput
-     * @return string The reason this exception occurred.
-     */
+
     public function getInvalidInput() {
        return $this->_invalidInput;
     }

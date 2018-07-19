@@ -90,12 +90,6 @@ class Zend_Cloud_Infrastructure_Image
         $this->adapter    = $adapter;
     }
 
-    /**
-     * Get Attribute with a specific key
-     *
-     * @param array $data
-     * @return misc|boolean
-     */
     public function getAttribute($key) 
     {
         if (!empty($this->attributes[$key])) {
