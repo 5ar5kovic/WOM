@@ -17,7 +17,7 @@ class Application_Form_LoginForm extends Zend_Form {
                  ->setRequired();
         
         $login = new Zend_Form_Element_Submit('login');
-        $login->setLabel('Login');
+        $login->setLabel('Pristupi');
 
         $this->addElements(array($username, $password, $login));
         $this->setMethod('post');

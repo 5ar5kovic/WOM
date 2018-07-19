@@ -16,29 +16,35 @@ class AuthenticationController extends Zend_Controller_Action
     public function loginAction()
     {
         if (Zend_Auth::getInstance()->hasIdentity()) {
-            $this->redirect('index/index');
+            $this->redirect('administracija/index');
         }
+        
+        
         
         $request = $this->getRequest();
         $form = new Application_Form_LoginForm();
+        
         if ($request->isPost()) {
             if ($form->isValid($this->_request->getPost())) {
+                
                 $authAdapter = $this->getAuthAdapter();
-                $username = 'administrator';
-                $password = 'pass1';
                 
-                $authAdapter->setIdentity($username)->setCredential($password);
+                $username = $form->getValue('username');
+                $password = $form->getValue('password');
                 
+                $authAdapter->setIdentity($username)->setCredential($password);                
                 $auth = Zend_Auth::getInstance();
-                $result = $auth->authenticate($authAdapter);
-                
+                $result = $auth->authenticate($authAdapter);  
                 if ($result->isValid()) {
                     $identity = $authAdapter->getResultRowObject();
                     $authStorage = $auth->getStorage();
                     $authStorage->write($identity);
-                    $this->redirect('index/index');
+                    /*var_dump($identity);
+                    exit();*/
+                    $this->redirect('administracija/index');
+                    
                 } else {
-                    echo 'invalid';
+                    $this->view->errorMessage = "Pogresno korisnicko ime ili lozinka";
                 }
             }
         }
@@ -49,7 +55,7 @@ class AuthenticationController extends Zend_Controller_Action
     public function logoutAction()
     {
         Zend_Auth::getInstance()->clearIdentity();
-        $this->redirect('index/index');
+        $this->redirect('authentication/login');
     }
 
     private function getAuthAdapter()

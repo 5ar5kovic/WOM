@@ -1,6 +1,6 @@
 <?php 
 
-class Form_OperativniSistemUnos extends Zend_Form {
+class Application_Form_OperativniSistemUnos extends Zend_Form {
     
     protected $_id;
     
