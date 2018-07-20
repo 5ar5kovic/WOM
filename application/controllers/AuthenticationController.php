@@ -39,7 +39,11 @@ class AuthenticationController extends Zend_Controller_Action
                     $identity = $authAdapter->getResultRowObject();
                     $authStorage = $auth->getStorage();
                     $authStorage->write($identity);
-                    $this->redirect('administracija/index');                    
+                    if($auth->getStorage()->read()->id_rola == 8) {
+                        $this->redirect('index/index');
+                    } else {
+                        $this->redirect('administracija/index');
+                    }
                 } else {
                     $this->view->errorMessage = "Pogresno korisnicko ime ili lozinka";
                 }
@@ -64,6 +68,8 @@ class AuthenticationController extends Zend_Controller_Action
         // ->setCredentialTreatment();
         return $authAdapter;
     }
+    
+    
 }
 
 

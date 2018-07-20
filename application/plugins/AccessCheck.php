@@ -15,7 +15,7 @@ class Plugin_AccessCheck extends Zend_Controller_Plugin_Abstract {
         $action = $request->getActionName();
         
         $identity = $this->_auth->getStorage()->read();   
-        $role = 1;
+        $role = 1;//za gosta
         
         if($identity != null && $identity->id_rola != null){
             $role = $identity->id_rola;
