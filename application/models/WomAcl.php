@@ -7,7 +7,7 @@ class Application_Model_WomAcl extends Zend_Acl {
         /*resursi*/
         $this->addResource(new Zend_Acl_Resource('authentication'));
         $this->addResource(new Zend_Acl_Resource('login'), 'authentication');
-        $this->addResource(new Zend_Acl_Resource('logaut'), 'authentication');
+        $this->addResource(new Zend_Acl_Resource('logout'), 'authentication');
         
         $this->addResource(new Zend_Acl_Resource('error'));
         $this->addResource(new Zend_Acl_Resource('error'). 'error');
