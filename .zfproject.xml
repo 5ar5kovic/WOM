@@ -16,6 +16,7 @@
         </controllerFile>
         <controllerFile controllerName="Administracija">
           <actionMethod actionName="index"/>
+          <actionMethod actionName="operativniSistemUnos"/>
         </controllerFile>
         <controllerFile controllerName="Authentication">
           <actionMethod actionName="index"/>
@@ -54,6 +55,9 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Authentication">
             <viewScriptFile forActionName="logout"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Administracija">
+            <viewScriptFile forActionName="operativniSistemUnos"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>

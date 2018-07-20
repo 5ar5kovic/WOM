@@ -8,6 +8,11 @@ class DbupdateController extends Zend_Controller_Action
 
     public function indexAction()
     {
+
+    }
+    
+    public function executeAction()
+    {
         global $dbUpdate;
         include_once('../data/dbupdate.php');
         
@@ -21,7 +26,7 @@ class DbupdateController extends Zend_Controller_Action
             $postoji = $myMapper->find($dbup['id'], $modelDbupdateHistory);
             
             
-            if ($postoji == null) {                
+            if ($postoji == null) {
                 $poruke[$dbup['id']] = $myMapper->getDbTable()->getAdapter()->prepare($dbup['query'])->execute($dbup['params']);
                 
                 $modelDbupdateHistory->setId($dbup['id']);
@@ -34,7 +39,7 @@ class DbupdateController extends Zend_Controller_Action
                 }
             } else {
                 $poruke[$dbup['id']] = "Upit je već izvršen";
-            }   
+            }
             
             
         }

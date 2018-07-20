@@ -39,8 +39,6 @@ class AuthenticationController extends Zend_Controller_Action
                     $identity = $authAdapter->getResultRowObject();
                     $authStorage = $auth->getStorage();
                     $authStorage->write($identity);
-                    /*var_dump($identity);
-                    exit();*/
                     $this->redirect('administracija/index');
                     
                 } else {

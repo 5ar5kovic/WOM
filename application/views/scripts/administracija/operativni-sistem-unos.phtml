@@ -1,41 +1,4 @@
-<section class="invoice">
-	<div class="box box-info">
-	
-		<div class="box-header with-border">
-			<h3 class="box-title"><?php echo ($this->operativniSistemId != null)? "Izmena podataka o operativnom sistemu" : "Unos podataka o operativnom sistemu" ?></h3>
-		</div>
-		
-		<form class="form-horizontal" name="frmUnosOperativnogSistema" id="frmUnosOperativnogSistema" action="<?php echo URL_PREFIX?>/administracija/operativni-sistem-unos" method="post">
-			<?php echo $this->form->operativniSistemId; ?>
-			
-			<div class="errorHandler alert alert-danger <?php echo (count($this->form->getMessages()) > 0) ? "" : 'no-display'; ?>">
-						<i class="fa fa-times-sign"></i> Postoje greške u nekim poljima. Ispravite ih i pokušajte ponovo.
-			</div>
-			
-			<?php $poruke = $this->form->naziv->getMessage(); ?>
-			
-			<div class="box-body">
-				<div class="form-group" <?php if (count($poruke)>0) echo 'has_error'?>>
-					<label for="unesiNazivOS" class="col-sm-2 control-label">Naziv operativnog sistema</label>
-					<div>
-						<?php echo $this->form->naziv; ?>
-							<?php if (count($poruke)) {
-								foreach ($poruke as $key=>$poruka) {
-							?>
-							<span class="help-block"><?php echo $poeuka; ?></span>	
-							<?php 			
-								}
-							}
-							?>
-					</div>
-				</div>
-			</div>
-			<div class="box-footer">
-				<?php echo $this->form->submit; ?>
-				<a href="/administracija/operativni-sistem-prikaz"
-					class="btn btn-default">Odustani</a>
-				
-			</div>
-		</form>
-	</div>
-</section>
+<br /><br />
+<div id="view-content">
+	<p>View script for controller <b>Administracija</b> and script/action name <b>operativniSistemUnos</b></p>
+</div>

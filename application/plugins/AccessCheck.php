@@ -8,7 +8,7 @@ class Plugin_AccessCheck extends Zend_Controller_Plugin_Abstract {
         $this->_acl = $acl;
         $this->_auth = $auth;        
     }
-    
+    /*
     public function preDispatch(Zend_Controller_Request_Abstract $request) {        
 
         $resource = $request->getControllerName();
@@ -16,9 +16,7 @@ class Plugin_AccessCheck extends Zend_Controller_Plugin_Abstract {
         
         $identity = $this->_auth->getStorage()->read();
         
-
-        
-        $role = 1;
+        $role = 8;
         
         if ($this->_acl->isAllowed($role, $resource, $action)) {
             $request->setControllerName('authentication')
@@ -26,5 +24,8 @@ class Plugin_AccessCheck extends Zend_Controller_Plugin_Abstract {
         }
 
     }
+    */
+    
+    
     
 }

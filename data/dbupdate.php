@@ -91,9 +91,10 @@ $dbUpdate[$id]['opis'] = 'Kreiranje tabele sa korisnicima';
 
 //Rola korisnika
 /*
+ * Gost
+ * Korisnik
+ * Supervizor
  * Administrator
- * Sef
- * Inzenjer
  *
  * */
 
@@ -103,6 +104,7 @@ $dbUpdate[$id]['query'] = "
 create table if not exists rola (
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `rola` varchar(50) NOT NULL,
+    `opis_role` varchar(50) NOT NULL,
     PRIMARY KEY (`id`)
     )
     ENGINE=InnoDB
@@ -208,6 +210,35 @@ create table if not exists radni_nalog (
     DEFAULT CHARACTER SET=utf8 COLLATE=utf8_slovenian_ci;";
 $dbUpdate[$id]['params'] = array();
 $dbUpdate[$id]['opis'] = 'Kreiranje tabele sa radnim nalozima';
+
+//unos rola - gost
+$id = 12;
+$dbUpdate[$id]['id'] = $id;
+$dbUpdate[$id]['query'] = "INSERT INTO rola (id,rola,opis_role) VALUES (1,'gost','Gost');";
+$dbUpdate[$id]['params'] = array();
+$dbUpdate[$id]['opis'] = 'Unos role gost';
+
+//unos rola - user
+$id = 13;
+$dbUpdate[$id]['id'] = $id;
+$dbUpdate[$id]['query'] = "INSERT INTO rola (id,rola,opis_role) VALUES (2,'korisnik','Korisnik');";
+$dbUpdate[$id]['params'] = array();
+$dbUpdate[$id]['opis'] = 'Unos role korisnik';
+
+//unos rola - supervizor
+$id = 14;
+$dbUpdate[$id]['id'] = $id;
+$dbUpdate[$id]['query'] = "INSERT INTO rola (id,rola,opis_role) VALUES (4,'supervizor','Supervizor');";
+$dbUpdate[$id]['params'] = array();
+$dbUpdate[$id]['opis'] = 'Unos role supervizor';
+
+//unos rola - administrator
+$id = 15;
+$dbUpdate[$id]['id'] = $id;
+$dbUpdate[$id]['query'] = "INSERT INTO rola (id,rola,opis_role) VALUES (8,'administrator','Administrator');";
+$dbUpdate[$id]['params'] = array();
+$dbUpdate[$id]['opis'] = 'Unos role administrator';
+
 
 
 
