@@ -6,4 +6,4 @@ zf create action ime_akcije ime_kontrolera
 
 Aplication_Form_ instead of Form_
 
-test
+Johann is back
