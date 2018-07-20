@@ -182,6 +182,30 @@
 <!-- ==================================================================================================== -->
 <!-- ==================================================================================================== -->
 <!-- ============================================= GLAVNA NAVIGACIJA===================================== -->
+<!-- Left side column. contains the sidebar -->
+              <aside class="main-sidebar">
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                  <!-- sidebar menu: : style can be found in sidebar.less -->
+                  <ul class="sidebar-menu" data-widget="tree">
+            
+                  
+                    <li class="header">GLAVNA NAVIGACIJA</li>
+                    <li class="active">
+                    	<a href="#"><i class="fa fa-calendar"></i>Kalendar aktivnosti</a>
+                    <li class="treeview">
+                      <a href="#">
+                        <i class="fa fa-tasks"></i> <span>Radni nalozi</span>
+                        <span class="pull-right-container">
+                          <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                      </a>
+                      <ul class="treeview-menu">
+                      	<li><a href="#"><i class="fa fa-circle-o"></i>OVde ide nešto</a></a></li>
+                      </ul>
+                    </li>
+
+
  <?php 
     $auth = Zend_Auth::getInstance();
     if($auth->hasIdentity()){
@@ -189,64 +213,59 @@
     } else {
         $role = 1;
     }
-    if($role == 8){//administratorska rola
+    if($role == 8){ 
+        // ===================== ADMINISTRATORSKA ROLA ======================================
  ?>
-  <!-- Left side column. contains the sidebar -->
-  <aside class="main-sidebar">
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
-      <!-- sidebar menu: : style can be found in sidebar.less -->
-      <ul class="sidebar-menu" data-widget="tree">
-
-      
-        <li class="header">GLAVNA NAVIGACIJA</li>
-        <li class="active">
-        	<a href="#"><i class="fa fa-calendar"></i>Kalendar aktivnosti</a>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-tasks"></i> <span>Radni nalozi</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-          	<li><a href="#"><i class="fa fa-circle-o"></i>OVde ide nešto</a></a></li>
-          </ul>
-        </li>
-        
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-gear"></i> <span>Administracija</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-          	<li><a href="<?php echo $this->url(array('controller'=>'administracija', 'action'=>'operativni-sistem-prikaz')); ?>"><i class="fa fa-circle-o"></i>Operativni sistemi</a></a></li>
-          </ul>
-        </li>
-       </ul>
-        
-    </section>
-    <!-- /.sidebar -->
-  </aside>
+                    
+                    <li class="treeview">
+                      <a href="#">
+                        <i class="fa fa-gear"></i> <span>Administracija</span>
+                        <span class="pull-right-container">
+                          <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                      </a>
+                      <ul class="treeview-menu">
+                      	<li><a href="<?php echo $this->url(array('controller'=>'administracija', 'action'=>'operativni-sistem-prikaz')); ?>"><i class="fa fa-circle-o"></i>Operativni sistemi</a></a></li>
+                      </ul>
+                    </li>
+                  
   <?php 
-    } elseif($role == 4){//supervizor
+    }   //==================================== KRAJ ADMINISTRATORSKE ROLE ===============================================
+    
+    
+    elseif($role == 4){     //=============================== SUPERVIZOR ROLA ============================================
    ?>
    <!-- ovde ide navigacija za supervizora -->
   <?php 
-    } elseif($role == 2){//korisnik
+    }   //========================================== KRAJ SUPERVIZOR ROLE ========================================== 
+    
+    
+    elseif($role == 2){//============================================== KORISNIK ROLA =====================================
    ?>
    <!-- ovde ide navigacija za korisnika -->
   <?php 
-    } elseif($role == 2){//gost
+    }   //=========================================== KRAJ KORISNIK ROLE ================================================= 
+    
+        
+    
+    elseif($role == 2){//================================================= GOST ROLA ======================================
    ?>
    <!-- ovde ide navigacija za gosta -->
   <?php 
-    } else{//ne postoji rola
+    } //=================================================== KRAJ GOST ROLE ===============================================
+    
+    
+    else{//NE POSTOJI ROLA
         echo "Greska\n";
     }
    ?>
+   
+    </ul>
+                    
+                </section>
+                <!-- /.sidebar -->
+              </aside>
+   
 <!-- ==================================================================================================== -->
 <!-- ==================================================================================================== -->
 <!-- =========================================KRAJ GLAVNA NAVIGACIJA===================================== -->
