@@ -10,14 +10,17 @@ class Application_Form_LoginForm extends Zend_Form {
         $username = new Zend_Form_Element_Text('username');
         
         $username->setLabel('Korisnicko ime: ')
+                 ->setAttrib('class', 'form-control')  
                  ->setRequired();
         
         $password = new Zend_Form_Element_Password('password');
         $password->setLabel('Lozinka: ')
+                 ->setAttrib('class', 'form-control')  
                  ->setRequired();
         
         $login = new Zend_Form_Element_Submit('login');
-        $login->setLabel('Pristupi');
+        $login->setLabel('Pristupi')
+              ->setAttrib('class', 'btn btn-primary btn-block btn-flat');
 
         $this->addElements(array($username, $password, $login));
         $this->setMethod('post');
