@@ -142,44 +142,28 @@
               </li>
             </ul>
           </li>
+          <!-- za komit -->
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs"><?php echo "Administrator" ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
-              <li class="user-header">
-                <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-
+              <li class="user-footer">
                 <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
+                  <?php echo "Administrator";?>
                 </p>
               </li>
               <!-- Menu Body -->
-              <li class="user-body">
-                <div class="row">
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
-                  </div>
-                </div>
-                <!-- /.row -->
-              </li>
+             
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="#" class="btn btn-default btn-flat"><?php echo "Promena lozinke" ?></a>
                 </div>
                 <div class="pull-right">
-                  <a href="../authentication/logout" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="<?php echo $this->url(array('controller'=>'authentication', 'action'=>'logout')); ?>" class="btn btn-default btn-flat">Odjava</a>
                 </div>
               </li>
             </ul>
@@ -230,7 +214,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-          	<li><a href="/administracija/operativni-sistem-prikaz"><i class="fa fa-circle-o"></i>Operativni sistemi</a></a></li>
+          	<li><a href="<?php echo $this->url(array('controller'=>'administracija', 'action'=>'operativni-sistem-prikaz')); ?>"><i class="fa fa-circle-o"></i>Operativni sistemi</a></a></li>
           </ul>
         </li>
        </ul>
