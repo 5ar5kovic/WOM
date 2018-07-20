@@ -17,7 +17,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $fc = Zend_Controller_Front::getInstance();
         $fc->registerPlugin(new Plugin_AccessCheck($acl, $auth));
         
-        
         return $modelLoader;
    
     }

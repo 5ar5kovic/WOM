@@ -20,7 +20,7 @@ class Plugin_AccessCheck extends Zend_Controller_Plugin_Abstract {
         $role = 8;
         
         if (!$this->_acl->isAllowed($role, $resource, $action)) {
-            $request->setControllerName('authentication')
+            $request->setControllerName(Constants::$authentication)
                     ->setActionName('login');
         }
      
