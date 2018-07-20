@@ -182,7 +182,15 @@
 <!-- ==================================================================================================== -->
 <!-- ==================================================================================================== -->
 <!-- ============================================= GLAVNA NAVIGACIJA===================================== -->
-
+ <?php 
+    $auth = Zend_Auth::getInstance();
+    if($auth->hasIdentity()){
+        $role = $auth->getStorage()->read()->id_rola;
+    } else {
+        $role = 1;
+    }
+    if($role == 8){//administratorska rola
+ ?>
   <!-- Left side column. contains the sidebar -->
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
@@ -222,7 +230,23 @@
     </section>
     <!-- /.sidebar -->
   </aside>
-  
+  <?php 
+    } elseif($role == 4){//supervizor
+   ?>
+   <!-- ovde ide navigacija za supervizora -->
+  <?php 
+    } elseif($role == 2){//korisnik
+   ?>
+   <!-- ovde ide navigacija za korisnika -->
+  <?php 
+    } elseif($role == 2){//gost
+   ?>
+   <!-- ovde ide navigacija za gosta -->
+  <?php 
+    } else{//ne postoji rola
+        echo "Greska\n";
+    }
+   ?>
 <!-- ==================================================================================================== -->
 <!-- ==================================================================================================== -->
 <!-- =========================================KRAJ GLAVNA NAVIGACIJA===================================== -->

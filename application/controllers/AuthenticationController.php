@@ -18,9 +18,7 @@ class AuthenticationController extends Zend_Controller_Action
         if (Zend_Auth::getInstance()->hasIdentity()) {
             $this->redirect('administracija/index');
         }
-        
-        
-        
+               
         $request = $this->getRequest();
         $form = new Application_Form_LoginForm();
         

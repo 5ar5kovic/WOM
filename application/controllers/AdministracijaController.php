@@ -14,7 +14,7 @@ class AdministracijaController extends Zend_Controller_Action
     }
 
     public function operativniSistemPrikazAction()
-    {
+    {       
         $myMapper = new Application_Model_Mymapper_OperativniSistem();
         $operativniSistemi = $myMapper->operativniSistemSelect();
         $this->view->operativniSistemi = $operativniSistemi;
