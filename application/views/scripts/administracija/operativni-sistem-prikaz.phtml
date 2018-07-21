@@ -1,4 +1,12 @@
-
+<script type="text/javascript">
+ $(document).ready(function(){
+ 	$('#novi').click(function(event){
+ 		event.preventDefault();
+		location.href = '<?php echo URL_PREFIX;?>/administracija/operativni-sistem-unos';
+ 	});
+ 	
+ });
+</script>
 <?php $redniBroj = 0;?>
 	<section class="invoice">
 		<div class="row">
@@ -20,16 +28,22 @@
                 	<tr>
 						<td><?php echo ++$redniBroj . ".";?></td>
 						<td><?php echo $operativniSistem['naziv'];?></td>
-						<td><i class="fa fa-pencil-square-o text-blue"></i>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<a data-href="/administracija/operativni-sistemi-brisanje?id=<?php echo $operativniSistem['id']; ?>"
-						   		data-toggle="modal" 
-						   		data-target="#confirm-delete"
-						   		data-os="<?php echo $operativniSistem['naziv'];?>"					   		  		
-						   		>
+						<td>
+							<div>
+								<a href="<?php echo URL_PREFIX;?>/administracija/operativni-sistem-unos?id=<?php echo $operativniSistem['id']; ?>"
+									class="btn btn-xs btn-teal tooltips">	
+									<i class="fa fa-pencil-square-o text-blue"></i>
+								</a>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<a  href="#"
+									data-href="<?php echo URL_PREFIX;?>/administracija/operativni-sistem-brisanje?id=<?php echo $operativniSistem['id']; ?>"
+									data-toggle="modal"
+									data-target="#confirm-delete">								
 									<i class="fa fa-minus-square-o text-red"></i>
-							</a>
-						</td>
+								</a>
+							</div>
+						
+					</td>
 					</tr>
 <?php endforeach;?>
                 </table>
@@ -38,29 +52,37 @@
 		<hr>
 		<div class="row no-print">
         	<div class="col-xs-12">
-          		<a href="/administracija/operativni-sistem-unos" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Dodaj novi</a>
+          		<a href="/administracija/operativni-sistem-unos" id="novi" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Dodaj novi</a>
           	</div>
       	</div>	
 	</section>
 	
 <div class="modal modal-danger fade" id="confirm-delete">
+
    	<div class="modal-dialog">
+   	
        	<div class="modal-content">
+       	
            	<div class="modal-header">
                	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
               		<span aria-hidden="true">&times;</span>
                	</button>
                	<h4 class="modal-title">Brisanje unetog operativnog sistema</h4>
            	</div>
+           	
            	<div class="modal-body">
                	<p>Uneti operativni sistem će biti obrisan&hellip;</p>
-           	</div>
+            </div>
+           	
            	<div class="modal-footer">
-              	<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Doustani</button>
-               	<button type="button" class="btn btn-outline">Obriši</button>
+              	<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Odustani</button>
+               	<a href="<?php echo URL_PREFIX;?>/administracija/operativni-sistem-brisanje?id=<?php echo $operativniSistem['id']; ?>" class="btn btn-outline">&times;&nbsp;&nbsp;Obriši</a>
            	</div>
+           	
         </div>
+        
 	</div>
+	
 </div>
 
 

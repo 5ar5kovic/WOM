@@ -17,11 +17,17 @@
         <controllerFile controllerName="Administracija">
           <actionMethod actionName="index"/>
           <actionMethod actionName="operativniSistemUnos"/>
+          <actionMethod actionName="kvarPrikaz"/>
+          <actionMethod actionName="kvarUnos"/>
+          <actionMethod actionName="kvarBrisanje"/>
         </controllerFile>
         <controllerFile controllerName="Authentication">
           <actionMethod actionName="index"/>
           <actionMethod actionName="login"/>
           <actionMethod actionName="logout"/>
+        </controllerFile>
+        <controllerFile controllerName="Abc">
+          <actionMethod actionName="index"/>
         </controllerFile>
       </controllersDirectory>
       <formsDirectory enabled="false"/>
@@ -58,6 +64,18 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Administracija">
             <viewScriptFile forActionName="operativniSistemUnos"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Administracija">
+            <viewScriptFile forActionName="kvarPrikaz"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Administracija">
+            <viewScriptFile forActionName="kvarUnos"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Administracija">
+            <viewScriptFile forActionName="kvarBrisanje"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Abc">
+            <viewScriptFile forActionName="index"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>

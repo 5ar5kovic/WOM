@@ -1,0 +1,29 @@
+<?php echo $this->form->id; ?>
+<div class="box box-info">
+	<div class="box-header with-border">
+    	<h3 class="box-title"><?php echo ($this->id != null )? "Izmena podataka o kvaru" : "Dodavanje novog kvara" ?></h3>
+    </div>
+    <form class="form-horizontal" name="frmKvarUnos" id="frmKvarUnos" action="<?php echo URL_PREFIX;?>/administracija/kvar-unos" method="post">
+    	<?php echo $this->form->id;?>
+    	<div class="box-body">
+        	<div class="form-group">
+            	<label for="kvar" class="col-sm-2 control-label">Naziv kvara: </label>
+
+                  <div class="col-sm-10">
+                    <?php echo $this->form->kvar; ?>
+                  </div>
+                </div>
+                
+            </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
+					<?php  echo $this->form->submit; ?>
+                	
+
+
+                	<a class="btn btn-default" role="button" href="<?php echo URL_PREFIX;?>/administracija/kvar-prikaz" >Odustani</a>
+
+              </div>
+              <!-- /.box-footer -->
+            </form>
+          </div>
