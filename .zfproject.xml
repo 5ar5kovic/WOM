@@ -20,6 +20,9 @@
           <actionMethod actionName="kvarPrikaz"/>
           <actionMethod actionName="kvarUnos"/>
           <actionMethod actionName="kvarBrisanje"/>
+          <actionMethod actionName="maticnaPlocaUnos"/>
+          <actionMethod actionName="maticnaPlocaPrikaz"/>
+          <actionMethod actionName="maticnaPlocaBrisanje"/>
         </controllerFile>
         <controllerFile controllerName="Authentication">
           <actionMethod actionName="index"/>
@@ -76,6 +79,15 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Abc">
             <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Administracija">
+            <viewScriptFile forActionName="maticnaPlocaUnos"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Administracija">
+            <viewScriptFile forActionName="maticnaPlocaPrikaz"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Administracija">
+            <viewScriptFile forActionName="maticnaPlocaBrisanje"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>

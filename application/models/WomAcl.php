@@ -18,13 +18,15 @@ class Application_Model_WomAcl extends Zend_Acl {
         $this->addResource(new Zend_Acl_Resource(Constants::$execute), Constants::$dbupdate);
         
         $this->addResource(new Zend_Acl_Resource(Constants::$administracija));
-        //$this->addResource(new Zend_Acl_Resource(Constants::$index), Constants::$administracija);
+        $this->addResource(new Zend_Acl_Resource(Constants::$index), Constants::$administracija);
         $this->addResource(new Zend_Acl_Resource(Constants::$operativni_sistem_prikaz), Constants::$administracija);
         $this->addResource(new Zend_Acl_Resource(Constants::$operativni_sistem_unos), Constants::$administracija);
         $this->addResource(new Zend_Acl_Resource(Constants::$operativni_sistem_brisanje), Constants::$administracija);
+        $this->addResource(new Zend_Acl_Resource(Constants::$kvar_prikaz), Constants::$administracija);
+        $this->addResource(new Zend_Acl_Resource(Constants::$kvar_unos), Constants::$administracija);
+        $this->addResource(new Zend_Acl_Resource(Constants::$kvar_brisanje), Constants::$administracija);
         
-        $this->addResource(new Zend_Acl_Resource('abc'));
-        $this->addResource(new Zend_Acl_Resource('index'), 'abc');
+
         
         
         /*role*/
@@ -35,12 +37,12 @@ class Application_Model_WomAcl extends Zend_Acl {
         
         /*permisije*/
         $this->allow('1', Constants::$authentication);
-        $this->allow('1', 'abc');
+       
         $this->allow('2', Constants::$administracija, Constants::$index);
         $this->allow('8', Constants::$administracija);
         $this->allow('8', Constants::$dbupdate);
         $this->allow('8', Constants::$error);
-        //$this->allow('8', Constants::$administracija);
+        $this->allow('8', Constants::$administracija);
         
       
     }
