@@ -1,4 +1,47 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Administracija</b> and script/action name <b>korisnikUnos</b></p>
-</div>
+<?php echo $this->form->id; ?>
+<div class="box box-info">
+	<div class="box-header with-border">
+    	<h3 class="box-title"><?php echo ($this->id != null )? "Izmena podataka o korisniku" : "Dodavanje novog korisnika" ?></h3>
+    </div>
+    <form class="form-horizontal" name="frmKorisnikUnos" id="frmKorisnikUnos" action="<?php echo URL_PREFIX;?>/administracija/korisnik-unos" method="post">
+    	<?php echo $this->form->id;?>
+    	<div class="box-body">
+        	<div class="form-group">
+            	<label for="ime" class="col-sm-2 control-label">Ime: </label>
+
+                <div class="col-sm-10">
+                    <?php echo $this->form->ime; ?>
+            	</div>
+            	
+            	<label for="ime" class="col-sm-2 control-label">Prezime: </label>
+
+                <div class="col-sm-10">
+                    <?php echo $this->form->prezime; ?>
+            	</div>
+            	
+            	<label for="ime" class="col-sm-2 control-label">e-mail: </label>
+
+                <div class="col-sm-10">
+                    <?php echo $this->form->email; ?>
+            	</div>
+            	
+            	<label for="ime" class="col-sm-2 control-label">Telefon: </label>
+
+                <div class="col-sm-10">
+                    <?php echo $this->form->tel; ?>
+            	</div>
+            </div>
+                
+            </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
+					<?php  echo $this->form->submit; ?>
+                	
+
+
+                	<a class="btn btn-default" role="button" href="<?php echo URL_PREFIX;?>/administracija/korisnik-prikaz" >Odustani</a>
+
+              </div>
+              <!-- /.box-footer -->
+            </form>
+          </div>
