@@ -31,6 +31,10 @@ class Constants
     public static $korisnik_prikaz = "korisnik-prikaz";
     public static $korisnik_unos = "korisnik-unos";
     public static $korisnik_brisanje = "korisnik-brisanje";
+    public static $racunar = "racunar";
+    public static $racunar_prikaz="racunar-prikaz";
+    public static $racunar_unos="racunar-unos";
+    public static $racunar_brisanje="racunar-brisanje";
     
     //putanje
     public static $zaboravljenaLozinkaPutanja = "/authentication/zaboravaljena-lozinka";

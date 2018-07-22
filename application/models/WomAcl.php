@@ -25,6 +25,10 @@ class Application_Model_WomAcl extends Zend_Acl {
         $this->addResource(new Zend_Acl_Resource(Constants::$korisnickaAdministracija . "/" . Constants::$index), Constants::$korisnickaAdministracija);
         $this->addResource(new Zend_Acl_Resource(Constants::$korisnickaAdministracija . "/" . Constants::$dodajKorisnika),Constants::$korisnickaAdministracija);
         
+        $this->addResource(new Zend_Acl_Resource(Constants::$racunar));
+        $this->addResource(new Zend_Acl_Resource(Constants::$racunar . "/" . Constants::$racunar_prikaz), Constants::$racunar);
+        $this->addResource(new Zend_Acl_Resource(Constants::$racunar . "/" . Constants::$racunar_unos), Constants::$racunar);
+        $this->addResource(new Zend_Acl_Resource(Constants::$racunar . "/" . Constants::$racunar_brisanje), Constants::$racunar); 
         
         $this->addResource(new Zend_Acl_Resource(Constants::$administracija));
         $this->addResource(new Zend_Acl_Resource(Constants::$administracija . "/" . Constants::$index), Constants::$administracija);
@@ -58,6 +62,8 @@ class Application_Model_WomAcl extends Zend_Acl {
         $this->allow('1', Constants::$authentication);
         $this->deny('2',Constants::$authentication , Constants::$login);
         $this->deny('2',Constants::$authentication, Constants::$zaboravljenaLozinka);
+        $this->allow('4', Constants::$korisnickaAdministracija, Constants::$dodajKorisnika);
+        $this->allow('4', Constants::$racunar);
         $this->allow('8', Constants::$administracija);
         $this->allow('2', Constants::$administracija, Constants::$index);
         $this->allow('8', Constants::$korisnickaAdministracija);

@@ -38,6 +38,12 @@
         <controllerFile controllerName="Abc">
           <actionMethod actionName="index"/>
         </controllerFile>
+        <controllerFile controllerName="Racunar">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="racunarPrikaz"/>
+          <actionMethod actionName="racunarUnos"/>
+          <actionMethod actionName="racunarBrisanje"/>
+        </controllerFile>
       </controllersDirectory>
       <formsDirectory enabled="false"/>
       <layoutsDirectory>
@@ -112,6 +118,18 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Administracija">
             <viewScriptFile forActionName="korisnikBrisanje"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Racunar">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Racunar">
+            <viewScriptFile forActionName="racunarPrikaz"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Racunar">
+            <viewScriptFile forActionName="racunarUnos"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Racunar">
+            <viewScriptFile forActionName="racunarBrisanje"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>
