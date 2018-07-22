@@ -235,17 +235,52 @@ class AdministracijaController extends Zend_Controller_Action
 
     public function korisnikPrikazAction()
     {
-        // action body
+        $myMapper = new Application_Model_Mymapper_Korisnik();
+        $korisnici = $myMapper->korisnikSelect();
+        $this->view->korisnici = $korisnici;
     }
 
     public function korisnikUnosAction()
     {
-        // action body
+        $request = $this->getRequest();
+        $id = $request->getParam('id', null);
+        $form = new Application_Form_KorisnikUnos();
+        if ($request->isPost()) {
+            $ime = $request->getParam('ime');
+            $prezime = $request->getParam('prezime');
+            $email = $request->getParam('email');
+            $tel = $request->getParam('tel');
+            if ($form->isValid($request->getPost())) {
+                $korisnikModel = new Application_Model_Korisnik();
+                $id = (int) $request->getParam('id');
+                $korisnikModel->setId($id != 0 ? $id : null)
+                              ->setIme($ime)
+                              ->setPrezime($prezime)
+                              ->setEmail($email)
+                              ->setTel($tel);
+                $korisnikModel->save();
+                $this->redirect('administracija/korisnik-prikaz');
+            }
+        }
+        
+        if (! $request->isPost() && $id != null) {
+            $korisnikModel = new Application_Model_Korisnik();
+            $data = $korisnikModel->find($id)->toArray();
+            $form->populate($data);
+        }
+        
+        $this->view->form = $form;
+        $this->view->id = $id;
     }
 
     public function korisnikBrisanjeAction()
     {
-        // action body
+        $request = $this->getRequest();
+        $id = $request->getParam('id', null);
+        $korisnikModel = new Application_Model_Korisnik();
+        $korisnikModel->setId($id);
+        $korisnikModel->deleteRowByPrimaryKey();
+        $this->redirect('administracija/korisnik-prikaz');
     }
 
 

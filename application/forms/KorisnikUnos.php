@@ -1,6 +1,6 @@
 <?php 
 
-class Application_Form_TipRacunaraUnos extends Zend_Form {
+class Application_Form_KorisnikUnos extends Zend_Form {
     
     protected $_id;
     
@@ -41,13 +41,21 @@ class Application_Form_TipRacunaraUnos extends Zend_Form {
         ->setAttrib('tabindex', 3)
         ->setRequired(true);
         
+        $tel = new Zend_Form_Element_Text('tel');
+        $tel->setLabel('Telefon: ')
+        ->setAttrib('id', 'tel')
+        ->setAttrib('name', 'tel')
+        ->setAttrib('class', 'form-control validate[requested]')
+        ->setAttrib('tabindex', 4)
+        ->setRequired(true);
+        
         $submit = new Zend_Form_Element_Button('submit');
         $submit->setAttrib('type', 'submit')
         ->setLabel('Sačuvaj')
         ->setAttrib('class', 'btn btn-success pull-right')
-        ->setAttrib('tabindex', 2);
+        ->setAttrib('tabindex', 5);
         
-        $this->addElements(array($id, $naziv, $submit));
+        $this->addElements(array($id, $ime, $prezime, $email, $tel, $submit));
         $this -> setMethod('post');
         $this->setElementDecorators(array("ViewHelper"),null, false);        
     }
@@ -55,7 +63,10 @@ class Application_Form_TipRacunaraUnos extends Zend_Form {
     public function populate(array $data) {
         parent::populate($data);
         $this->getElement('id')->setValue($data['id']);
-        $this->getElement('naziv')->setValue($data['naziv']);       
+        $this->getElement('ime')->setValue($data['ime']); 
+        $this->getElement('prezime')->setValue($data['prezime']);
+        $this->getElement('email')->setValue($data['email']);
+        $this->getElement('tel')->setValue($data['tel']);
     }
     
     
