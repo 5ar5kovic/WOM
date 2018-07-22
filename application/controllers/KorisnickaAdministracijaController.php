@@ -43,13 +43,15 @@ class KorisnickaAdministracijaController extends Zend_Controller_Action
                 $korisnickaPodrskaModel->setRola($rolaModel);
                 $result = $korisnickaPodrskaModel->save();
                 if(!$result){   
-                    $this->redirect('korisnickaAdministracija/index?result=failed');
+                    $this->redirect('korisnickaAdministracija/index?result=failed1');
                 }
             } else {                
-                $this->redirect('korisnickaAdministracija/index?result=failed');
+                $this->redirect('korisnickaAdministracija/index?result=failed2');
             } 
             
             //salji mejl korisniku
+            $templateParams = array("username"=>$username, "password"=>$password);
+            Utils::sendEmail("pozivNaPlatformuTemplate","Registracija na WOM",$email,$templateParams,$ime.$prezime);
             
             
             $this->redirect('korisnickaAdministracija/index');

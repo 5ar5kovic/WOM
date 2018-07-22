@@ -216,7 +216,18 @@
     if($role == 8){ 
         // ===================== ADMINISTRATORSKA ROLA ======================================
  ?>
-                    
+                    <li class="treeview">
+   						<a href="#">
+                        <i class="fa fa-gear"></i> <span>Administracija</span>
+                        <span class="pull-right-container">
+                          <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                      </a>
+                      <ul class="treeview-menu">
+                      	<li><a href="<?php echo $this->url(array('controller'=>Constants::$korisnickaAdministracija, 'action'=>Constants::$dodajKorisnika)); ?>"><i class="fa fa-circle-o"></i>Korisnicka podrska</a></a></li>
+                      	<li><a href="<?php echo $this->url(array('controller'=>Constants::$racunar, 'action'=>Constants::$racunar_prikaz)); ?>"><i class="fa fa-circle-o"></i>Racunari</a></a></li>
+                      </ul>
+   					</li>
                     <li class="treeview">
                       <a href="#">
                         <i class="fa fa-gear"></i> <span>Administracija aplikacije</span>

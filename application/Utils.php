@@ -23,13 +23,13 @@ class Utils
         $transport = new Zend_Mail_Transport_Smtp('smtp.gmail.com', $config);
         
         $html = new Zend_View();
-        $html->setScriptPath(APPLICATION_PATH . '/views/emails');
+        $html->setScriptPath(APPLICATION_PATH . '\views\emails');
         
         foreach ($templateParams as $key => $value) {
             $html->assign($key, $value);      
         }
         
-        $bodyText = $html->render($templateName);
+        $bodyText = $html->render($templateName . ".phtml");
         
         $mail = new Zend_Mail();
         $mail->setBodyHtml($bodyText);
