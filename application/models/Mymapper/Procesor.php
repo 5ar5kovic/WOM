@@ -10,4 +10,6 @@ class Application_Model_Mymapper_Procesor extends Application_Model_Mapper_Proce
        return $result;
     }
     
+
+    
 }

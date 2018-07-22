@@ -10,4 +10,22 @@ class Application_Model_Mymapper_TipRacunara extends Application_Model_Mapper_Ti
        return $result;
     }
     
+    public function tipRacunaraSelectByID($id) {
+        $select = $this->getDbTable()
+        ->select()
+        ->where('id=?', $id);
+        var_dump($select);
+        exit;
+        $rowSet = $this->getDbTable()->fetchAll($select);
+       
+        return $rowSet['naziv'];
+        
+        
+        
+        
+        
+        
+    }
+    
+    
 }

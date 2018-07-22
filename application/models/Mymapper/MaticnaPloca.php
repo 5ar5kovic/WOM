@@ -10,4 +10,6 @@ class Application_Model_Mymapper_MaticnaPloca extends Application_Model_Mapper_M
        return $result;
     }
     
+
+    
 }

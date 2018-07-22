@@ -1,4 +1,64 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Racunar</b> and script/action name <b>racunarUnos</b></p>
-</div>
+<?php echo $this->form->id; ?>
+<div class="box box-info">
+	<div class="box-header with-border">
+    	<h3 class="box-title"><?php echo ($this->id != null )? "Izmena podataka o računaru" : "Dodavanje novog računara" ?></h3>
+    </div>
+    <form class="form-horizontal" name="frmRacunarUnos" id="frmRacunarUnos" action="<?php echo URL_PREFIX;?>/racunar/racunar-unos" method="post">
+    	<?php echo $this->form->id;?>
+    	<div class="box-body">
+    	
+        	<div class="form-group">
+            	<label for="naziv" class="col-sm-2 control-label">Naziv: </label>
+                <div class="col-sm-4">
+                    <?php echo $this->form->naziv; ?>
+            	</div>
+            </div>
+            
+            <div class="form-group">	
+            	<label for="tip" class="col-sm-2 control-label">Tip: </label>
+            	<div class="col-sm-4">
+                    <?php echo $this->form->tip; ?>
+            	</div>
+            </div>
+            
+            <div class="form-group">	
+            	<label for="os" class="col-sm-2 control-label">Operativni sistem: </label>
+            	<div class="col-sm-4">
+                    <?php echo $this->form->os; ?>
+            	</div>         	
+            </div>
+            
+             <div class="form-group">	
+            	<label for="mb" class="col-sm-2 control-label">Matična ploča: </label>
+            	<div class="col-sm-4">
+                    <?php echo $this->form->mb; ?>
+            	</div>         	
+            </div>
+            
+            <div class="form-group">	
+            	<label for="mb" class="col-sm-2 control-label">Procesor: </label>
+            	<div class="col-sm-4">
+                    <?php echo $this->form->cpu; ?>
+            	</div>         	
+            </div>
+            
+            <div class="form-group">	
+            	<label for="mb" class="col-sm-2 control-label">Korisnik: </label>
+            	<div class="col-sm-4">
+                    <?php echo $this->form->korisnik; ?>
+            	</div>         	
+            </div>
+                
+         </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
+					<?php  echo $this->form->submit; ?>
+                	
+
+
+                	<a class="btn btn-default" role="button" href="<?php echo URL_PREFIX;?>/racunar/racunar-prikaz" >Odustani</a>
+
+              </div>
+              <!-- /.box-footer -->
+            </form>
+          </div>

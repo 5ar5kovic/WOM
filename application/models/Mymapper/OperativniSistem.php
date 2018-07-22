@@ -10,4 +10,5 @@ class Application_Model_Mymapper_OperativniSistem extends Application_Model_Mapp
        return $result;
     }
     
+    
 }

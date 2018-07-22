@@ -1,4 +1,115 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Racunar</b> and script/action name <b>racunarPrikaz</b></p>
+ <script type="text/javascript">
+ $(document).ready(function(){
+ 	$('#novi').click(function(event){
+ 		event.preventDefault();
+		location.href = '<?php echo URL_PREFIX;?>/racunar/racunar-unos';
+ 	});
+ 	
+ });
+</script>
+<?php $redniBroj = 0;?>
+	<section class="invoice">
+		<div class="row">
+        	<div class="col-xs-12">
+          		<h2 class="page-header">
+            		RAČUNARI           
+          		</h2>
+        	</div>
+      	</div>
+		<div class="row">
+			<div class="box-body no-padding">
+			<table class="table table-condensed">
+					<tr>
+						<th style="width: 10px">#</th>
+						<th>Naziv</th>
+						<th>Tip računara</th>
+						<th>Operativni sistem</th>
+						<th>Matična ploča</th>
+						<th>Procesor</th>
+						<th>Korisnik</th>
+						<th style="width: 80px">Promena/Brisanje</th>
+					</tr>
+<?php foreach ($this->racunari as $racunar):?>
+                	<tr>
+						<td><?php echo ++$redniBroj . ".";?></td>
+						<td><?php echo $racunar['naziv'];?></td>
+						<td><?php
+						//echo $racunar['id_tip'];
+						     
+						      $tipRacunaraMyMapper = new Application_Model_Mymapper_TipRacunara();
+						      echo $tipRacunaraMyMapper->tipRacunaraSelectByID($racunar['id_tip']);
+						     
+						    ?>
+						</td>
+						<td><?php
+						      
+						    ?>
+						</td>
+						<td><?php
+						      
+						     ?>
+						</td>
+						<td><?php
+						      
+						    ?>
+						</td>
+						<td><?php
+						     
+						    ?>
+						</td>
+						<td>
+							<div>
+								<a href="<?php echo URL_PREFIX;?>/racunar/racunar-unos?id=<?php echo $racunar['id']; ?>"
+									class="btn btn-xs btn-teal tooltips">	
+									<i class="fa fa-pencil-square-o text-blue"></i>
+								</a>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<a  href="#"
+									data-href="<?php echo URL_PREFIX;?>/racunar/racunar-brisanje?id=<?php echo $racunar['id']; ?>"
+									data-toggle="modal"
+									data-target="#confirm-delete">								
+									<i class="fa fa-minus-square-o text-red"></i>
+								</a>
+							</div>
+						
+					</td>
+					</tr>
+<?php endforeach;?>
+                </table>
+			</div>
+		</div>
+		<hr>
+		<div class="row no-print">
+        	<div class="col-xs-12">
+          		<a href="/racunar/racunar-unos" id="novi" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Dodaj novi računar</a>
+          	</div>
+      	</div>	
+	</section>
+	
+<div class="modal modal-danger fade" id="confirm-delete">
+
+   	<div class="modal-dialog">
+   	
+       	<div class="modal-content">
+       	
+           	<div class="modal-header">
+               	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              		<span aria-hidden="true">&times;</span>
+               	</button>
+               	<h4 class="modal-title">Brisanje unetog računara</h4>
+           	</div>
+           	
+           	<div class="modal-body">
+               	<p>Uneti računar biće obrisan&hellip;</p>
+            </div>
+           	
+           	<div class="modal-footer">
+              	<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Odustani</button>
+               	<a href="<?php echo URL_PREFIX;?>/racunar/racunar-brisanje?id=<?php echo $korisnik['id']; ?>" class="btn btn-outline">&times;&nbsp;&nbsp;Obriši</a>
+           	</div>
+           	
+        </div>
+        
+	</div>
+	
 </div>
