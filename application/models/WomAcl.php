@@ -8,39 +8,45 @@ class Application_Model_WomAcl extends Zend_Acl {
         
         /*resursi*/
         $this->addResource(new Zend_Acl_Resource(Constants::$authentication));
-        $this->addResource(new Zend_Acl_Resource(Constants::$login), Constants::$authentication);
-        $this->addResource(new Zend_Acl_Resource(Constants::$logout), Constants::$authentication);
+        $this->addResource(new Zend_Acl_Resource(Constants::$authentication . "/" . Constants::$login), Constants::$authentication);
+        $this->addResource(new Zend_Acl_Resource(Constants::$authentication . "/" . Constants::$logout), Constants::$authentication);
+        $this->addResource(new Zend_Acl_Resource(Constants::$authentication . "/" . Constants::$zaboravljenaLozinka), Constants::$authentication);
         
         $this->addResource(new Zend_Acl_Resource(Constants::$error));
-        $this->addResource(new Zend_Acl_Resource(Constants::$error). Constants::$error);
+        $this->addResource(new Zend_Acl_Resource(Constants::$error . "/" . Constants::$error). Constants::$error);
         
         $this->addResource(new Zend_Acl_Resource(Constants::$dbupdate));
-        $this->addResource(new Zend_Acl_Resource(Constants::$execute), Constants::$dbupdate);
+        $this->addResource(new Zend_Acl_Resource(Constants::$dbupdate . "/" . Constants::$execute), Constants::$dbupdate);
+        
+        $this->addResource(new Zend_Acl_Resource(Constants::$index));
+        $this->addResource(new Zend_Acl_Resource(Constants::$index . "/" . Constants::$index), Constants::$index);
+        
+        $this->addResource(new Zend_Acl_Resource(Constants::$korisnickaAdministracija));
+        $this->addResource(new Zend_Acl_Resource(Constants::$korisnickaAdministracija . "/" . Constants::$index), Constants::$korisnickaAdministracija);
+        $this->addResource(new Zend_Acl_Resource(Constants::$korisnickaAdministracija . "/" . Constants::$dodajKorisnika),Constants::$korisnickaAdministracija);
+        
         
         $this->addResource(new Zend_Acl_Resource(Constants::$administracija));
-        $this->addResource(new Zend_Acl_Resource(Constants::$index), Constants::$administracija);
-        $this->addResource(new Zend_Acl_Resource(Constants::$operativni_sistem_prikaz), Constants::$administracija);
-        $this->addResource(new Zend_Acl_Resource(Constants::$operativni_sistem_unos), Constants::$administracija);
-        $this->addResource(new Zend_Acl_Resource(Constants::$operativni_sistem_brisanje), Constants::$administracija);
-        $this->addResource(new Zend_Acl_Resource(Constants::$kvar_prikaz), Constants::$administracija);
-        $this->addResource(new Zend_Acl_Resource(Constants::$kvar_unos), Constants::$administracija);
-        $this->addResource(new Zend_Acl_Resource(Constants::$kvar_brisanje), Constants::$administracija);
-        $this->addResource(new Zend_Acl_Resource(Constants::$maticna_ploca_prikaz), Constants::$administracija);
-        $this->addResource(new Zend_Acl_Resource(Constants::$maticna_ploca_unos), Constants::$administracija);
-        $this->addResource(new Zend_Acl_Resource(Constants::$maticna_ploca_brisanje), Constants::$administracija);
-        $this->addResource(new Zend_Acl_Resource(Constants::$procesor_prikaz), Constants::$administracija);
-        $this->addResource(new Zend_Acl_Resource(Constants::$procesor_unos), Constants::$administracija);
-        $this->addResource(new Zend_Acl_Resource(Constants::$procesor_brisanje), Constants::$administracija);
-        $this->addResource(new Zend_Acl_Resource(Constants::$tip_racunara_prikaz), Constants::$administracija);
-        $this->addResource(new Zend_Acl_Resource(Constants::$tip_racunara_unos), Constants::$administracija);
-        $this->addResource(new Zend_Acl_Resource(Constants::$tip_racunara_brisanje), Constants::$administracija);
-        $this->addResource(new Zend_Acl_Resource(Constants::$korisnik_prikaz), Constants::$administracija);
-        $this->addResource(new Zend_Acl_Resource(Constants::$korisnik_unos), Constants::$administracija);
-        $this->addResource(new Zend_Acl_Resource(Constants::$korisnik_brisanje), Constants::$administracija);
+        $this->addResource(new Zend_Acl_Resource(Constants::$administracija . "/" . Constants::$index), Constants::$administracija);
+        $this->addResource(new Zend_Acl_Resource(Constants::$administracija . "/" . Constants::$operativni_sistem_prikaz), Constants::$administracija);
+        $this->addResource(new Zend_Acl_Resource(Constants::$administracija . "/" . Constants::$operativni_sistem_unos), Constants::$administracija);
+        $this->addResource(new Zend_Acl_Resource(Constants::$administracija . "/" . Constants::$operativni_sistem_brisanje), Constants::$administracija);
         
-        
-
-        
+        $this->addResource(new Zend_Acl_Resource(Constants::$administracija . "/" . Constants::$kvar_prikaz), Constants::$administracija);
+        $this->addResource(new Zend_Acl_Resource(Constants::$administracija . "/" . Constants::$kvar_unos), Constants::$administracija);
+        $this->addResource(new Zend_Acl_Resource(Constants::$administracija . "/" . Constants::$kvar_brisanje), Constants::$administracija);
+        $this->addResource(new Zend_Acl_Resource(Constants::$administracija . "/" . Constants::$maticna_ploca_prikaz), Constants::$administracija);
+        $this->addResource(new Zend_Acl_Resource(Constants::$administracija . "/" . Constants::$maticna_ploca_unos), Constants::$administracija);
+        $this->addResource(new Zend_Acl_Resource(Constants::$administracija . "/" . Constants::$maticna_ploca_brisanje), Constants::$administracija);
+        $this->addResource(new Zend_Acl_Resource(Constants::$administracija . "/" . Constants::$procesor_prikaz), Constants::$administracija);
+        $this->addResource(new Zend_Acl_Resource(Constants::$administracija . "/" . Constants::$procesor_unos), Constants::$administracija);
+        $this->addResource(new Zend_Acl_Resource(Constants::$administracija . "/" . Constants::$procesor_brisanje), Constants::$administracija);
+        $this->addResource(new Zend_Acl_Resource(Constants::$administracija . "/" . Constants::$tip_racunara_prikaz), Constants::$administracija);
+        $this->addResource(new Zend_Acl_Resource(Constants::$administracija . "/" . Constants::$tip_racunara_unos), Constants::$administracija);
+        $this->addResource(new Zend_Acl_Resource(Constants::$administracija . "/" . Constants::$tip_racunara_brisanje), Constants::$administracija);
+        $this->addResource(new Zend_Acl_Resource(Constants::$administracija . "/" . Constants::$korisnik_prikaz), Constants::$administracija);
+        $this->addResource(new Zend_Acl_Resource(Constants::$administracija . "/" . Constants::$korisnik_unos), Constants::$administracija);
+        $this->addResource(new Zend_Acl_Resource(Constants::$administracija . "/" . Constants::$korisnik_brisanje), Constants::$administracija);
         
         /*role*/
         $this->addRole(new Zend_Acl_Role('1')); //gost
@@ -50,12 +56,14 @@ class Application_Model_WomAcl extends Zend_Acl {
         
         /*permisije*/
         $this->allow('1', Constants::$authentication);
-       
-        $this->allow('2', Constants::$administracija, Constants::$index);
+        $this->deny('2',Constants::$authentication , Constants::$login);
+        $this->deny('2',Constants::$authentication, Constants::$zaboravljenaLozinka);
         $this->allow('8', Constants::$administracija);
+        $this->allow('2', Constants::$administracija, Constants::$index);
+        $this->allow('8', Constants::$korisnickaAdministracija);
         $this->allow('8', Constants::$dbupdate);
         $this->allow('8', Constants::$error);
-        $this->allow('8', Constants::$administracija);
+        $this->allow('8', Constants::$index);
         
       
     }

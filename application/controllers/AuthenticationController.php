@@ -15,9 +15,12 @@ class AuthenticationController extends Zend_Controller_Action
 
     public function loginAction()
     {
+        //nije potrebno jer je sve reseno u preDispatch()
+        /* 
         if (Zend_Auth::getInstance()->hasIdentity()) {
             $this->redirect('administracija/index');
         }
+        */
         
         Zend_Layout::getMvcInstance()->setLayout('login');
                
@@ -57,6 +60,11 @@ class AuthenticationController extends Zend_Controller_Action
     {
         Zend_Auth::getInstance()->clearIdentity();
         $this->redirect('authentication/login');
+    }
+    
+    public function zaboravljenaLozinkaAction()
+    {
+        // action body
     }
 
     private function getAuthAdapter()

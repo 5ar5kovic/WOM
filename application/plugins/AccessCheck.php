@@ -19,11 +19,10 @@ class Plugin_AccessCheck extends Zend_Controller_Plugin_Abstract {
         
         if($identity != null && $identity->id_rola != null){
             $role = $identity->id_rola;
-        }        
+        }       
         
         if (!$this->_acl->isAllowed($role, $resource, $action)) {
-            $request->setControllerName(Constants::$authentication)
-                    ->setActionName('login');
+            header("Location: /administracija/index");
         }
      
     }

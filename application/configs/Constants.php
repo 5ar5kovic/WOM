@@ -4,11 +4,14 @@ class Constants
 {
     public static $authentication = "authentication";
     public static $administracija = "administracija";
+    public static $korisnickaAdministracija = "korisnickaAdministracija";
     public static $dbupdate = "dbupdate";
     public static $error = "error";
     public static $login = "login";
     public static $logout = "logout";
     public static $index = "index";
+    public static $dodajKorisnika = "dodaj-korisnika";
+    public static $zaboravljenaLozinka = "zaboravljena-lozinka";
     public static $execute = "execute";    
     public static $operativni_sistem_prikaz = "operativni-sistem-prikaz";   
     public static $operativni_sistem_unos = "operativni-sistem-unos";
@@ -28,6 +31,16 @@ class Constants
     public static $korisnik_prikaz = "korisnik-prikaz";
     public static $korisnik_unos = "korisnik-unos";
     public static $korisnik_brisanje = "korisnik-brisanje";
+    
+    //putanje
+    public static $zaboravljenaLozinkaPutanja = "/authentication/zaboravaljena-lozinka";
+    public static $homePutanja = "/authentication/login";
+    
+    //ostalo
+    public static $appMail = 'mikam6618@gmail.com';
+    public static $appMailPassword = 'MIKAm6618.';
+    
+    
     
 }
 
