@@ -5,8 +5,8 @@
  *
  * @package Application_Model
  * @subpackage Model
- * @author SpecNaz Team 9815
- * @copyright SpecNaz Team 9815
+ * @author <YOUR NAME HERE>
+ * @copyright ZF model generator
  * @license http://framework.zend.com/license/new-bsd     New BSD License
  */
 
@@ -16,7 +16,7 @@
  *
  * @package Application_Model
  * @subpackage Model
- * @author SpecNaz Team 9815
+ * @author <YOUR NAME HERE>
  */
 class Application_Model_KorisnickaPodrska extends Application_Model_ModelAbstract
 {
@@ -36,7 +36,7 @@ class Application_Model_KorisnickaPodrska extends Application_Model_ModelAbstrac
     protected $_Username;
 
     /**
-     * Database var type varchar(50)
+     * Database var type varchar(100)
      *
      * @var string
      */
@@ -77,6 +77,13 @@ class Application_Model_KorisnickaPodrska extends Application_Model_ModelAbstrac
      */
     protected $_IdRola;
 
+    /**
+     * Database var type varchar(100)
+     *
+     * @var string
+     */
+    protected $_RandomString;
+
 
     /**
      * Parent relation korisnicka_podrska_ibfk_1
@@ -101,6 +108,7 @@ class Application_Model_KorisnickaPodrska extends Application_Model_ModelAbstrac
             'email'=>'Email',
             'tel'=>'Tel',
             'id_rola'=>'IdRola',
+            'random_string'=>'RandomString',
         ));
 
         $this->setParentList(array(
@@ -288,6 +296,28 @@ class Application_Model_KorisnickaPodrska extends Application_Model_ModelAbstrac
     public function getIdRola()
     {
         return $this->_IdRola;
+    }
+
+    /**
+     * Sets column random_string
+     *
+     * @param string $data
+     * @return Application_Model_KorisnickaPodrska
+     */
+    public function setRandomString($data)
+    {
+        $this->_RandomString = $data;
+        return $this;
+    }
+
+    /**
+     * Gets column random_string
+     *
+     * @return string
+     */
+    public function getRandomString()
+    {
+        return $this->_RandomString;
     }
 
     /**

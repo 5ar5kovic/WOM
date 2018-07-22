@@ -10,7 +10,27 @@ class Utils
         } else {
             $role = 1;
         }
-        return $role;
+        return (int)$role;
+    }
+    
+    public static function getUserId(){
+        $auth = Zend_Auth::getInstance();
+        if($auth->hasIdentity()){
+            $id = $auth->getStorage()->read()->id;
+        } else {
+            $id = -1;
+        }
+        return (int)$id;
+    }
+    
+    public static function getUserEmail(){
+        $auth = Zend_Auth::getInstance();
+        if($auth->hasIdentity()){
+            $email = $auth->getStorage()->read()->email;
+        } else {
+            $email = -1;
+        }
+        return $email;
     }
     
     public static function sendEmail($templateName,$subject,$to,$templateParams,$toName='')
@@ -37,6 +57,24 @@ class Utils
         $mail->addTo($to, $toName);
         $mail->setSubject($subject);
         $mail->send($transport);
+    }
+    
+    public static function generateRandomString($length = 10)
+    {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
+    
+    public static function getHashedValue($toHash)
+    {
+        $passwordSalt1 = "wom213";
+        $passwordSalt2 = "spaleperajohan";
+        return hash('sha256', $passwordSalt1 . $toHash . $passwordSalt2);
     }
 }
 

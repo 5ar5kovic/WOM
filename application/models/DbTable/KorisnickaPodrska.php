@@ -3,19 +3,19 @@
 /**
  * Application Model DbTables
  *
- * @package Application_Model
+ * @package Default_Model
  * @subpackage DbTable
- * @author SpecNaz Team 9815
- * @copyright SpecNaz Team 9815
+ * @author <YOUR NAME HERE>
+ * @copyright ZF model generator
  * @license http://framework.zend.com/license/new-bsd     New BSD License
  */
 
 /**
  * Table definition for korisnicka_podrska
  *
- * @package Application_Model
+ * @package Default_Model
  * @subpackage DbTable
- * @author SpecNaz Team 9815
+ * @author <YOUR NAME HERE>
  */
 class Application_Model_DbTable_KorisnickaPodrska extends Application_Model_DbTable_TableAbstract
 {

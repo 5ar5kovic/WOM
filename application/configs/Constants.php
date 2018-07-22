@@ -2,6 +2,9 @@
 
 class Constants
 {
+            
+    public static $duzinaRandomStringaZaPromenuPassworda = 70;
+    
     public static $authentication = "authentication";
     public static $administracija = "administracija";
     public static $korisnickaAdministracija = "korisnickaAdministracija";
@@ -37,8 +40,10 @@ class Constants
     public static $racunar_brisanje="racunar-brisanje";
     
     //putanje
-    public static $zaboravljenaLozinkaPutanja = "/authentication/zaboravaljena-lozinka";
+    public static $zaboravljenaLozinkaPutanja = "/authentication/zaboravljena-lozinka";
     public static $homePutanja = "/authentication/login";
+    public static $loginPutanja = "/authentication/login";
+    public static $novaLozinkaPutanja = "/authentication/promena-lozinke";
     
     //ostalo
     public static $appMail = 'mikam6618@gmail.com';

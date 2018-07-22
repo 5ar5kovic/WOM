@@ -242,9 +242,9 @@ $dbUpdate[$id]['opis'] = 'Unos role administrator';
 //unos statusa - ceka
 $id = 16;
 $dbUpdate[$id]['id'] = $id;
-$dbUpdate[$id]['query'] = "INSERT INTO status (id,status) VALUES (1,'Čeka');";
+$dbUpdate[$id]['query'] = "INSERT INTO status (id,status) VALUES (1,'ÄŒeka');";
 $dbUpdate[$id]['params'] = array();
-$dbUpdate[$id]['opis'] = 'Unos statusa Čeka';
+$dbUpdate[$id]['opis'] = 'Unos statusa ÄŒeka';
 
 //unos statusa - u radu
 $id = 17;
@@ -256,16 +256,23 @@ $dbUpdate[$id]['opis'] = 'Unos statusa U radu';
 //unos statusa - zavrsen
 $id = 18;
 $dbUpdate[$id]['id'] = $id;
-$dbUpdate[$id]['query'] = "INSERT INTO status (id,status) VALUES (3,'Završen');";
+$dbUpdate[$id]['query'] = "INSERT INTO status (id,status) VALUES (3,'ZavrÅ¡en');";
 $dbUpdate[$id]['params'] = array();
-$dbUpdate[$id]['opis'] = 'Unos statusa Završen';
+$dbUpdate[$id]['opis'] = 'Unos statusa ZavrÅ¡en';
 
 //unos statusa - odbacen
 $id = 19;
 $dbUpdate[$id]['id'] = $id;
-$dbUpdate[$id]['query'] = "INSERT INTO status (id,status) VALUES (4,'Odbačen');";
+$dbUpdate[$id]['query'] = "INSERT INTO status (id,status) VALUES (4,'OdbaÄ�en');";
 $dbUpdate[$id]['params'] = array();
-$dbUpdate[$id]['opis'] = 'Unos statusa Odbačen';
+$dbUpdate[$id]['opis'] = 'Unos statusa OdbaÄ�en';
+
+//random string za promenu passworda
+$id = 20;
+$dbUpdate[$id]['id'] = $id;
+$dbUpdate[$id]['query'] = "ALTER TABLE korisnicka_podrska ADD random_string VARCHAR(100) DEFAULT '';";
+$dbUpdate[$id]['params'] = array();
+$dbUpdate[$id]['opis'] = 'Kada korisnik zaboravi password potrebno mu je poslati link koji sadrzi neku random vrednost';
 
 
 

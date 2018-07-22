@@ -60,8 +60,8 @@ class Application_Model_WomAcl extends Zend_Acl {
         
         /*permisije*/
         $this->allow('1', Constants::$authentication);
-        $this->deny('2',Constants::$authentication , Constants::$login);
-        $this->deny('2',Constants::$authentication, Constants::$zaboravljenaLozinka);
+        //$this->deny('2',Constants::$authentication, Constants::$login);
+        //$this->deny('2',Constants::$authentication, Constants::$zaboravljenaLozinka);
         $this->allow('4', Constants::$korisnickaAdministracija, Constants::$dodajKorisnika);
         $this->allow('4', Constants::$racunar);
         $this->allow('8', Constants::$administracija);

@@ -5,8 +5,8 @@
  *
  * @package Application_Model
  * @subpackage Mapper
- * @author SpecNaz Team 9815
- * @copyright SpecNaz Team 9815
+ * @author <YOUR NAME HERE>
+ * @copyright ZF model generator
  * @license http://framework.zend.com/license/new-bsd     New BSD License
  */
 
@@ -15,7 +15,7 @@
  *
  * @package Application_Model
  * @subpackage Mapper
- * @author SpecNaz Team 9815
+ * @author <YOUR NAME HERE>
  */
 class Application_Model_Mapper_KorisnickaPodrska extends Application_Model_Mapper_MapperAbstract
 {
@@ -40,6 +40,7 @@ class Application_Model_Mapper_KorisnickaPodrska extends Application_Model_Mappe
             'email' => $model->getEmail(),
             'tel' => $model->getTel(),
             'id_rola' => $model->getIdRola(),
+            'random_string' => $model->getRandomString(),
         );
 
         return $result;
@@ -48,7 +49,7 @@ class Application_Model_Mapper_KorisnickaPodrska extends Application_Model_Mappe
     /**
      * Returns the DbTable class associated with this mapper
      *
-     * @return Application_Model_DbTable_KorisnickaPodrska
+     * @return 
      */
     public function getDbTable()
     {
@@ -128,7 +129,6 @@ class Application_Model_Mapper_KorisnickaPodrska extends Application_Model_Mappe
                 $primary_key = $this->getDbTable()->insert($data);
                 if ($primary_key) {
                     $model->setId($primary_key);
-                    $success = $primary_key;
                 } else {
                     $success = false;
                 }
@@ -201,7 +201,8 @@ class Application_Model_Mapper_KorisnickaPodrska extends Application_Model_Mappe
                   ->setPrezime($data['prezime'])
                   ->setEmail($data['email'])
                   ->setTel($data['tel'])
-                  ->setIdRola($data['id_rola']);
+                  ->setIdRola($data['id_rola'])
+                  ->setRandomString($data['random_string']);
         } elseif ($data instanceof Zend_Db_Table_Row_Abstract || $data instanceof stdClass) {
             $entry->setId($data->id)
                   ->setUsername($data->username)
@@ -210,7 +211,8 @@ class Application_Model_Mapper_KorisnickaPodrska extends Application_Model_Mappe
                   ->setPrezime($data->prezime)
                   ->setEmail($data->email)
                   ->setTel($data->tel)
-                  ->setIdRola($data->id_rola);
+                  ->setIdRola($data->id_rola)
+                  ->setRandomString($data->random_string);
         }
 
         $entry->setMapper($this);
