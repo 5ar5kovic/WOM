@@ -70,8 +70,8 @@ class  Application_Form_KorisnickaPodrskaUnos extends Zend_Form
         ->setAttrib('id', 'rola')
         ->setAttrib('name', 'rola')
         ->setAttrib('class', 'form-control validate[requested]')
-        ->setAttrib('tabindex', 1)
-        ->setOptions(array(
+        ->setAttrib('tabindex', 1);
+        $rola->addMultiOptions(array(
             '2' => 'Korisnik',
             '4' => 'Supervizor'
         ));        

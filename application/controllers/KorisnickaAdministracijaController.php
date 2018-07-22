@@ -1,5 +1,6 @@
 <?php
 
+include_once APPLICATION_PATH . '/Utils.php';
 class KorisnickaAdministracijaController extends Zend_Controller_Action
 {
 
@@ -26,7 +27,7 @@ class KorisnickaAdministracijaController extends Zend_Controller_Action
             $ime = $request->getParam('ime');
             $prezime = $request->getParam('prezime');
             $email = $request->getParam('email');
-            $tel = $request->getParam('tel');
+            $tel = $request->getParam('telefon');
             $rola = (int)$request->getParam('rola');
             
             if($form->isValid($request->getPost())) {
@@ -37,10 +38,21 @@ class KorisnickaAdministracijaController extends Zend_Controller_Action
                 $korisnickaPodrskaModel->setPrezime($prezime);
                 $korisnickaPodrskaModel->setEmail($email);
                 $korisnickaPodrskaModel->setTel($tel);
-                $korisnickaPodrskaModel->setRola($rola);
-                $korisnickaPodrskaModel->save();
-                $this->redirect('korisnicka-administracija/index');
-            }
+                $rolaModel = new Application_Model_Rola();
+                $rolaModel = $rolaModel->find($rola);
+                $korisnickaPodrskaModel->setRola($rolaModel);
+                $result = $korisnickaPodrskaModel->save();
+                if(!$result){   
+                    $this->redirect('korisnickaAdministracija/index?result=failed');
+                }
+            } else {                
+                $this->redirect('korisnickaAdministracija/index?result=failed');
+            } 
+            
+            //salji mejl korisniku
+            
+            
+            $this->redirect('korisnickaAdministracija/index');
             
             
         }
