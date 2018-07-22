@@ -2,7 +2,7 @@
  $(document).ready(function(){
  	$('#novi').click(function(event){
  		event.preventDefault();
-		location.href = '<?php echo URL_PREFIX;?>/administracija/maticna-ploca-unos';
+		location.href = '<?php echo URL_PREFIX;?>/administracija/tip-racunara-unos';
  	});
  	
  });
@@ -12,7 +12,7 @@
 		<div class="row">
         	<div class="col-xs-12">
           		<h2 class="page-header">
-            		MATICNE PLOCE           
+            		Tipovi racunara           
           		</h2>
         	</div>
       	</div>
@@ -24,19 +24,19 @@
 						<th>Naziv</th>
 						<th style="width: 80px">Promena/Brisanje</th>
 					</tr>
-<?php foreach ($this->maticnePloce as $maticnaPloca):?>
+<?php foreach ($this->tipoviRacunara as $tipRacunara):?>
                 	<tr>
 						<td><?php echo ++$redniBroj . ".";?></td>
-						<td><?php echo $maticnaPloca['naziv'];?></td>
+						<td><?php echo $tipRacunara['naziv'];?></td>
 						<td>
 							<div>
-								<a href="<?php echo URL_PREFIX;?>/administracija/maticna-ploca-unos?id=<?php echo $maticnaPloca['id']; ?>"
+								<a href="<?php echo URL_PREFIX;?>/administracija/tip-racunara-unos?id=<?php echo $tipRacunara['id']; ?>"
 									class="btn btn-xs btn-teal tooltips">	
 									<i class="fa fa-pencil-square-o text-blue"></i>
 								</a>
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								<a  href="#"
-									data-href="<?php echo URL_PREFIX;?>/administracija/maticna-ploca-brisanje?id=<?php echo $maticnaPloca['id']; ?>"
+									data-href="<?php echo URL_PREFIX;?>/administracija/tip-racunara-brisanje?id=<?php echo $tipRacunara['id']; ?>"
 									data-toggle="modal"
 									data-target="#confirm-delete">								
 									<i class="fa fa-minus-square-o text-red"></i>
@@ -52,7 +52,7 @@
 		<hr>
 		<div class="row no-print">
         	<div class="col-xs-12">
-          		<a href="/administracija/maticna-ploca-unos" id="novi" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Dodaj novu</a>
+          		<a href="/administracija/tip-racunara-unos" id="novi" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Dodaj novi</a>
           	</div>
       	</div>	
 	</section>
@@ -67,16 +67,16 @@
                	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
               		<span aria-hidden="true">&times;</span>
                	</button>
-               	<h4 class="modal-title">Brisanje unete maticne ploce</h4>
+               	<h4 class="modal-title">Brisanje unetog tipa racunara</h4>
            	</div>
            	
            	<div class="modal-body">
-               	<p>Uneta maticna ploca bice obrisana&hellip;</p>
+               	<p>Uneti tip racunara bice obrisan&hellip;</p>
             </div>
            	
            	<div class="modal-footer">
               	<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Odustani</button>
-               	<a href="<?php echo URL_PREFIX;?>/administracija/maticna-ploca-brisanje?id=<?php echo $maticnaPloca['id']; ?>" class="btn btn-outline">&times;&nbsp;&nbsp;Obriši</a>
+               	<a href="<?php echo URL_PREFIX;?>/administracija/tip-racunara-brisanje?id=<?php echo $tipRacunara['id']; ?>" class="btn btn-outline">&times;&nbsp;&nbsp;Obriši</a>
            	</div>
            	
         </div>
@@ -84,5 +84,3 @@
 	</div>
 	
 </div>
-
-

@@ -239,6 +239,33 @@ $dbUpdate[$id]['query'] = "INSERT INTO rola (id,rola,opis_role) VALUES (8,'admin
 $dbUpdate[$id]['params'] = array();
 $dbUpdate[$id]['opis'] = 'Unos role administrator';
 
+//unos statusa - ceka
+$id = 16;
+$dbUpdate[$id]['id'] = $id;
+$dbUpdate[$id]['query'] = "INSERT INTO status (id,status) VALUES (1,'Čeka');";
+$dbUpdate[$id]['params'] = array();
+$dbUpdate[$id]['opis'] = 'Unos statusa Čeka';
+
+//unos statusa - u radu
+$id = 17;
+$dbUpdate[$id]['id'] = $id;
+$dbUpdate[$id]['query'] = "INSERT INTO status (id,status) VALUES (2,'U radu');";
+$dbUpdate[$id]['params'] = array();
+$dbUpdate[$id]['opis'] = 'Unos statusa U radu';
+
+//unos statusa - zavrsen
+$id = 18;
+$dbUpdate[$id]['id'] = $id;
+$dbUpdate[$id]['query'] = "INSERT INTO status (id,status) VALUES (3,'Završen');";
+$dbUpdate[$id]['params'] = array();
+$dbUpdate[$id]['opis'] = 'Unos statusa Završen';
+
+//unos statusa - odbacen
+$id = 19;
+$dbUpdate[$id]['id'] = $id;
+$dbUpdate[$id]['query'] = "INSERT INTO status (id,status) VALUES (4,'Odbačen');";
+$dbUpdate[$id]['params'] = array();
+$dbUpdate[$id]['opis'] = 'Unos statusa Odbačen';
 
 
 

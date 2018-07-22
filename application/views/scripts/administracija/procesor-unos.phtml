@@ -1,0 +1,29 @@
+<?php echo $this->form->id; ?>
+<div class="box box-info">
+	<div class="box-header with-border">
+    	<h3 class="box-title"><?php echo ($this->id != null )? "Izmena podataka o procesoru" : "Dodavanje novog procesora" ?></h3>
+    </div>
+    <form class="form-horizontal" name="frmProcesorUnos" id="frmProcesorUnos" action="<?php echo URL_PREFIX;?>/administracija/procesor-unos" method="post">
+    	<?php echo $this->form->id;?>
+    	<div class="box-body">
+        	<div class="form-group">
+            	<label for="naziv" class="col-sm-2 control-label">Naziv procesora: </label>
+
+                  <div class="col-sm-10">
+                    <?php echo $this->form->naziv; ?>
+                  </div>
+                </div>
+                
+            </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
+					<?php  echo $this->form->submit; ?>
+                	
+
+
+                	<a class="btn btn-default" role="button" href="<?php echo URL_PREFIX;?>/administracija/procesor-prikaz" >Odustani</a>
+
+              </div>
+              <!-- /.box-footer -->
+            </form>
+          </div>

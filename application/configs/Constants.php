@@ -19,5 +19,15 @@ class Constants
     public static $maticna_ploca_prikaz = "maticna-ploca-prikaz";
     public static $maticna_ploca_unos = "maticna-ploca-unos";
     public static $maticna_ploca_brisanje = "maticna-ploca-brisanje";
+    public static $procesor_prikaz = "procesor-prikaz";
+    public static $procesor_unos = "procesor-unos";
+    public static $procesor_brisanje = "procesor-brisanje";
+    public static $tip_racunara_prikaz = "tip-racunara-prikaz";
+    public static $tip_racunara_unos = "tip-racunara-unos";
+    public static $tip_racunara_brisanje = "tip-racunara-brisanje";
+    public static $korisnik_prikaz = "korisnik-prikaz";
+    public static $korisnik_unos = "korisnik-unos";
+    public static $korisnik_brisanje = "korisnik-brisanje";
+    
 }
 

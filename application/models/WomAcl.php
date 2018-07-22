@@ -25,6 +25,19 @@ class Application_Model_WomAcl extends Zend_Acl {
         $this->addResource(new Zend_Acl_Resource(Constants::$kvar_prikaz), Constants::$administracija);
         $this->addResource(new Zend_Acl_Resource(Constants::$kvar_unos), Constants::$administracija);
         $this->addResource(new Zend_Acl_Resource(Constants::$kvar_brisanje), Constants::$administracija);
+        $this->addResource(new Zend_Acl_Resource(Constants::$maticna_ploca_prikaz), Constants::$administracija);
+        $this->addResource(new Zend_Acl_Resource(Constants::$maticna_ploca_unos), Constants::$administracija);
+        $this->addResource(new Zend_Acl_Resource(Constants::$maticna_ploca_brisanje), Constants::$administracija);
+        $this->addResource(new Zend_Acl_Resource(Constants::$procesor_prikaz), Constants::$administracija);
+        $this->addResource(new Zend_Acl_Resource(Constants::$procesor_unos), Constants::$administracija);
+        $this->addResource(new Zend_Acl_Resource(Constants::$procesor_brisanje), Constants::$administracija);
+        $this->addResource(new Zend_Acl_Resource(Constants::$tip_racunara_prikaz), Constants::$administracija);
+        $this->addResource(new Zend_Acl_Resource(Constants::$tip_racunara_unos), Constants::$administracija);
+        $this->addResource(new Zend_Acl_Resource(Constants::$tip_racunara_brisanje), Constants::$administracija);
+        $this->addResource(new Zend_Acl_Resource(Constants::$korisnik_prikaz), Constants::$administracija);
+        $this->addResource(new Zend_Acl_Resource(Constants::$korisnik_unos), Constants::$administracija);
+        $this->addResource(new Zend_Acl_Resource(Constants::$korisnik_brisanje), Constants::$administracija);
+        
         
 
         

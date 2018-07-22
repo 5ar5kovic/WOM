@@ -23,6 +23,12 @@
           <actionMethod actionName="maticnaPlocaUnos"/>
           <actionMethod actionName="maticnaPlocaPrikaz"/>
           <actionMethod actionName="maticnaPlocaBrisanje"/>
+          <actionMethod actionName="procesorPrikaz"/>
+          <actionMethod actionName="procesorUnos"/>
+          <actionMethod actionName="procesorBrisanje"/>
+          <actionMethod actionName="korisnikPrikaz"/>
+          <actionMethod actionName="korisnikUnos"/>
+          <actionMethod actionName="korisnikBrisanje"/>
         </controllerFile>
         <controllerFile controllerName="Authentication">
           <actionMethod actionName="index"/>
@@ -88,6 +94,24 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Administracija">
             <viewScriptFile forActionName="maticnaPlocaBrisanje"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Administracija">
+            <viewScriptFile forActionName="procesorPrikaz"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Administracija">
+            <viewScriptFile forActionName="procesorUnos"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Administracija">
+            <viewScriptFile forActionName="procesorBrisanje"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Administracija">
+            <viewScriptFile forActionName="korisnikPrikaz"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Administracija">
+            <viewScriptFile forActionName="korisnikUnos"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Administracija">
+            <viewScriptFile forActionName="korisnikBrisanje"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>
