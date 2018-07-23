@@ -17,7 +17,7 @@ class KorisnickaAdministracijaController extends Zend_Controller_Action
     public function korisnickaAdministracijaPrikazAction()
     {
         $myMapper = new Application_Model_Mymapper_KorisnickaPodrska();
-        $korisnici = $myMapper->korisnickaPodrskaSelect();
+        $korisnici = $myMapper->korisnickaPodrskaSelectKorisnike();
         $this->view->korisnici = $korisnici;
     }
     
