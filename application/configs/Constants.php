@@ -14,9 +14,10 @@ class Constants
     public static $logout = "logout";
     public static $index = "index";
     public static $dodajKorisnika = "dodaj-korisnika";
+    public static $korisnickaAdministracijaPrikaz = "korisnicka-administracija-prikaz";
     public static $zaboravljenaLozinka = "zaboravljena-lozinka";
     public static $execute = "execute";    
-    public static $operativni_sistem_prikaz = "operativni-sistem-prikaz";   
+    public static $operativni_sistem_prikaz = "operativni-sistem-prikaz"; 
     public static $operativni_sistem_unos = "operativni-sistem-unos";
     public static $operativni_sistem_brisanje = "operativni-sistem-brisanje";
     public static $kvar_prikaz = "kvar-prikaz";
@@ -44,6 +45,9 @@ class Constants
     public static $homePutanja = "/authentication/login";
     public static $loginPutanja = "/authentication/login";
     public static $novaLozinkaPutanja = "/authentication/promena-lozinke";
+    public static $korisnickaAdministracijaIndexPutanja = "korisnickaAdministracija/index";
+    public static $dodajKorisnikaPutanja = "/korisnickaAdministracija/dodaj-korisnika";
+    public static $korisnickaAdministracijaPrikazPutanja = "/korisnickaAdministracija/korisnicka-administracija-prikaz";
     
     //ostalo
     public static $appMail = 'mikam6618@gmail.com';
