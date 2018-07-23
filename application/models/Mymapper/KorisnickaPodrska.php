@@ -21,17 +21,15 @@ class Application_Model_Mymapper_KorisnickaPodrska extends Application_Model_Map
         
         return $result;
     }
-    public function pronadjiPoId($id){
-        
-        $where = $this->getDbTable()->select()->where("id = ?", $id);
-        
-        $result = $this->getDbTable()->fetchRow($where);
-        
+    public function pronadjiPoId($id){        
+        $where = $this->getDbTable()->select()->where("id = ?", $id);        
+        $result = $this->getDbTable()->fetchRow($where);        
         return $result;
     }
-    public function korisnickaPodrskaSelect() {
-        $select = $this->getDbTable()->select();
-        $result = $this->getDbTable()->fetchAll($select)->toArray();
+    
+    public function korisnickaPodrskaSelectKorisnike() {
+        $where = $this->getDbTable()->select()->where("id_rola = ?", 2);        
+        $result = $this->getDbTable()->fetchAll($where);        
         return $result;
     }
 }

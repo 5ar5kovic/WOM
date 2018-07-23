@@ -24,6 +24,9 @@ class Application_Model_WomAcl extends Zend_Acl {
         $this->addResource(new Zend_Acl_Resource(Constants::$profil));
         $this->addResource(new Zend_Acl_Resource(Constants::$profil . "/" . Constants::$promenaLozinke), Constants::$profil);
         
+        $this->addResource(new Zend_Acl_Resource(Constants::$radniNalog));
+        $this->addResource(new Zend_Acl_Resource(Constants::$radniNalog . "/" . Constants::$dodajNalog), Constants::$radniNalog);
+        
         $this->addResource(new Zend_Acl_Resource(Constants::$korisnickaAdministracija));
         $this->addResource(new Zend_Acl_Resource(Constants::$korisnickaAdministracija . "/" . Constants::$index), Constants::$korisnickaAdministracija);
         $this->addResource(new Zend_Acl_Resource(Constants::$korisnickaAdministracija . "/" . Constants::$dodajKorisnika),Constants::$korisnickaAdministracija);
@@ -74,6 +77,7 @@ class Application_Model_WomAcl extends Zend_Acl {
         $this->allow('8', Constants::$dbupdate);
         $this->allow('8', Constants::$error);
         $this->allow('8', Constants::$index);
+        $this->allow('8', Constants::$radniNalog);
         
       
     }

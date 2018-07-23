@@ -4,6 +4,8 @@ class Constants
 {
             
     public static $duzinaRandomStringaZaPromenuPassworda = 70;
+    public static $formatVremena = "Y-m-d";
+    
     
     public static $authentication = "authentication";
     public static $administracija = "administracija";
@@ -14,6 +16,7 @@ class Constants
     public static $logout = "logout";
     public static $index = "index";
     public static $profil = "profil";
+    public static $radniNalog = "radniNalog";
     public static $promenaLozinke = "promena-lozinke";
     public static $dodajKorisnika = "dodaj-korisnika";
     public static $korisnickaAdministracijaPrikaz = "korisnicka-administracija-prikaz";
@@ -41,6 +44,8 @@ class Constants
     public static $racunar_prikaz="racunar-prikaz";
     public static $racunar_unos="racunar-unos";
     public static $racunar_brisanje="racunar-brisanje";
+    public static $dodajNalog="dodaj-nalog";
+    
     
     //putanje
     public static $zaboravljenaLozinkaPutanja = "/authentication/zaboravljena-lozinka";
@@ -51,6 +56,7 @@ class Constants
     public static $dodajKorisnikaPutanja = "/korisnickaAdministracija/dodaj-korisnika";
     public static $korisnickaAdministracijaPrikazPutanja = "/korisnickaAdministracija/korisnicka-administracija-prikaz";
     public static $promenaLozinkePutanja = "/profil/promena-lozinke";
+    public static $radniNalogIndexPutanja = "/radniNalog/index";
     
     //ostalo
     public static $appMail = 'mikam6618@gmail.com';
