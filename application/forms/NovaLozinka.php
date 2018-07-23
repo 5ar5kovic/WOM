@@ -1,17 +1,9 @@
 <?php
-class Application_Form_PromenaLozinke extends Zend_Form {
+class Application_Form_NovaLozinka extends Zend_Form {
     
     public function init($option = null) {
         
         $this->setName('frmPromenaLozinke');
-        
-        $stari = new Zend_Form_Element_Password('stari');
-        $stari->setLabel('Lozinka: ')
-        ->setAttrib('id', 'stari')
-        ->setAttrib('name', 'stari')
-        ->setAttrib('class', 'form-control validate[requested]')
-        ->setAttrib('tabindex', 1)
-        ->setRequired(true);
         
         $pass1 = new Zend_Form_Element_Password('pass1');
         $pass1->setLabel('Lozinka: ')
@@ -34,10 +26,11 @@ class Application_Form_PromenaLozinke extends Zend_Form {
         ->setLabel('Sacuvaj')
         ->setAttrib('class', 'btn btn-success pull-right')
         ->setAttrib('tabindex', 2);
-       
-            $this->addElements(array($stari, $pass1, $pass2, $submit));
-            $this->setMethod('post');
-            $this->setElementDecorators(array("ViewHelper"),null, false);        
+        
+        $this->addElements(array($pass1, $pass2, $submit));
+        $this->setMethod('post');
+        $this->setElementDecorators(array("ViewHelper"),null, false);
+        
     }
     
 }

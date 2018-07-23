@@ -13,6 +13,8 @@ class Constants
     public static $login = "login";
     public static $logout = "logout";
     public static $index = "index";
+    public static $profil = "profil";
+    public static $promenaLozinke = "promena-lozinke";
     public static $dodajKorisnika = "dodaj-korisnika";
     public static $korisnickaAdministracijaPrikaz = "korisnicka-administracija-prikaz";
     public static $zaboravljenaLozinka = "zaboravljena-lozinka";
@@ -48,6 +50,7 @@ class Constants
     public static $korisnickaAdministracijaIndexPutanja = "korisnickaAdministracija/index";
     public static $dodajKorisnikaPutanja = "/korisnickaAdministracija/dodaj-korisnika";
     public static $korisnickaAdministracijaPrikazPutanja = "/korisnickaAdministracija/korisnicka-administracija-prikaz";
+    public static $promenaLozinkePutanja = "/profil/promena-lozinke";
     
     //ostalo
     public static $appMail = 'mikam6618@gmail.com';

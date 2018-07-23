@@ -44,6 +44,12 @@
           <actionMethod actionName="racunarUnos"/>
           <actionMethod actionName="racunarBrisanje"/>
         </controllerFile>
+        <controllerFile controllerName="Profil">
+          <actionMethod actionName="index"/>
+        </controllerFile>
+        <controllerFile controllerName="RadniNalog">
+          <actionMethod actionName="index"/>
+        </controllerFile>
       </controllersDirectory>
       <formsDirectory enabled="false"/>
       <layoutsDirectory>
@@ -130,6 +136,12 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Racunar">
             <viewScriptFile forActionName="racunarBrisanje"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Profil">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="RadniNalog">
+            <viewScriptFile forActionName="index"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>

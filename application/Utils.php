@@ -33,6 +33,16 @@ class Utils
         return $email;
     }
     
+    public static function getPassword(){
+        $auth = Zend_Auth::getInstance();
+        if($auth->hasIdentity()){
+            $password = $auth->getStorage()->read()->password;
+        } else {
+            $password = -1;
+        }
+        return $password;
+    }
+    
     public static function sendEmail($templateName,$subject,$to,$templateParams,$toName='')
     {
         $config = array('ssl' => 'tls',

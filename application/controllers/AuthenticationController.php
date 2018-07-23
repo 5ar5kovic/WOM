@@ -105,7 +105,7 @@ class AuthenticationController extends Zend_Controller_Action
         // napravi formu za unos passworda
         Zend_Layout::getMvcInstance()->setLayout('login');
         $request = $this->getRequest();
-        $form = new Application_Form_PromenaLozinke();
+        $form = new Application_Form_NovaLozinka();
         
         $token = $this->getRequest()->getParam('token');
         $myMapper = new Application_Model_Mymapper_KorisnickaPodrska();

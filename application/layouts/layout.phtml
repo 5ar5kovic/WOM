@@ -160,7 +160,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat"><?php echo "Promena lozinke" ?></a>
+                  <a href="<?php echo Constants::$promenaLozinkePutanja?>" class="btn btn-default btn-flat"><?php echo "Promena lozinke" ?></a>
                 </div>
                 <div class="pull-right">
                   <a href="<?php echo $this->url(array('controller'=>'authentication', 'action'=>'logout')); ?>" class="btn btn-default btn-flat">Odjava</a>
@@ -192,7 +192,7 @@
                   
                     <li class="header">GLAVNA NAVIGACIJA</li>
                     <li class="active">
-                    	<a href="#"><i class="fa fa-calendar"></i>Kalendar aktivnosti</a>
+                    	<a href="<?php echo Constants::$index?>"><i class="fa fa-calendar"></i>Kalendar aktivnosti</a>
                     <li class="treeview">
                       <a href="#">
                         <i class="fa fa-tasks"></i> <span>Radni nalozi</span>
