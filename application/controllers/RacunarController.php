@@ -29,22 +29,22 @@ class RacunarController extends Zend_Controller_Action
         if ($request->isPost()) {
             
             $naziv = $request->getParam('naziv');
-            $id_tip = $request->getParam('id_tip');
-            $id_os = $request->getParam('id_os');
-            $id_mb = $request->getParam('id_mb');
-            $id_cpu = $request->getParam('id_cpu');
-            $id_korisnik = $request->getParam('id_korisnik');
+            $id_tip = $request->getParam('tip');
+            $id_os = $request->getParam('os');
+            $id_mb = $request->getParam('mb');
+            $id_cpu = $request->getParam('cpu');
+            $id_korisnik = $request->getParam('korisnik');
             
             if ($form->isValid($request->getPost())) {
                 $racunarModel = new Application_Model_Racunar();
                 $id = (int) $request->getParam('id');
                 $racunarModel->setId($id != 0 ? $id : null)
-                ->setNaziv($naziv);
-                //->setIdTip($id_tip)
-                //->setIdOs($id_os)
-                //->setIdMb($id_mb)
-                //->setIdCpu($id_cpu)
-                //->setIdKorisnik($id_korisnik);
+                ->setNaziv($naziv)
+                ->setIdTip($id_tip)
+                ->setIdOs($id_os)
+                ->setIdMb($id_mb)
+                ->setIdCpu($id_cpu)
+                ->setIdKorisnik($id_korisnik);
                 $racunarModel->save();
                 $this->redirect('racunar/racunar-prikaz');
             }

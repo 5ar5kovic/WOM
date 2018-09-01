@@ -12,7 +12,7 @@ class Application_Form_KvarUnos extends Zend_Form {
         
         $this->setName('frmKvarUnos');
         
-        //id operativnog sistema
+        //id kvara
         $id = new Zend_Form_Element_Hidden('id');
         $id->setAttrib('id', 'id');
         

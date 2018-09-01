@@ -11,7 +11,7 @@ class Application_Form_RadniNalogUnos extends Zend_Form
         $korisnici = $myMapper1->korisnickaPodrskaSelectKorisnike();
         
         $myMapper2 = new Application_Model_Mymapper_Racunar();
-        $racunari = $myMapper2->racunariSelect();
+        $racunari = $myMapper2->racunarSelect();
         
         $myMapper3 = new Application_Model_Mymapper_Kvar();
         $kvarovi = $myMapper3->kvarSelect();
