@@ -17,7 +17,7 @@
           		</h2>
         	</div>
       	</div>
-		<!--  <div class="row">
+		  <div class="row">
 			<div class="box-body no-padding">
 				<table class="table table-condensed">
 					<tr>
@@ -31,25 +31,27 @@
 						<td><?php echo $korisnik['username'];?></td>
 						<td>
 							<div>
-								<a href="<?php echo URL_PREFIX;?>/administracija/operativni-sistem-unos?id=<?php echo $operativniSistem['id']; ?>"
+								<a href="<?php echo URL_PREFIX . Constants::$izmeniKorisnikaPutanja . "?id=" . $korisnik['id']; ?>"
 									class="btn btn-xs btn-teal tooltips">	
 									<i class="fa fa-pencil-square-o text-blue"></i>
 								</a>
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<a  href="#"
-									data-href="<?php echo URL_PREFIX;?>/administracija/operativni-sistem-brisanje?id=<?php echo $operativniSistem['id']; ?>"
+								
+								
+								<a href="#"
+									data-href="<?php echo URL_PREFIX . Constants::$obrisiKorisnikaPutanja . $korisnik['id']; ?>"
 									data-toggle="modal"
 									data-target="#confirm-delete">								
 									<i class="fa fa-minus-square-o text-red"></i>
 								</a>
-							</div>
-						
+							</div>						
 					</td>
+
 					</tr>
 <?php endforeach;?>
                 </table>
 			</div>
-		</div>-->
+		</div>
 		<hr>
 		<div class="row no-print">
         	<div class="col-xs-12">
@@ -77,7 +79,7 @@
            	
            	<div class="modal-footer">
               	<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Odustani</button>
-               	<a href="<?php echo URL_PREFIX;?>/administracija/operativni-sistem-brisanje?id=<?php echo $operativniSistem['id']; ?>" class="btn btn-outline">&times;&nbsp;&nbsp;Obriši</a>
+               	<a href="<?php echo URL_PREFIX;?>/korisnickaAdministracija/brisanje-korisnika?id=<?php echo $korisnik['id']; ?>" class="btn btn-outline">&times;&nbsp;&nbsp;Obriši</a>
            	</div>
            	
         </div>

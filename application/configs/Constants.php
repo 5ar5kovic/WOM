@@ -54,6 +54,8 @@ class Constants
     public static $novaLozinkaPutanja = "/authentication/promena-lozinke";
     public static $korisnickaAdministracijaIndexPutanja = "korisnickaAdministracija/index";
     public static $dodajKorisnikaPutanja = "/korisnickaAdministracija/dodaj-korisnika";
+    public static $izmeniKorisnikaPutanja = "/korisnickaAdministracija/izmeni-korisnika";
+    public static $obrisiKorisnikaPutanja = "/korisnickaAdministracija/brisanje-korisnika";
     public static $korisnickaAdministracijaPrikazPutanja = "/korisnickaAdministracija/korisnicka-administracija-prikaz";
     public static $promenaLozinkePutanja = "/profil/promena-lozinke";
     public static $radniNalogIndexPutanja = "/radniNalog/index";

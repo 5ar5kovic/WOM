@@ -87,12 +87,6 @@ class  Application_Form_KorisnickaPodrskaUnos extends Zend_Form
         $this->setElementDecorators(array("ViewHelper"),null, false);
     }
     
-    public function populate(array $data) {
-       // parent::populate($data);
-       // $this->getElement('operativniSistemId')->setValue($data['id']);
-       // $this->getElement('naziv')->setValue($data['naziv']);
-       var_dump($data);
-       exit;
-    }
+    
 }
 

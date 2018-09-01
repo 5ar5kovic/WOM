@@ -1,0 +1,75 @@
+<?php
+include_once APPLICATION_PATH . "/configs/Constants.php";
+$this->form; ?>
+<div class="box box-info">
+	<div class="box-header with-border">
+    	<h3 class="box-title"><?php echo "Izmena korisnicke podrske" ?></h3>
+    </div>
+    <form class="form-horizontal" name="frmKorisnickaPodrskaIzmena" id="frmKorisnickaPodrskaIzmena" action="<?php echo URL_PREFIX.Constants::$izmeniKorisnikaPutanja . "?id=" . $this->id?>" method="post">
+            
+    		<div class="box-body">
+        		<div class="form-group">
+            		<label for="username" class="col-sm-2 control-label">Username: </label>
+
+                  	<div class="col-sm-10">
+                    	<?php echo $this->form->username; ?>
+                  	</div>
+                </div>
+            </div>
+            <div class="box-body">
+        		<div class="form-group">
+            		<label for="ime" class="col-sm-2 control-label">Ime: </label>
+
+                  	<div class="col-sm-10">
+                    	<?php echo $this->form->ime; ?>
+                  	</div>
+                </div>
+            </div>
+            <div class="box-body">
+        		<div class="form-group">
+            		<label for="prezime" class="col-sm-2 control-label">Prezime: </label>
+
+                  	<div class="col-sm-10">
+                    	<?php echo $this->form->prezime; ?>
+                  	</div>
+                </div>
+            </div>
+            <div class="box-body">
+        		<div class="form-group">
+            		<label for="email" class="col-sm-2 control-label">Email: </label>
+
+                  	<div class="col-sm-10">
+                    	<?php echo $this->form->email; ?>
+                  	</div>
+                </div>
+            </div>
+            <div class="box-body">
+        		<div class="form-group">
+            		<label for="telefon" class="col-sm-2 control-label">Telefon: </label>
+
+                  	<div class="col-sm-10">
+                    	<?php echo $this->form->telefon; ?>
+                  	</div>
+                </div>
+            </div>
+            <div class="box-body">
+        		<div class="form-group">
+            		<label for="rola" class="col-sm-2 control-label">Rola: </label>
+
+                  	<div class="col-sm-10">
+                    	<?php echo $this->form->rola; ?>
+                  	</div>
+                </div>
+            </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
+					<?php  echo $this->form->submit; ?>
+                	
+
+
+                	<a class="btn btn-default" role="button" href="<?php echo URL_PREFIX . Constants::$index;?>" >Odustani</a>
+
+              </div>
+              <!-- /.box-footer -->
+            </form>
+          </div>
