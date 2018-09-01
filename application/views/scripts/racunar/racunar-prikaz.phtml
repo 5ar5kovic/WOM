@@ -34,27 +34,28 @@
 						<td><?php echo ++$redniBroj . ".";?></td>
 						<td><?php echo $racunar['naziv'];?></td>
 						<td><?php
-						//echo $racunar['id_tip'];
-						     
 						      $tipRacunaraMyMapper = new Application_Model_Mymapper_TipRacunara();
-						      echo $tipRacunaraMyMapper->tipRacunaraSelectByID($racunar['id_tip']);
-						     
+						      echo $tipRacunaraMyMapper->tipRacunaraSelectByID($racunar['id_tip']);						     
 						    ?>
 						</td>
 						<td><?php
-						      
+						      $OperativniSistemMyMapper = new Application_Model_Mymapper_OperativniSistem();
+						      echo $OperativniSistemMyMapper->operativniSistemSelectByID($racunar['id_os']);
 						    ?>
 						</td>
 						<td><?php
-						      
+						      $MaticnaPlocaMyMapper = new Application_Model_Mymapper_MaticnaPloca();
+						      echo $MaticnaPlocaMyMapper->maticnaPlocaSelectByID($racunar['id_mb']);
 						     ?>
 						</td>
 						<td><?php
-						      
+						      $ProcesorMyMapper = new Application_Model_Mymapper_Procesor();
+						      echo $ProcesorMyMapper->procesorSelectByID($racunar['id_cpu']);
 						    ?>
 						</td>
 						<td><?php
-						     
+						      $KorisnikMyMapper = new Application_Model_Mymapper_Korisnik();
+						      echo $KorisnikMyMapper->korisnikSelectByID($racunar['id_korisnik']);
 						    ?>
 						</td>
 						<td>
@@ -105,7 +106,7 @@
            	
            	<div class="modal-footer">
               	<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Odustani</button>
-               	<a href="<?php echo URL_PREFIX;?>/racunar/racunar-brisanje?id=<?php echo $korisnik['id']; ?>" class="btn btn-outline">&times;&nbsp;&nbsp;Obriši</a>
+               	<a href="<?php echo URL_PREFIX;?>/racunar/racunar-brisanje?id=<?php echo $racunar['id']; ?>" class="btn btn-outline">&times;&nbsp;&nbsp;Obriši</a>
            	</div>
            	
         </div>

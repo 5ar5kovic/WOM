@@ -10,5 +10,13 @@ class Application_Model_Mymapper_OperativniSistem extends Application_Model_Mapp
        return $result;
     }
     
+    public function operativniSistemSelectByID($id) {
+        $select = $this->getDbTable()
+        ->select()
+        ->where('id=?', $id);
+        $rowSet = $this->getDbTable()->fetchAll($select);
+        return $rowSet[0]['naziv'];
+    }
+    
     
 }

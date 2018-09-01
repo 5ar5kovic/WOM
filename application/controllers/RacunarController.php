@@ -39,12 +39,12 @@ class RacunarController extends Zend_Controller_Action
                 $racunarModel = new Application_Model_Racunar();
                 $id = (int) $request->getParam('id');
                 $racunarModel->setId($id != 0 ? $id : null)
-                ->setNaziv($naziv)
-                ->setIdTip($id_tip)
-                ->setIdOs($id_os)
-                ->setIdMb($id_mb)
-                ->setIdCpu($id_cpu)
-                ->setIdKorisnik($id_korisnik);
+                ->setNaziv($naziv);
+                //->setIdTip($id_tip)
+                //->setIdOs($id_os)
+                //->setIdMb($id_mb)
+                //->setIdCpu($id_cpu)
+                //->setIdKorisnik($id_korisnik);
                 $racunarModel->save();
                 $this->redirect('racunar/racunar-prikaz');
             }

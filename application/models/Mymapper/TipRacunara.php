@@ -14,18 +14,8 @@ class Application_Model_Mymapper_TipRacunara extends Application_Model_Mapper_Ti
         $select = $this->getDbTable()
         ->select()
         ->where('id=?', $id);
-        var_dump($select);
-        exit;
         $rowSet = $this->getDbTable()->fetchAll($select);
-       
-        return $rowSet['naziv'];
-        
-        
-        
-        
-        
-        
+        return $rowSet[0]['naziv'];
     }
-    
-    
+   
 }
