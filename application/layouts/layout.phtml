@@ -201,7 +201,8 @@
                         </span>
                       </a>
                       <ul class="treeview-menu">
-                      	<li><a href="<?php echo $this->url(array('controller'=>'radniNalog', 'action'=>'dodaj-nalog')); ?>"><i class="fa fa-circle-o"></i>Dodaj radni nalog</a></a></li>
+                      	<li><a href="<?php echo $this->url(array('controller'=>'radniNalog', 'action'=>'listaj-naloge')); ?>"><i class="fa fa-circle-o"></i>Radni nalog prikaz</a></li>
+                      	<li><a href="<?php echo $this->url(array('controller'=>'radniNalog', 'action'=>'dodaj-nalog')); ?>"><i class="fa fa-circle-o"></i>Dodaj radni nalog</a></li>
                       </ul>
                     </li>
 
@@ -224,8 +225,8 @@
                         </span>
                       </a>
                       <ul class="treeview-menu">
-                      	<li><a href="<?php echo $this->url(array('controller'=>Constants::$korisnickaAdministracija, 'action'=>Constants::$korisnickaAdministracijaPrikaz)); ?>"><i class="fa fa-circle-o"></i>Korisnicka podrska</a></a></li>
-                      	<li><a href="<?php echo $this->url(array('controller'=>Constants::$racunar, 'action'=>Constants::$racunar_prikaz)); ?>"><i class="fa fa-circle-o"></i>Racunari</a></a></li>
+                      	<li><a href="<?php echo $this->url(array('controller'=>Constants::$korisnickaAdministracija, 'action'=>Constants::$korisnickaAdministracijaPrikaz)); ?>"><i class="fa fa-circle-o"></i>Korisnicka podrska</a></li>
+                      	<li><a href="<?php echo $this->url(array('controller'=>Constants::$racunar, 'action'=>Constants::$racunar_prikaz)); ?>"><i class="fa fa-circle-o"></i>Racunari</a></li>
                       </ul>
    					</li>
                     <li class="treeview">
@@ -236,12 +237,12 @@
                         </span>
                       </a>
                       <ul class="treeview-menu">
-                      	<li><a href="<?php echo $this->url(array('controller'=>'administracija', 'action'=>'operativni-sistem-prikaz')); ?>"><i class="fa fa-circle-o"></i>Operativni sistemi</a></a></li>
-                      	<li><a href="<?php echo $this->url(array('controller'=>'administracija', 'action'=>'kvar-prikaz')); ?>"><i class="fa fa-circle-o"></i>Lista kvarova</a></a></li>
-                      	<li><a href="<?php echo $this->url(array('controller'=>'administracija', 'action'=>'maticna-ploca-prikaz')); ?>"><i class="fa fa-circle-o"></i>Maticne ploce</a></a></li>
-                      	<li><a href="<?php echo $this->url(array('controller'=>'administracija', 'action'=>'procesor-prikaz')); ?>"><i class="fa fa-circle-o"></i>Procesori</a></a></li>
-                      	<li><a href="<?php echo $this->url(array('controller'=>'administracija', 'action'=>'tip-racunara-prikaz')); ?>"><i class="fa fa-circle-o"></i>Tipovi racunara</a></a></li>
-                      	<li><a href="<?php echo $this->url(array('controller'=>'administracija', 'action'=>'korisnik-prikaz')); ?>"><i class="fa fa-circle-o"></i>Korisnici</a></a></li>
+                      	<li><a href="<?php echo $this->url(array('controller'=>'administracija', 'action'=>'operativni-sistem-prikaz')); ?>"><i class="fa fa-circle-o"></i>Operativni sistemi</a></li>
+                      	<li><a href="<?php echo $this->url(array('controller'=>'administracija', 'action'=>'kvar-prikaz')); ?>"><i class="fa fa-circle-o"></i>Lista kvarova</a></li>
+                      	<li><a href="<?php echo $this->url(array('controller'=>'administracija', 'action'=>'maticna-ploca-prikaz')); ?>"><i class="fa fa-circle-o"></i>Maticne ploce</a></li>
+                      	<li><a href="<?php echo $this->url(array('controller'=>'administracija', 'action'=>'procesor-prikaz')); ?>"><i class="fa fa-circle-o"></i>Procesori</a></li>
+                      	<li><a href="<?php echo $this->url(array('controller'=>'administracija', 'action'=>'tip-racunara-prikaz')); ?>"><i class="fa fa-circle-o"></i>Tipovi racunara</a></li>
+                      	<li><a href="<?php echo $this->url(array('controller'=>'administracija', 'action'=>'korisnik-prikaz')); ?>"><i class="fa fa-circle-o"></i>Korisnici</a></li>
                       </ul>
                     </li>
                   
@@ -260,8 +261,8 @@
                         </span>
                       </a>
                       <ul class="treeview-menu">
-                      	<li><a href="<?php echo $this->url(array('controller'=>Constants::$korisnickaAdministracija, 'action'=>Constants::$dodajKorisnika)); ?>"><i class="fa fa-circle-o"></i>Korisnicka podrska</a></a></li>
-                      	<li><a href="<?php echo $this->url(array('controller'=>Constants::$racunar, 'action'=>Constants::$racunar_prikaz)); ?>"><i class="fa fa-circle-o"></i>Racunari</a></a></li>
+                      	<li><a href="<?php echo $this->url(array('controller'=>Constants::$korisnickaAdministracija, 'action'=>Constants::$dodajKorisnika)); ?>"><i class="fa fa-circle-o"></i>Korisnicka podrska</a></li>
+                      	<li><a href="<?php echo $this->url(array('controller'=>Constants::$racunar, 'action'=>Constants::$racunar_prikaz)); ?>"><i class="fa fa-circle-o"></i>Racunari</a></li>
                       </ul>
    					</li>
    					<li class="treeview">
@@ -272,12 +273,12 @@
                         </span>
                       </a>
                       <ul class="treeview-menu">
-                      	<li><a href="<?php echo $this->url(array('controller'=>'administracija', 'action'=>'operativni-sistem-prikaz')); ?>"><i class="fa fa-circle-o"></i>Operativni sistemi</a></a></li>
-                      	<li><a href="<?php echo $this->url(array('controller'=>'administracija', 'action'=>'kvar-prikaz')); ?>"><i class="fa fa-circle-o"></i>Lista kvarova</a></a></li>
-                      	<li><a href="<?php echo $this->url(array('controller'=>'administracija', 'action'=>'maticna-ploca-prikaz')); ?>"><i class="fa fa-circle-o"></i>Maticne ploce</a></a></li>
-                      	<li><a href="<?php echo $this->url(array('controller'=>'administracija', 'action'=>'procesor-prikaz')); ?>"><i class="fa fa-circle-o"></i>Procesori</a></a></li>
-                      	<li><a href="<?php echo $this->url(array('controller'=>'administracija', 'action'=>'tip-racunara-prikaz')); ?>"><i class="fa fa-circle-o"></i>Tipovi racunara</a></a></li>
-                      	<li><a href="<?php echo $this->url(array('controller'=>'administracija', 'action'=>'korisnik-prikaz')); ?>"><i class="fa fa-circle-o"></i>Korisnici</a></a></li>
+                      	<li><a href="<?php echo $this->url(array('controller'=>'administracija', 'action'=>'operativni-sistem-prikaz')); ?>"><i class="fa fa-circle-o"></i>Operativni sistemi</a></li>
+                      	<li><a href="<?php echo $this->url(array('controller'=>'administracija', 'action'=>'kvar-prikaz')); ?>"><i class="fa fa-circle-o"></i>Lista kvarova</a>/li>
+                      	<li><a href="<?php echo $this->url(array('controller'=>'administracija', 'action'=>'maticna-ploca-prikaz')); ?>"><i class="fa fa-circle-o"></i>Maticne ploce</a></li>
+                      	<li><a href="<?php echo $this->url(array('controller'=>'administracija', 'action'=>'procesor-prikaz')); ?>"><i class="fa fa-circle-o"></i>Procesori</a></li>
+                      	<li><a href="<?php echo $this->url(array('controller'=>'administracija', 'action'=>'tip-racunara-prikaz')); ?>"><i class="fa fa-circle-o"></i>Tipovi racunara</a></li>
+                      	<li><a href="<?php echo $this->url(array('controller'=>'administracija', 'action'=>'korisnik-prikaz')); ?>"><i class="fa fa-circle-o"></i>Korisnici</a></li>
                       </ul>
                     </li>
   <?php 

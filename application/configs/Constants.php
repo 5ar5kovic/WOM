@@ -59,6 +59,8 @@ class Constants
     public static $korisnickaAdministracijaPrikazPutanja = "/korisnickaAdministracija/korisnicka-administracija-prikaz";
     public static $promenaLozinkePutanja = "/profil/promena-lozinke";
     public static $radniNalogIndexPutanja = "/radniNalog/index";
+    public static $dodajRadniNalogPutanja = "/radniNalog/dodaj-nalog";
+    public static $listajRadneNalogePutanja = "/radniNalog/listaj-naloge";
     
     //ostalo
     public static $appMail = 'mikam6618@gmail.com';

@@ -1,0 +1,108 @@
+<script type="text/javascript">
+ $(document).ready(function(){
+ 	$('#novi').click(function(event){
+ 		event.preventDefault();
+		location.href = '<?php echo URL_PREFIX;?>/administracija/procesor-unos';
+ 	});
+ 	
+ });
+</script>
+
+<?php $redniBroj = 0;?>
+	<section class="invoice">
+		<div class="row">
+        	<div class="col-xs-12">
+          		<h2 class="page-header">
+            		RADNI NALOZI           
+          		</h2>
+        	</div>
+      	</div>
+      	
+<form class="form-horizontal" name="frmFilterZaNaloge" id="frmFilterZaNaloge" action="<?php echo Constants::$listajRadneNalogePutanja?>" method="post">
+    	<?php echo $this->form->id;?>
+    	<div class="box-body">
+    	
+        	<div class="form-group">
+            	<label for="username" class="col-sm-2 control-label">Dodeljena podrska: </label>
+                <div class="col-sm-4">
+                    <?php echo $this->form->username; ?>
+            	</div>
+            </div>
+            
+            <div class="form-group">	
+            	<label for="racunar" class="col-sm-2 control-label">Racunar: </label>
+            	<div class="col-sm-4">
+                    <?php echo $this->form->racunar; ?>
+            	</div>
+            </div>
+            
+            <div class="form-group">	
+            	<label for="kvar" class="col-sm-2 control-label">Kvar: </label>
+            	<div class="col-sm-4">
+                    <?php echo $this->form->kvar; ?>
+            	</div>         	
+            </div>
+            
+             <div class="form-group">	
+            	<label for="odDatuma" class="col-sm-2 control-label">Od datuma: </label>
+            	<div class="col-sm-4">
+                    <?php echo $this->form->odDatuma; ?>
+            	</div>         	
+            </div>
+            
+            <div class="form-group">	
+            	<label for="doDatuma" class="col-sm-2 control-label">Do datuma: </label>
+            	<div class="col-sm-4">
+                    <?php echo $this->form->doDatuma; ?>
+            	</div>         	
+            </div>
+            
+            <div class="form-group">	
+            	<label for="status" class="col-sm-2 control-label">Status: </label>
+            	<div class="col-sm-4">
+                    <?php echo $this->form->status; ?>
+            	</div>         	
+            </div>
+            <!-- /.box-body -->
+              <div class="box-footer">
+    				<?php  echo $this->form->submit; ?>
+              </div>
+          <!-- /.box-footer -->
+         </div>
+        </form>      	
+
+
+		<div class="row">
+			<div class="box-body no-padding">
+				<table class="table table-condensed">
+					<tr>
+						<th style="width: 10px">#</th>
+						<th>Id</th>
+						<th>Dodeljeno</th>
+						<th>Racunar</th>
+						<th>Kvar</th>
+						<th>Vreme kreiranja</th>
+						<th>Status</th>
+						<th>Opis kvara</th>
+						<th>Opis resenja</th>
+						<th>Vreme zavrsetka</th>
+					</tr>
+<?php foreach ($this->radniNalozi as $radniNalog):?>
+                	<tr>
+						<td><?php echo ++$redniBroj . ".";?></td>
+						<td><?php echo $radniNalog['id'];?></td>
+						<td><?php echo $radniNalog['username'];?></td>
+						<td><?php echo $radniNalog['naziv'];?></td>
+						<td><?php echo $radniNalog['kvar'];?></td>
+						<td><?php echo $radniNalog['vreme_kreiranja'];?></td>
+						<td><?php echo $radniNalog['status'];?></td>
+						<td><?php echo $radniNalog['opis_kvara'];?></td>
+						<td><?php echo $radniNalog['opis_resenja'];?></td>
+						<td><?php echo $radniNalog['vreme_zavrsetka'];?></td>
+					</tr>
+<?php endforeach;?>
+                </table>
+			</div>
+		</div>
+		<hr>
+	</section>

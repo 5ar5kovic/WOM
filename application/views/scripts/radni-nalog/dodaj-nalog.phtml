@@ -1,3 +1,57 @@
 <?php 
-    echo $this->form;
-?>
+ include_once APPLICATION_PATH . "/configs/Constants.php";
+$this->form; ?>
+<div class="box box-info">
+	<div class="box-header with-border">
+    	<h3 class="box-title"><?php echo "Dodavanje radnog naloga" ?></h3>
+    </div>
+    <form class="form-horizontal" name="frmKorisnickaPodrskaUnos" id="frmKorisnickaPodrskaUnos" action="<?php echo URL_PREFIX.Constants::$dodajRadniNalogPutanja?>" method="post">
+            
+    		<div class="box-body">
+        		<div class="form-group">
+            		<label for="korisnicka" class="col-sm-2 control-label">Korisnicka: </label>
+
+                  	<div class="col-sm-10">
+                    	<?php echo $this->form->korisnicka; ?>
+                  	</div>
+                </div>
+            </div>
+            <div class="box-body">
+        		<div class="form-group">
+            		<label for="racunar" class="col-sm-2 control-label">Racunar: </label>
+
+                  	<div class="col-sm-10">
+                    	<?php echo $this->form->racunar; ?>
+                  	</div>
+                </div>
+            </div>
+            <div class="box-body">
+        		<div class="form-group">
+            		<label for="kvar" class="col-sm-2 control-label">Kvar: </label>
+
+                  	<div class="col-sm-10">
+                    	<?php echo $this->form->kvar; ?>
+                  	</div>
+                </div>
+            </div>
+            <div class="box-body">
+        		<div class="form-group">
+            		<label for="opisKvara" class="col-sm-2 control-label">Opis kvara: </label>
+
+                  	<div class="col-sm-10">
+                    	<?php echo $this->form->opisKvara; ?>
+                  	</div>
+                </div>
+            </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
+					<?php  echo $this->form->submit; ?>
+                	
+
+
+                	<a class="btn btn-default" role="button" href="<?php echo URL_PREFIX . Constants::$index;?>" >Odustani</a>
+
+              </div>
+              <!-- /.box-footer -->
+            </form>
+          </div>

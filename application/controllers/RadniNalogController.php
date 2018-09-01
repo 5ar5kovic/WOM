@@ -69,7 +69,47 @@ class RadniNalogController extends Zend_Controller_Action
     
     public function listajNalogeAction()
     {
-        // action body
+        $request = $this->getRequest();
+        $myMapper = new Application_Model_Mymapper_RadniNalog();
+        //var_dump($radniNalozi);
+        //exit;
+        
+        $filterForma = new Application_Form_FilterNalozi();
+        $filteriJednako = array();
+        $filteriManjeOd = array();
+        $filteriVeceOd = array();
+        if($request->isPost()){            
+            $username = $request->getParam('username');
+            $kvar = $request->getParam('kvar');
+            $racunar = $request->getParam('racunar');
+            $odDatuma = $request->getParam('odDatuma');
+            $doDatuma = $request->getParam('doDatuma');
+            $status = $request->getParam('status');
+            
+            if($username != null && $username!= ""){
+                $filteriJednako["id_korisnicka"] = $username;
+            }
+            if($kvar != null && $kvar!= ""){
+                $filteriJednako["id_kvar"] = $kvar;
+            }
+            if($racunar != null && $racunar!= ""){
+                $filteriJednako["id_racunar"] = $racunar;
+            }
+            if($odDatuma != null && $odDatuma!= ""){
+                $filteriVeceOd["vreme_kreiranja"] = $odDatuma;
+            }
+            if($doDatuma != null && $doDatuma!= ""){
+                $filteriManjeOd["vreme_kreiranja"] = $doDatuma;
+            }
+            if($status != null && $status!= ""){
+                $filteriJednako["id_status"] = $status;     
+            }      
+        }        
+        
+        $radniNalozi = $myMapper->radniNaloziSelect($filteriJednako,$filteriManjeOd,$filteriVeceOd);        
+        
+        $this->view->radniNalozi = $radniNalozi;
+        $this->view->form = $filterForma;
     }
 
 
