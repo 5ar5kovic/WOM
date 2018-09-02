@@ -25,6 +25,9 @@ class Application_Form_FilterNalozi extends Zend_Form
         $map1 = array();
         $map2 = array();
         $map3 = array();
+        $map1[0] = "Sve";
+        $map2[0] = "Sve";
+        $map3[0] = "Sve";
         
         foreach($korisnici as $korisnik){
             $map1[$korisnik['id']] = $korisnik['username'];

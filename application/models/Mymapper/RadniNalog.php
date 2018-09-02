@@ -1,9 +1,11 @@
 <?php
 
+include_once APPLICATION_PATH . "/configs/Constants.php";
+
 class Application_Model_Mymapper_RadniNalog extends Application_Model_Mapper_RadniNalog
 {
 
-    public function radniNaloziSelect($filteriJednako,$filteriManjeOd,$filteriVeceOd)
+    public function radniNaloziSelect($filteriJednako,$filteriManjeOd,$filteriVeceOd,$page)
     {
         /*
          * $select = $db->select()
@@ -48,37 +50,43 @@ class Application_Model_Mymapper_RadniNalog extends Application_Model_Mapper_Rad
             
         $brisiZadnja4 = false;
         
+        $whereString = "";
+        
         if (count($filteriJednako) > 0) {
             $brisiZadnja4 = true;
-            $whereString = "";
             foreach($filteriJednako as $key => $value){
                 $whereString = $whereString . "$key = $value AND ";
             }
         }
         if (count($filteriManjeOd) > 0) {
             $brisiZadnja4 = true;
-            $whereString = "";
             foreach($filteriManjeOd as $key => $value){
-                $whereString = $whereString . "$key < $value AND ";
+                $whereString = $whereString . "DATE($key) <= '$value' AND ";
             }
         }
         if (count($filteriVeceOd) > 0) {
             $brisiZadnja4 = true;
-            $whereString = "";
             foreach($filteriVeceOd as $key => $value){
-                $whereString = $whereString . "$key > $value AND ";
+                $whereString = $whereString . "DATE($key) >= '$value' AND ";
             }
         }
         
-        if($brisiZadnja4){            
+        if($brisiZadnja4){    
+            //var_dump($whereString);
+            //exit;
             $whereString = substr($whereString, 0, -4);            
             $select = $select->where($whereString);
         }
-                
+        
         $select = $select->setIntegrityCheck(false);
         
-        $rowSet = $this->getDbTable()->fetchAll($select);
-        return $rowSet;
+        $paginator = new Zend_Paginator(new Zend_Paginator_Adapter_DbTableSelect($select));
+        $paginator->setItemCountPerPage(Constants::$redovaPoStrani);
+        $paginator->setCurrentPageNumber($page);
+        return $paginator;
+        
+        //$rowSet = $this->getDbTable()->fetchAll($select);
+        //return $rowSet;
     }
 
     public function radniNaloziSelectByID($id)

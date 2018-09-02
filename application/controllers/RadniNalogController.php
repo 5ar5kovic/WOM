@@ -69,44 +69,62 @@ class RadniNalogController extends Zend_Controller_Action
     
     public function listajNalogeAction()
     {
+        
         $request = $this->getRequest();
+        
+        $page = $this->_request->getParam('page');
+        if(empty($page)){
+            $page=1;
+        }        
+        
         $myMapper = new Application_Model_Mymapper_RadniNalog();
         //var_dump($radniNalozi);
         //exit;
         
         $filterForma = new Application_Form_FilterNalozi();
+        
         $filteriJednako = array();
         $filteriManjeOd = array();
         $filteriVeceOd = array();
-        if($request->isPost()){            
-            $username = $request->getParam('username');
-            $kvar = $request->getParam('kvar');
-            $racunar = $request->getParam('racunar');
-            $odDatuma = $request->getParam('odDatuma');
-            $doDatuma = $request->getParam('doDatuma');
-            $status = $request->getParam('status');
-            
-            if($username != null && $username!= ""){
-                $filteriJednako["id_korisnicka"] = $username;
-            }
-            if($kvar != null && $kvar!= ""){
-                $filteriJednako["id_kvar"] = $kvar;
-            }
-            if($racunar != null && $racunar!= ""){
-                $filteriJednako["id_racunar"] = $racunar;
-            }
-            if($odDatuma != null && $odDatuma!= ""){
-                $filteriVeceOd["vreme_kreiranja"] = $odDatuma;
-            }
-            if($doDatuma != null && $doDatuma!= ""){
-                $filteriManjeOd["vreme_kreiranja"] = $doDatuma;
-            }
-            if($status != null && $status!= ""){
-                $filteriJednako["id_status"] = $status;     
-            }      
-        }        
+                    
+        $username = $request->getParam('username');
+        $kvar = $request->getParam('kvar');
+        $racunar = $request->getParam('racunar');
+        $odDatuma = $request->getParam('odDatuma');
+        $doDatuma = $request->getParam('doDatuma');
+        $status = $request->getParam('status');
         
-        $radniNalozi = $myMapper->radniNaloziSelect($filteriJednako,$filteriManjeOd,$filteriVeceOd);        
+        if($username != null && $username!= "" && (int)$username != 0){
+            $filteriJednako["id_korisnicka"] = $username;
+        }
+        if($kvar != null && $kvar!= "" && (int)$kvar != 0){
+            $filteriJednako["id_kvar"] = $kvar;
+        }
+        if($racunar != null && $racunar!= "" && (int)$racunar != 0){
+            $filteriJednako["id_racunar"] = $racunar;
+        }
+        if($odDatuma != null && $odDatuma!= ""){
+            $filteriVeceOd["vreme_kreiranja"] = $odDatuma;
+        }
+        if($doDatuma != null && $doDatuma!= ""){
+            $filteriManjeOd["vreme_kreiranja"] = $doDatuma;
+        }
+        if($status != null && $status!= "" && (int)$status != 0){
+            $filteriJednako["id_status"] = $status;     
+        }  
+        
+        $data = array();
+        $data['username'] = $username;
+        $data['racunar'] = $racunar;
+        $data['kvar'] = $kvar;
+        $data['odDatuma'] = $odDatuma;
+        $data['doDatuma'] = $doDatuma;
+        $data['status'] = $status;
+        
+        
+        $filterForma->populate($data);
+        
+        $radniNalozi = $myMapper->radniNaloziSelect($filteriJednako,$filteriManjeOd,$filteriVeceOd,$page);     
         
         $this->view->radniNalozi = $radniNalozi;
         $this->view->form = $filterForma;

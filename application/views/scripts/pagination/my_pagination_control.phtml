@@ -1,0 +1,144 @@
+<?php if ($this->pageCount) :
+ $midRange = floor(sizeof($this->pagesInRange) / 2);
+ if (($this->current + $midRange) < $this->pageCount) :
+ array_pop($this->pagesInRange);
+ $display_end = true;
+ endif; ?>
+ 
+ <?php if ($this->pageCount): ?>
+	<ul class="pagination">
+	
+        <!-- First page link -->
+		<li class="<?php if (!isset($this->previous)) echo 'disabled';?>">
+			<a class="pag-link" href="<?php if(isset($_GET['page'])){
+			    $newUrl = basename($_SERVER['REQUEST_URI']);
+			    str_replace("page=".$_GET['page'],"page=".$this->first,$newUrl);
+			} else {
+			    $newUrl = basename($_SERVER['REQUEST_URI']);
+			    if(count($_GET) > 0){
+			        $newUrl = $newUrl . "&page=" . $this->first;
+			    } else {
+			        $newUrl = $newUrl . "?page=" . $this->first;			        
+			    }
+			    
+			}
+			    echo $newUrl ?>"><i class="md md-skip-previous"></i></a>
+		</li>
+		
+		<!-- Previous page link -->
+		<li class="<?php if (!isset($this->previous)) echo 'disabled';?>">
+			<a class="pag-link" href="<?php if(isset($_GET['page'])){
+			    $newUrl = basename($_SERVER['REQUEST_URI']);
+			    str_replace("page=".$_GET['page'],"page=".$this->previous,$newUrl);
+			} else {
+			    $newUrl = basename($_SERVER['REQUEST_URI']);
+			    if(count($_GET) > 0){
+			        $newUrl = $newUrl . "&page=" . $this->previous;
+			    } else {
+			        $newUrl = $newUrl . "?page=" . $this->previous;			        
+			    }
+			    
+			}
+			    echo $newUrl ?>"><i class="fa fa-angle-left"></i></a>
+		</li>
+		
+        <?php foreach ($this->pagesInRange as $page): ?>
+        <?php if ($page != $this->current): ?>
+    		<li>
+        		<a class="pag-link" href="<?php if(isset($_GET['page'])){
+    			    $newUrl = basename($_SERVER['REQUEST_URI']);
+    			    str_replace("page=".$_GET['page'],"page=".$this->next,$newUrl);
+    			} else {
+    			    $newUrl = basename($_SERVER['REQUEST_URI']);
+    			    if(count($_GET) > 0){
+    			        $newUrl = $newUrl . "&page=" . $this->next;
+    			    } else {
+    			        $newUrl = $newUrl . "?page=" . $this->next;			        
+    			    }
+    			    
+    			}
+    			    echo $newUrl ?>"><?php echo $page; ?></a>
+    		</li>
+              <?php else: ?>
+    		<li class="active">
+    			<a href="#"><?php echo $page; ?></a>
+    		</li>
+        <?php endif; ?>
+        <?php endforeach; ?>		
+
+		<!-- Next page link -->		
+		<li class="<?php if (!isset($this->next)) echo 'disabled';?>">
+			<a class="pag-link" href="<?php if(isset($_GET['page'])){
+			    $newUrl = basename($_SERVER['REQUEST_URI']);
+			    str_replace("page=".$_GET['page'],"page=".$this->next,$newUrl);
+			} else {
+			    $newUrl = basename($_SERVER['REQUEST_URI']);
+			    if(count($_GET) > 0){
+			        $newUrl = $newUrl . "&page=" . $this->next;
+			    } else {
+			        $newUrl = $newUrl . "?page=" . $this->next;			        
+			    }
+			    
+			}
+			    echo $newUrl ?>"><i class="fa fa-angle-right"></i></a>
+		</li>
+		
+		<!-- Last page link -->
+		<li class="<?php if (!isset($this->next)) echo 'disabled';?>">
+			<a class="pag-link" href="<?php if(isset($_GET['page'])){
+			    $newUrl = basename($_SERVER['REQUEST_URI']);
+			    str_replace("page=".$_GET['page'],"page=".$this->last,$newUrl);
+			} else {
+			    $newUrl = basename($_SERVER['REQUEST_URI']);
+			    if(count($_GET) > 0){
+			        $newUrl = $newUrl . "&page=" . $this->last;
+			    } else {
+			        $newUrl = $newUrl . "?page=" . $this->last;			        
+			    }
+			    
+			}
+			    echo $newUrl ?>"><i class="md md-skip-next"></i></a>
+		</li>
+	</ul>
+<?php endif; ?>
+ 
+<!--  
+
+<div class="paginationControl<?php echo $this->position; ?>">
+ <div class="paginationControl_showing">
+ ÐŸÑ€Ð¸ÐºÐ°Ð· Ñ�Ñ‚Ñ€Ð°Ð½Ðµ <strong class="current"><?php echo  $this->current; ?></strong> Ð¾Ð´ <strong class="last"><?php echo  $this->last; ?></strong>
+ </div>
+ <div class="paginationControl_pages">
+ <!-- Previous page link 
+ <?php if (isset($this->previous)): ?>
+ <a href="<?php echo $this->url(array('page' => $this->previous)) . $this->query; ?>" class="previous">&lt; ÐŸÑ€ÐµÑ‚Ñ…Ð¾Ð´Ð½Ð°</a> |
+ <?php else: ?>
+ <span class="disabled">&lt; ÐŸÑ€ÐµÑ‚Ñ…Ð¾Ð´Ð½Ð°</span> |
+ <?php endif; ?>
+ <?php if (($this->current - $midRange) > $this->first): ?>
+ <?php array_shift($this->pagesInRange);?>
+ <a href="<?php echo $this->url(array('page' => $this->first)) . $this->query; ?>" ><?php echo $this->first ?></a>... |
+ <?php endif; ?>
+ <!-- Numbered page links 
+ <?php foreach ($this->pagesInRange as $page): ?>
+
+ <?php if ($page != $this->current): ?>
+ <a href="<?php echo $this->url(array('page' => $page)) . $this->query; ?>" ><?php echo  $page; ?></a> |
+ <?php else: ?>
+ <strong><?php echo  $page; ?></strong> |
+ <?php endif; ?>
+ <?php endforeach; ?>
+ <?php if (!empty($display_end)) : ?>
+ ...<a href="<?php echo $this->url(array('page' => $this->last)) . $this->query; ?>" ><?php echo $this->last ?></a> |
+ <?php endif; ?>
+ <!-- Next page link 
+ <?php if (isset($this->next)): ?>
+ <a href="<?php echo $this->url(array('page' => $this->next)) . $this->query; ?>" class="next">Ð¡Ð»ÐµÐ´ÐµÑ›Ð° &gt;</a>
+ <?php else: ?>
+ <span class="disabled">Ð¡Ð»ÐµÐ´ÐµÑ›Ð° &gt;</span>
+ <?php endif; ?>
+ </div>
+</div>
+<?php endif; ?>
+
+ -->
