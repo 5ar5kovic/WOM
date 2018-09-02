@@ -28,7 +28,7 @@ class ProfilController extends Zend_Controller_Action
                 $stari = $form->getValue('stari');
                 $npw1 = $form->getValue('pass1');
                 $npw2 = $form->getValue('pass2');
-                
+                 
                 if (Utils::getPassword() != Utils::getHashedValue($stari)  || $npw1 != $npw2) {
                     header(Constants::$promenaLozinke);
                 } else {
