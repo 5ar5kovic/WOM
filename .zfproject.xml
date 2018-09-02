@@ -50,6 +50,12 @@
         <controllerFile controllerName="RadniNalog">
           <actionMethod actionName="index"/>
         </controllerFile>
+        <controllerFile controllerName="PdfController">
+          <actionMethod actionName="index"/>
+        </controllerFile>
+        <controllerFile controllerName="Pdf">
+          <actionMethod actionName="index"/>
+        </controllerFile>
       </controllersDirectory>
       <formsDirectory enabled="false"/>
       <layoutsDirectory>
@@ -141,6 +147,12 @@
             <viewScriptFile forActionName="index"/>
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="RadniNalog">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="PdfController">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Pdf">
             <viewScriptFile forActionName="index"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>

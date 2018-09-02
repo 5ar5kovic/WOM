@@ -1,12 +1,12 @@
- <script type="text/javascript">
- $(document).ready(function(){
- 	$('#novi').click(function(event){
- 		event.preventDefault();
-		location.href = '<?php echo URL_PREFIX;?>/racunar/racunar-unos';
- 	});
- 	
- });
+
+<script>
+function generate() {
+	$.blockUI({ message: '<h3>Molimo sačekajte...</h3>' });
+	setTimeout($.unblockUI, 5000); 
+	
+}
 </script>
+
 <?php $redniBroj = 0;?>
 	<section class="invoice">
 		<div class="row">
@@ -18,6 +18,9 @@
       	</div>
 		<div class="row">
 			<div class="box-body no-padding">
+    			<div class="pull-right" style="margin-bottom:10px;margin-right:15px">    				
+    				<a href="/pdf/spisak-racunara" type="button" class="btn btn-danger pull-right btnExport" target="_blank"><i class="fa fa-file-pdf-o"></i> | Generiši izveštaj</a>
+    			</div>
 			<table class="table table-condensed">
 					<tr>
 						<th style="width: 10px">#</th>
