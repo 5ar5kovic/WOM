@@ -1,4 +1,5 @@
 <?php
+require 'fpdf/fpdf.php';
 
 class RacunarController extends Zend_Controller_Action
 {
@@ -69,6 +70,9 @@ class RacunarController extends Zend_Controller_Action
         $racunarModel->deleteRowByPrimaryKey();
         $this->redirect('racunar/racunar-prikaz');
     }
+    
+    
+    
 
 
 }

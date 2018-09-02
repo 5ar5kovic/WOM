@@ -58,6 +58,9 @@ class Application_Model_WomAcl extends Zend_Acl {
         $this->addResource(new Zend_Acl_Resource(Constants::$administracija . "/" . Constants::$korisnik_unos), Constants::$administracija);
         $this->addResource(new Zend_Acl_Resource(Constants::$administracija . "/" . Constants::$korisnik_brisanje), Constants::$administracija);
         
+        $this->addResource(new Zend_Acl_Resource('pdf'));
+        $this->addResource(new Zend_Acl_Resource('pdf/spisak-racunara'), 'pdf');
+        
         /*role*/
         $this->addRole(new Zend_Acl_Role('1')); //gost
         $this->addRole(new Zend_Acl_Role('2'), '1'); //korisnik
@@ -78,6 +81,8 @@ class Application_Model_WomAcl extends Zend_Acl {
         $this->allow('8', Constants::$error);
         $this->allow('8', Constants::$index);
         $this->allow('8', Constants::$radniNalog);
+        $this->allow('4', 'pdf');
+        $this->allow('4', 'pdf', 'pdf/spisak-racunara');
         
       
     }

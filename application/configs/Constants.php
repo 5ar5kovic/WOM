@@ -47,6 +47,7 @@ class Constants
     public static $dodajNalog="dodaj-nalog";
     
     
+    
     //putanje
     public static $zaboravljenaLozinkaPutanja = "/authentication/zaboravljena-lozinka";
     public static $homePutanja = "/authentication/login";
