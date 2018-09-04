@@ -1,0 +1,31 @@
+.navbar, .main-header, .logo{
+	background-color: #300032 !important;
+}
+
+.skin-blue .sidebar-menu li.active a {
+    border-left-color: white !important;
+}
+
+.content-wrapper, .main-footer {
+	background-color: #e6e6e8 !important;
+}
+
+.main-sidebar, .header {
+	background-color: #06000a !important;
+}
+
+.text-green {
+	color: black !important;
+}
+
+.text-blue: {
+	color: #300032 !important;
+}
+
+.skin-blue .sidebar-menu .treeview-menu > li > a {
+    color: white !important;
+}
+
+.box.box-info {
+    border-top-color: white !important;
+}

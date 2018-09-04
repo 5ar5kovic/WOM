@@ -46,6 +46,7 @@ class Constants
     public static $racunar_unos="racunar-unos";
     public static $racunar_brisanje="racunar-brisanje";
     public static $dodajNalog="dodaj-nalog";
+    public static $listajNaloge="listaj-naloge";
     
     
     

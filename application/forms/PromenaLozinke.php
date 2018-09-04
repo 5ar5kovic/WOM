@@ -1,8 +1,7 @@
 <?php
 class Application_Form_PromenaLozinke extends Zend_Form {
     
-    public function init($option = null) {
-        
+    public function init($option = null) {        
         $this->setName('frmPromenaLozinke');
         
         $stari = new Zend_Form_Element_Password('stari');
@@ -31,13 +30,16 @@ class Application_Form_PromenaLozinke extends Zend_Form {
         
         $submit = new Zend_Form_Element_Button('submit');
         $submit->setAttrib('type', 'submit')
+        ->setAttrib('onClick', 'matching()')
+        ->setAttrib('id', 'sbm')
         ->setLabel('Sacuvaj')
         ->setAttrib('class', 'btn btn-success pull-right')
         ->setAttrib('tabindex', 2);
        
             $this->addElements(array($stari, $pass1, $pass2, $submit));
             $this->setMethod('post');
-            $this->setElementDecorators(array("ViewHelper"),null, false);        
+            $this->setElementDecorators(array("ViewHelper"),null, false);          
     }
     
+   
 }

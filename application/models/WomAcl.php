@@ -26,6 +26,7 @@ class Application_Model_WomAcl extends Zend_Acl {
         
         $this->addResource(new Zend_Acl_Resource(Constants::$radniNalog));
         $this->addResource(new Zend_Acl_Resource(Constants::$radniNalog . "/" . Constants::$dodajNalog), Constants::$radniNalog);
+        $this->addResource(new Zend_Acl_Resource(Constants::$radniNalog . "/" . Constants::$listajNaloge), Constants::$radniNalog);        
         
         $this->addResource(new Zend_Acl_Resource(Constants::$korisnickaAdministracija));
         $this->addResource(new Zend_Acl_Resource(Constants::$korisnickaAdministracija . "/" . Constants::$index), Constants::$korisnickaAdministracija);
@@ -80,7 +81,8 @@ class Application_Model_WomAcl extends Zend_Acl {
         $this->allow('8', Constants::$dbupdate);
         $this->allow('8', Constants::$error);
         $this->allow('8', Constants::$index);
-        $this->allow('8', Constants::$radniNalog);
+        $this->allow('2', Constants::$radniNalog, Constants::$listajNaloge);
+        $this->allow('4', Constants::$radniNalog, Constants::$dodajNalog);
         $this->allow('4', 'pdf');
         $this->allow('4', 'pdf', 'pdf/spisak-racunara');
         

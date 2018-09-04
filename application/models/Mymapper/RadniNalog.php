@@ -7,6 +7,10 @@ class Application_Model_Mymapper_RadniNalog extends Application_Model_Mapper_Rad
 
     public function radniNaloziSelect($filteriJednako,$filteriManjeOd,$filteriVeceOd,$page)
     {
+        $auth = Zend_Auth::getInstance();
+        $role = $auth->getStorage()->read()->id_rola;
+        $id = $auth->getStorage()->read()->id;
+        if ($role > 2) {
         /*
          * $select = $db->select()
          * ->from(array('p' => 'products'),
@@ -47,6 +51,42 @@ class Application_Model_Mymapper_RadniNalog extends Application_Model_Mapper_Rad
         ), 'st.id = rn.id_status', array(
             'status'
         ));
+        }
+        else {
+            $select = $this->getDbTable()
+            ->select()
+            ->from(array(
+                'rn' => 'radni_nalog'
+            ), array(
+                'id',
+                'vreme_kreiranja',
+                'id_status',
+                'opis_kvara',
+                'opis_resenja',
+                'vreme_zavrsetka'
+            ))
+            ->join(array(
+                'kor' => 'korisnicka_podrska'
+            ), 'rn.id_korisnicka = kor.id', array(
+                'username'
+            ))
+            ->join(array(
+                'rac' => 'racunar'
+            ), 'rn.id_racunar = rac.id', array(
+                'naziv'
+            ))
+            ->join(array(
+                'kv' => 'kvar'
+            ), 'rn.id_kvar = kv.id', array(
+                'kvar'
+            ))
+            ->join(array(
+                'st' => 'status'
+            ), 'st.id = rn.id_status', array(
+                'status'
+            ))
+            ->where('rn.id_korisnicka=?',$id);
+        }
             
         $brisiZadnja4 = false;
         
@@ -87,6 +127,7 @@ class Application_Model_Mymapper_RadniNalog extends Application_Model_Mapper_Rad
         
         //$rowSet = $this->getDbTable()->fetchAll($select);
         //return $rowSet;
+        
     }
 
     public function radniNaloziSelectByID($id)

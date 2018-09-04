@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="../../dist/css/style.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
@@ -60,118 +61,54 @@
 
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-          <!-- Messages: style can be found in dropdown.less-->
-          <li class="dropdown messages-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-envelope-o"></i>
-              <span class="label label-success">4</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">You have 4 messages</li>
-              <li>
-                <!-- inner menu: contains the actual data -->
-                <ul class="menu">
-                  <li><!-- start message -->
-                    <a href="#">
-                      <div class="pull-left">
-                        <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                      </div>
-                      <h4>
-                        Support Team
-                        <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                      </h4>
-                      <p>Why not buy a new awesome theme?</p>
-                    </a>
-                  </li>
-                  <!-- end message -->
-                </ul>
-              </li>
-              <li class="footer"><a href="#">See All Messages</a></li>
-            </ul>
-          </li>
-          <!-- Notifications: style can be found in dropdown.less -->
-          <li class="dropdown notifications-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-bell-o"></i>
-              <span class="label label-warning">10</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">You have 10 notifications</li>
-              <li>
-                <!-- inner menu: contains the actual data -->
-                <ul class="menu">
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="footer"><a href="#">View all</a></li>
-            </ul>
-          </li>
-          <!-- Tasks: style can be found in dropdown.less -->
-          <li class="dropdown tasks-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-flag-o"></i>
-              <span class="label label-danger">9</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">You have 9 tasks</li>
-              <li>
-                <!-- inner menu: contains the actual data -->
-                <ul class="menu">
-                  <li><!-- Task item -->
-                    <a href="#">
-                      <h3>
-                        Design some buttons
-                        <small class="pull-right">20%</small>
-                      </h3>
-                      <div class="progress xs">
-                        <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                          <span class="sr-only">20% Complete</span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <!-- end task item -->
-                </ul>
-              </li>
-              <li class="footer">
-                <a href="#">View all tasks</a>
-              </li>
-            </ul>
-          </li>
-          <!-- za komit -->
-          <!-- User Account: style can be found in dropdown.less -->
+       
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <span class="hidden-xs"><?php echo "Administrator" ?></span>
+                    <?php 
+                    $auth = Zend_Auth::getInstance();
+                    $role = $auth->getStorage()->read()->id_rola; 
+                    $user = $auth->getStorage()->read()->username;
+                    $im = $auth->getStorage()->read()->ime;
+                    $prez = $auth->getStorage()->read()->prezime;
+                    ?>       
+              <span class="hidden-xs"><?php echo $user ?></span>
+              <span class="glyphicon glyphicon-user" style="padding-left: 10px"></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-footer">
                 <p>
-                  <?php echo "Administrator";?>
+                  <?php 
+                  echo "<h4 style='text-align: center'>". $im." ".$prez."</h4></br>";
+
+                  if ($role == 8) {
+                    echo "<p style='padding-left: 10px'>Administrator</p>";
+                  }
+                  elseif ($role == 4)
+                      echo "<p style='padding-left: 10px'>Supervizor</p>";
+                  
+                  else 
+                      echo "<p style='padding-left: 10px'>Korisnik</p>";
+                  
+                 ?>
+             
                 </p>
+                
               </li>
               <!-- Menu Body -->
              
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="<?php echo Constants::$promenaLozinkePutanja?>" class="btn btn-default btn-flat"><?php echo "Promena lozinke" ?></a>
+                  <a href="<?php echo Constants::$promenaLozinkePutanja?>" class="btn btn-default btn-flat" style="margin: 60px 0 10px 10px"><?php echo "Promena lozinke" ?></a>
                 </div>
                 <div class="pull-right">
-                  <a href="<?php echo $this->url(array('controller'=>'authentication', 'action'=>'logout')); ?>" class="btn btn-default btn-flat">Odjava</a>
+                  <a href="<?php echo $this->url(array('controller'=>'authentication', 'action'=>'logout')); ?>" class="btn btn-default btn-flat" style="margin: 60px 0 10px 10px">Odjava</a>
                 </div>
               </li>
             </ul>
           </li>
-          <!-- Control Sidebar Toggle Button -->
-          <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-          </li>
+         
         </ul>
       </div>
     </nav>
@@ -193,7 +130,17 @@
                     <li class="header">GLAVNA NAVIGACIJA</li>
                     <li class="active">
                     	<a href="<?php echo Constants::$index?>"><i class="fa fa-calendar"></i>Kalendar aktivnosti</a>
-                    <li class="treeview">
+
+ <?php 
+    if($auth->hasIdentity()){
+        $role = $auth->getStorage()->read()->id_rola;
+    } else {
+        $role = 1;
+    }
+    if($role == 8){ 
+        // ===================== ADMINISTRATORSKA ROLA ======================================
+ ?>
+ 					<li class="treeview">
                       <a href="#">
                         <i class="fa fa-tasks"></i> <span>Radni nalozi</span>
                         <span class="pull-right-container">
@@ -205,21 +152,11 @@
                       	<li><a href="<?php echo $this->url(array('controller'=>'radniNalog', 'action'=>'dodaj-nalog')); ?>"><i class="fa fa-circle-o"></i>Dodaj radni nalog</a></li>
                       </ul>
                     </li>
-
-
- <?php 
-    $auth = Zend_Auth::getInstance();
-    if($auth->hasIdentity()){
-        $role = $auth->getStorage()->read()->id_rola;
-    } else {
-        $role = 1;
-    }
-    if($role == 8){ 
-        // ===================== ADMINISTRATORSKA ROLA ======================================
- ?>
+                    
+                    
                     <li class="treeview">
    						<a href="#">
-                        <i class="fa fa-gear"></i> <span>Administracija</span>
+                        <i class="fa fa-briefcase"></i> <span>Administracija</span>
                         <span class="pull-right-container">
                           <i class="fa fa-angle-left pull-right"></i>
                         </span>
@@ -253,6 +190,19 @@
     elseif($role == 4){     //=============================== SUPERVIZOR ROLA ============================================
    ?>
    <!-- ovde ide navigacija za supervizora -->
+   				    <li class="treeview">
+                      <a href="#">
+                        <i class="fa fa-tasks"></i> <span>Radni nalozi</span>
+                        <span class="pull-right-container">
+                          <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                      </a>
+                      <ul class="treeview-menu">
+                      	<li><a href="<?php echo $this->url(array('controller'=>'radniNalog', 'action'=>'listaj-naloge')); ?>"><i class="fa fa-circle-o"></i>Radni nalog prikaz</a></li>
+                      	<li><a href="<?php echo $this->url(array('controller'=>'radniNalog', 'action'=>'dodaj-nalog')); ?>"><i class="fa fa-circle-o"></i>Dodaj radni nalog</a></li>
+                      </ul>
+                    </li>
+                    
    					<li class="treeview">
    						<a href="#">
                         <i class="fa fa-gear"></i> <span>Administracija</span>
@@ -265,22 +215,7 @@
                       	<li><a href="<?php echo $this->url(array('controller'=>Constants::$racunar, 'action'=>Constants::$racunar_prikaz)); ?>"><i class="fa fa-circle-o"></i>Racunari</a></li>
                       </ul>
    					</li>
-   					<li class="treeview">
-                      <a href="#">
-                        <i class="fa fa-gear"></i> <span>Administracija aplikacije</span>
-                        <span class="pull-right-container">
-                          <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                      </a>
-                      <ul class="treeview-menu">
-                      	<li><a href="<?php echo $this->url(array('controller'=>'administracija', 'action'=>'operativni-sistem-prikaz')); ?>"><i class="fa fa-circle-o"></i>Operativni sistemi</a></li>
-                      	<li><a href="<?php echo $this->url(array('controller'=>'administracija', 'action'=>'kvar-prikaz')); ?>"><i class="fa fa-circle-o"></i>Lista kvarova</a>/li>
-                      	<li><a href="<?php echo $this->url(array('controller'=>'administracija', 'action'=>'maticna-ploca-prikaz')); ?>"><i class="fa fa-circle-o"></i>Maticne ploce</a></li>
-                      	<li><a href="<?php echo $this->url(array('controller'=>'administracija', 'action'=>'procesor-prikaz')); ?>"><i class="fa fa-circle-o"></i>Procesori</a></li>
-                      	<li><a href="<?php echo $this->url(array('controller'=>'administracija', 'action'=>'tip-racunara-prikaz')); ?>"><i class="fa fa-circle-o"></i>Tipovi racunara</a></li>
-                      	<li><a href="<?php echo $this->url(array('controller'=>'administracija', 'action'=>'korisnik-prikaz')); ?>"><i class="fa fa-circle-o"></i>Korisnici</a></li>
-                      </ul>
-                    </li>
+   					
   <?php 
     }   //========================================== KRAJ SUPERVIZOR ROLE ========================================== 
     
@@ -288,6 +223,17 @@
     elseif($role == 2){//============================================== KORISNIK ROLA =====================================
    ?>
    <!-- ovde ide navigacija za korisnika -->
+   		   <li class="treeview">
+                      <a href="#">
+                        <i class="fa fa-tasks"></i> <span>Radni nalozi</span>
+                        <span class="pull-right-container">
+                          <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                      </a>
+                      <ul class="treeview-menu">
+                      	<li><a href="<?php echo $this->url(array('controller'=>'radniNalog', 'action'=>'listaj-naloge')); ?>"><i class="fa fa-circle-o"></i>Radni nalog prikaz</a></li>
+                      </ul>
+                    </li>
   <?php 
     }   //=========================================== KRAJ KORISNIK ROLE ================================================= 
     

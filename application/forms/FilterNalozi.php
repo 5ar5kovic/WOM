@@ -11,7 +11,13 @@ class Application_Form_FilterNalozi extends Zend_Form
     
     public function init() {
         
-        $this->setName('frmFilterZaNaloge');       
+        $auth = Zend_Auth::getInstance();
+        $role = $auth->getStorage()->read()->id_rola;
+        $id = $auth->getStorage()->read()->id;
+        $un = $auth->getStorage()->read()->username;
+        
+        
+        $this->setName('frmFilterZaNaloge');  
         
         $myMapper1 = new Application_Model_Mymapper_KorisnickaPodrska();
         $korisnici = $myMapper1->korisnickaPodrskaSelectKorisnike();
@@ -48,7 +54,13 @@ class Application_Form_FilterNalozi extends Zend_Form
         ->setAttrib('name', 'username')
         ->setAttrib('class', 'form-control validate[requested]')
         ->setAttrib('tabindex', 1);
+        if ($role > 2) {
         $username->setMultiOptions($map1);
+        }
+        else {
+            $username->setMultiOptions(array(
+                $id => $un));
+        }
         
         $racunar = new Zend_Form_Element_Select('racunar');
         $racunar->setRequired(true)
@@ -101,12 +113,13 @@ class Application_Form_FilterNalozi extends Zend_Form
         
         $submit = new Zend_Form_Element_Button('submit');
         $submit->setAttrib('type', 'submit')
-        ->setLabel('Sacuvaj')
+        ->setLabel('Trazi')
         ->setAttrib('class', 'btn btn-sucess')
         ->setAttrib('tabindex', 2);
+
         
-        $this->addElements(array($username,$racunar,$kvar,$odDatuma,$doDatuma,$status, $submit));
-        $this -> setMethod('post');
+        $this->addElements(array($username,$racunar,$kvar,$odDatuma,$doDatuma,$status,$submit));
+        $this->setMethod('post');
         $this->setElementDecorators(array("ViewHelper"),null, false);
     }
     
