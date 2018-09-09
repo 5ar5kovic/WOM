@@ -1,0 +1,37 @@
+<?php
+include_once APPLICATION_PATH . "/configs/Constants.php";
+$this->form;
+?>
+<div class="box box-info">
+	<div class="box-header with-border">
+		<h3 class="box-title"><?php echo "Izmena radnog naloga" ?></h3>
+	</div>
+	<form class="form-horizontal" name="frmKorisnickaPodrskaUnos"
+		id="frmKorisnickaPodrskaUnos" method="post">
+
+		<div class="box-body">
+			<div class="form-group">
+				<label for="opis" class="col-sm-2 control-label">Opis: </label>
+
+				<div class="col-sm-6">
+                    	<?php echo $this->form->opis; ?>
+                  	</div>
+			</div>
+		</div>
+		<div class="box-body">
+			<div class="form-group">
+				<label for="status" class="col-sm-2 control-label">Status: </label>
+
+				<div class="col-sm-6">
+                    	<?php echo $this->form->status; ?>
+                  	</div>
+			</div>
+		</div>
+
+		<!-- /.box-body -->
+		<div class="box-footer">
+					<?php  echo $this->form->submit; ?>
+              </div>
+		<!-- /.box-footer -->
+	</form>
+</div>

@@ -15,11 +15,46 @@ class RadniNalogController extends Zend_Controller_Action
         // action body
     }
     
+    public function radniNalogUpdateAction()
+    {        
+        $request = $this->getRequest();
+        $id = (int)$request->getParam('id', null); 
+        
+        $myMapper = new Application_Model_RadniNalog();        
+        $data = $myMapper->find($id)->toArray();        
+        $form = new Application_Form_RadniNalogUpdate();
+        
+        $prosliStatusId = $data["id_status"];
+        
+        if($request->isPost()){
+            
+            $opis = $request->getParam('opis');
+            $status = (int)$request->getParam('status');
+            
+            $myMapper->setOpisKvara($opis);
+            //$status = new Application_Model_Status();
+            //$status = $status->find($data["id_status"]);
+            $myMapper->setIdStatus($status);
+            
+            if($status > 2){
+                $myMapper->setVremeZavrsetka(date(Constants::$formatVremena));
+            }
+            
+            $myMapper->save();
+            $this->redirect(Constants::$radniNalogPrikazPutanja);       
+        } else {
+            $form->populate($data);                
+            $this->view->form = $form;
+        }
+                
+    }
+    
     public function radniNalogUnosAction()
     {
         $request = $this->getRequest();
-        $form = new Application_Form_RadniNalogUnos();       
         
+        $form = new Application_Form_RadniNalogUnos();
+                   
         if ($request->isPost()) {
             
             $idKorisnicka = $request->getParam('korisnicka');
@@ -58,6 +93,7 @@ class RadniNalogController extends Zend_Controller_Action
                 $this->redirect(Constants::$radniNalogPrikazPutanja);
             } 
         }
+        
         
         $this->view->form = $form;
         

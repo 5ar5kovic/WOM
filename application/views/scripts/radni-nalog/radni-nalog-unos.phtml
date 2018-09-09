@@ -1,11 +1,11 @@
-<?php 
- include_once APPLICATION_PATH . "/configs/Constants.php";
+<?php
+include_once APPLICATION_PATH . "/configs/Constants.php";
 $this->form; ?>
 <div class="box box-info">
 	<div class="box-header with-border">
     	<h3 class="box-title"><?php echo "Dodavanje radnog naloga" ?></h3>
     </div>
-    <form class="form-horizontal" name="frmKorisnickaPodrskaUnos" id="frmKorisnickaPodrskaUnos" action="<?php echo URL_PREFIX.Constants::$radniNalogUnosPutanja?>" method="post">
+    <form class="form-horizontal" name="frmUpdateRadniNalog" id="frmUpdateRadniNalog" action="<?php echo URL_PREFIX.Constants::$radniNalogIzmenaPutanja?>" method="post">
             
     		<div class="box-body">
         		<div class="form-group">

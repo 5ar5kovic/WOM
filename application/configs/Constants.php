@@ -48,6 +48,7 @@ class Constants
     public static $racunar_brisanje="racunar-brisanje";
     public static $radni_nalog_unos="radni-nalog-unos";
     public static $radni_nalog_prikaz="radni-nalog-prikaz";
+    public static $radni_nalog_update="radni-nalog-update";
     
     
     
@@ -56,6 +57,7 @@ class Constants
     public static $homePutanja = "/authentication/login";
     public static $loginPutanja = "/authentication/login";
     public static $novaLozinkaPutanja = "/authentication/promena-lozinke";
+    public static $administracijaIndexPutanja = "administracija/index";
     public static $korisnickaAdministracijaIndexPutanja = "korisnickaAdministracija/index";
     public static $dodajKorisnikaPutanja = "/korisnickaAdministracija/dodaj-korisnika";
     public static $izmeniKorisnikaPutanja = "/korisnickaAdministracija/izmeni-korisnika";
@@ -65,6 +67,7 @@ class Constants
     public static $radniNalogIndexPutanja = "/radniNalog/index";
     public static $radniNalogUnosPutanja = "/radniNalog/radni-nalog-unos";
     public static $radniNalogPrikazPutanja = "/radniNalog/radni-nalog-prikaz";
+    public static $radniNalogIzmenaPutanja = "/radniNalog/radni-nalog-update";
     
     //ostalo
     public static $appMail = 'mikam6618@gmail.com';

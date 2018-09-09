@@ -54,6 +54,7 @@ class  Application_Form_KorisnickaPodrskaUnos extends Zend_Form
         ->setAttrib('id', 'email')
         ->setAttrib('name', 'email')
         ->setAttrib('class', 'form-control validate[requested]')
+        ->setAttrib('type', 'email')
         ->setAttrib('tabindex', 1);
         
         $tel = new Zend_Form_Element_Text('telefon');
