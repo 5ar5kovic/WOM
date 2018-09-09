@@ -167,14 +167,9 @@ class PdfController extends Zend_Controller_Action
                 <td bgcolor="#cccccc" width="10%" align="center">Rola</td>
 		    </tr>';
         $sub_tbl = '';
-        foreach($korisnickaPodrska as $i => $row) {
-            
+        foreach($korisnickaPodrska as $i => $row) {            
             $rolaMymapper = new  Application_Model_Mymapper_Rola();
-            $rola = $rolaMymapper->rolaSelectByID($row['id_rola']);
-            
-            
-            
-            
+            $rola = $rolaMymapper->rolaSelectByID($row['id_rola']);     
             $i = $i+1 .'.';
             $sub_tbl .=
             '<tr>
@@ -210,14 +205,48 @@ class PdfController extends Zend_Controller_Action
     
     public function spisakRadniNalogAction() {
         
+        $request = $this->getRequest();
+        $myMapper = new Application_Model_Mymapper_RadniNalog();        
+        $filteriJednako = array();
+        $filteriManjeOd = array();
+        $filteriVeceOd = array();
+        $filteriLike = array();  
+        
+        $username = $request->getParam('username');
+        $kvar = $request->getParam('kvar');
+        $racunar = $request->getParam('racunar');
+        $odDatuma = $request->getParam('odDatuma');
+        $doDatuma = $request->getParam('doDatuma');
+        $status = $request->getParam('status');
+        $opis = $request->getParam('opis');
+        
+        if($username != null && $username!= "" && (int)$username != 0){
+            $filteriJednako["id_korisnicka"] = $username;
+        }
+        if($kvar != null && $kvar!= "" && (int)$kvar != 0){
+            $filteriJednako["id_kvar"] = $kvar;
+        }
+        if($racunar != null && $racunar!= "" && (int)$racunar != 0){
+            $filteriJednako["id_racunar"] = $racunar;
+        }
+        if($odDatuma != null && $odDatuma!= ""){
+            $filteriVeceOd["vreme_kreiranja"] = $odDatuma;
+        }
+        if($doDatuma != null && $doDatuma!= ""){
+            $filteriManjeOd["vreme_kreiranja"] = $doDatuma;
+        }
+        if($status != null && $status!= "" && (int)$status != 0){
+            $filteriJednako["id_status"] = $status;
+        }
+        if($opis != null && $opis!= ""){
+            $filteriLike["opis_kvara"] = $opis;
+        }
+        
+        $radniNalozi = $myMapper->radniNaloziSelect($filteriJednako,$filteriManjeOd,$filteriVeceOd,$filteriLike,$page);
+        
+        
         $this->_helper->layout->disableLayout();
         $this->_helper->viewRenderer->setNoRender ();
-        
-        $request = $this->_request;
-        
-        
-        $radniNaloziMymapper = new Application_Model_Mymapper_RadniNalog();
-        $radniNalozi = $radniNaloziMymapper->radniNaloziSelect($filteriJednako, $filteriManjeOd, $filteriVeceOd, $page);  
         
         require_once 'tcpdf/tcpdf.php';
         
@@ -251,36 +280,38 @@ class PdfController extends Zend_Controller_Action
         
         $pdf->SetFont('dejavusans', '', 9, '', true);
         
+   
         $sub_tbl_start =
         '<table border="1" cellspacing="0" cellpadding="1" >
 		    <tr>
-		        <td bgcolor="#cccccc" width="8%" align="center">R.br.</td>
-		        <td bgcolor="#cccccc" width="15%" align="center">Radnik</td>
-		        <td bgcolor="#cccccc" width="15%" align="center">Računar</td>
-		        <td bgcolor="#cccccc" width="15%" style="text-align: left; vertical-align: middle;">Kvar</td>
-		        <td bgcolor="#cccccc" width="22%" align="center">Datum kreiranja</td>
-		        <td bgcolor="#cccccc" width="15%" align="center">Status</td>
-                <td bgcolor="#cccccc" width="10%" align="center">Datum završetka</td>
+		        <td bgcolor="#cccccc"  align="center">R.br.</td>
+		        <td bgcolor="#cccccc"  align="center">Radnik</td>
+		        <td bgcolor="#cccccc"  align="center">Računar</td>
+		        <td bgcolor="#cccccc"  style="text-align: left; vertical-align: middle;">Kvar</td>
+		        <td bgcolor="#cccccc"  align="center">Datum kreiranja</td>
+		        <td bgcolor="#cccccc"  align="center">Status</td>
+                <td bgcolor="#cccccc"  align="center">Opis kvara</td>
+                <td bgcolor="#cccccc"  align="center">Datum završetka</td>
 		    </tr>';
-        $sub_tbl = '';
+        $sub_tbl = '';           
+        
+        
+       
         foreach($radniNalozi as $i => $row) {
-            
-            //$rolaMymapper = new  Application_Model_Mymapper_Rola();
-            //$rola = $rolaMymapper->rolaSelectByID($row['id_rola']);
-            
-            
-            
-            
+                        
             $i = $i+1 .'.';
             $sub_tbl .=
             '<tr>
 		        <td  align="center">'.$i.'</td>
-		        <td  align="center">'.$row['id_korisnicka'].'</td>
-		        <td  align="center">'.$row['id_racunar'].'</td>
-		        <td  align="left">'.$row['id_kvar'].'</td>
+		        <td  align="center">'.$row['username'].'</td>
+		        <td  align="center">'.$row['naziv'].'</td>
+		        <td  align="center">'.$row['kvar'].'</td>
 		        <td  align="center">'.$row['vreme_kreiranja'].'</td>
-		        <td  align="center">'.$row['id_status'].'</td>
-                <td  align="center">'.$row['vreme_zavrsetka'].'</td>
+		        <td  align="center">'.$row['status'].'</td>
+		        <td  align="center">'.$row['opis_kvara'].'</td>
+		        <td  align="center">'.$row['vreme_zavrsetka'].'</td>
+		       
+		        
 		     </tr>';
         }
         
@@ -295,8 +326,7 @@ class PdfController extends Zend_Controller_Action
 					</tr>
 				</table>';
         
-        
-        //$table = "<h1>TEST</h1>";
+       
         $pdf->writeHTML($table, true, false, false, false, '');
         $pdf->Output('spisak_radnih_naloga.pdf', 'D');
         

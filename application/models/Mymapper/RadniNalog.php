@@ -135,7 +135,8 @@ class Application_Model_Mymapper_RadniNalog extends Application_Model_Mapper_Rad
         //$rowSet = $this->getDbTable()->fetchAll($select);
         //return $rowSet;
         
-    }
+    }   
+    
 
     public function radniNaloziSelectByID($id)
     {
@@ -145,4 +146,7 @@ class Application_Model_Mymapper_RadniNalog extends Application_Model_Mapper_Rad
         $rowSet = $this->getDbTable()->fetchAll($select);
         return $rowSet[0]['naziv'];
     }
+    
+    
+    
 }
