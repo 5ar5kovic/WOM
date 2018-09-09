@@ -12,7 +12,7 @@
 		<li class="<?php if (!isset($this->previous)) echo 'disabled';?>">
 			<a class="pag-link" href="<?php if(isset($_GET['page'])){
 			    $newUrl = basename($_SERVER['REQUEST_URI']);
-			    str_replace("page=".$_GET['page'],"page=".$this->first,$newUrl);
+			    $newUrl = str_replace("page=".$_GET['page'],"page=".$this->first,$newUrl);
 			} else {
 			    $newUrl = basename($_SERVER['REQUEST_URI']);
 			    if(count($_GET) > 0){
@@ -27,18 +27,20 @@
 		
 		<!-- Previous page link -->
 		<li class="<?php if (!isset($this->previous)) echo 'disabled';?>">
-			<a class="pag-link" href="<?php if(isset($_GET['page'])){
+			<a class="pag-link" href="<?php 
+			
+			if(isset($_GET['page'])){
 			    $newUrl = basename($_SERVER['REQUEST_URI']);
-			    str_replace("page=".$_GET['page'],"page=".$this->previous,$newUrl);
+			    $newUrl = str_replace("page=".$_GET['page'],"page=".$this->previous,$newUrl);
 			} else {
-			    $newUrl = basename($_SERVER['REQUEST_URI']);
-			    if(count($_GET) > 0){
-			        $newUrl = $newUrl . "&page=" . $this->previous;
-			    } else {
-			        $newUrl = $newUrl . "?page=" . $this->previous;			        
-			    }
-			    
+			        $newUrl = basename($_SERVER['REQUEST_URI']);			    
+    			    if(count($_GET) > 0){    			        
+        			    $newUrl = $newUrl . "&page=" . $this->previous;    			     
+    			    } else {
+    			        $newUrl = $newUrl . "?page=" . $this->previous;
+    			    }			    
 			}
+			
 			    echo $newUrl ?>"><i class="fa fa-angle-left"></i></a>
 		</li>
 		
@@ -47,13 +49,13 @@
     		<li>
         		<a class="pag-link" href="<?php if(isset($_GET['page'])){
     			    $newUrl = basename($_SERVER['REQUEST_URI']);
-    			    str_replace("page=".$_GET['page'],"page=".$this->next,$newUrl);
+    			    $newUrl = str_replace("page=".$_GET['page'],"page=".$page,$newUrl);
     			} else {
     			    $newUrl = basename($_SERVER['REQUEST_URI']);
     			    if(count($_GET) > 0){
-    			        $newUrl = $newUrl . "&page=" . $this->next;
+    			        $newUrl = $newUrl . "&page=" . $page;
     			    } else {
-    			        $newUrl = $newUrl . "?page=" . $this->next;			        
+    			        $newUrl = $newUrl . "?page=" . $page;			        
     			    }
     			    
     			}
@@ -70,7 +72,7 @@
 		<li class="<?php if (!isset($this->next)) echo 'disabled';?>">
 			<a class="pag-link" href="<?php if(isset($_GET['page'])){
 			    $newUrl = basename($_SERVER['REQUEST_URI']);
-			    str_replace("page=".$_GET['page'],"page=".$this->next,$newUrl);
+			    $newUrl = str_replace("page=".$_GET['page'],"page=".$this->next,$newUrl);
 			} else {
 			    $newUrl = basename($_SERVER['REQUEST_URI']);
 			    if(count($_GET) > 0){
