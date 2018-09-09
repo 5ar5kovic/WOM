@@ -5,13 +5,13 @@ $this->form; ?>
 	<div class="box-header with-border">
     	<h3 class="box-title"><?php echo "Dodavanje radnog naloga" ?></h3>
     </div>
-    <form class="form-horizontal" name="frmKorisnickaPodrskaUnos" id="frmKorisnickaPodrskaUnos" action="<?php echo URL_PREFIX.Constants::$dodajRadniNalogPutanja?>" method="post">
+    <form class="form-horizontal" name="frmKorisnickaPodrskaUnos" id="frmKorisnickaPodrskaUnos" action="<?php echo URL_PREFIX.Constants::$radniNalogUnosPutanja?>" method="post">
             
     		<div class="box-body">
         		<div class="form-group">
-            		<label for="korisnicka" class="col-sm-2 control-label">Korisnicka: </label>
+            		<label for="korisnicka" class="col-sm-2 control-label">Radnik: </label>
 
-                  	<div class="col-sm-10">
+                  	<div class="col-sm-6">
                     	<?php echo $this->form->korisnicka; ?>
                   	</div>
                 </div>
@@ -20,16 +20,16 @@ $this->form; ?>
         		<div class="form-group">
             		<label for="racunar" class="col-sm-2 control-label">Racunar: </label>
 
-                  	<div class="col-sm-10">
+                  	<div class="col-sm-6">
                     	<?php echo $this->form->racunar; ?>
                   	</div>
                 </div>
             </div>
             <div class="box-body">
         		<div class="form-group">
-            		<label for="kvar" class="col-sm-2 control-label">Kvar: </label>
+            		<label for="kvar" class="col-sm-2 control-label">Tip kvara: </label>
 
-                  	<div class="col-sm-10">
+                  	<div class="col-sm-6">
                     	<?php echo $this->form->kvar; ?>
                   	</div>
                 </div>
@@ -38,7 +38,7 @@ $this->form; ?>
         		<div class="form-group">
             		<label for="opisKvara" class="col-sm-2 control-label">Opis kvara: </label>
 
-                  	<div class="col-sm-10">
+                  	<div class="col-sm-6">
                     	<?php echo $this->form->opisKvara; ?>
                   	</div>
                 </div>
@@ -46,10 +46,7 @@ $this->form; ?>
               <!-- /.box-body -->
               <div class="box-footer">
 					<?php  echo $this->form->submit; ?>
-                	
-
-
-                	<a class="btn btn-default" role="button" href="<?php echo URL_PREFIX . Constants::$index;?>" >Odustani</a>
+					<a class="btn btn-default" role="button" href="<?php echo URL_PREFIX . Constants::$radniNalogPrikazPutanja;?>" >Odustani</a>
 
               </div>
               <!-- /.box-footer -->

@@ -45,8 +45,8 @@ class Constants
     public static $racunar_prikaz="racunar-prikaz";
     public static $racunar_unos="racunar-unos";
     public static $racunar_brisanje="racunar-brisanje";
-    public static $dodajNalog="dodaj-nalog";
-    public static $listajNaloge="listaj-naloge";
+    public static $radni_nalog_unos="radni-nalog-unos";
+    public static $radni_nalog_prikaz="radni-nalog-prikaz";
     
     
     
@@ -62,8 +62,8 @@ class Constants
     public static $korisnickaAdministracijaPrikazPutanja = "/korisnickaAdministracija/korisnicka-administracija-prikaz";
     public static $promenaLozinkePutanja = "/profil/promena-lozinke";
     public static $radniNalogIndexPutanja = "/radniNalog/index";
-    public static $dodajRadniNalogPutanja = "/radniNalog/dodaj-nalog";
-    public static $listajRadneNalogePutanja = "/radniNalog/listaj-naloge";
+    public static $radniNalogUnosPutanja = "/radniNalog/radni-nalog-unos";
+    public static $radniNalogPrikazPutanja = "/radniNalog/radni-nalog-prikaz";
     
     //ostalo
     public static $appMail = 'mikam6618@gmail.com';

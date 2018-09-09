@@ -1,6 +1,6 @@
 <?php
 
-class Application_Form_FilterNalozi extends Zend_Form
+class Application_Form_RadniNaloziPrikaz extends Zend_Form
 {
     protected $_dodeljenaPodrska;
     protected $_racunar;
@@ -17,7 +17,7 @@ class Application_Form_FilterNalozi extends Zend_Form
         $un = $auth->getStorage()->read()->username;
         
         
-        $this->setName('frmFilterZaNaloge');  
+        $this->setName('frmRadniNaloziPrika');  
         
         $myMapper1 = new Application_Model_Mymapper_KorisnickaPodrska();
         $korisnici = $myMapper1->korisnickaPodrskaSelectKorisnike();
@@ -80,11 +80,13 @@ class Application_Form_FilterNalozi extends Zend_Form
         ->setAttrib('tabindex', 1);
         $kvar->setMultiOptions($map3);
         
+        
         $odDatuma = new Zend_Form_Element_Text("odDatuma");
         $odDatuma->setRequired(true)
         ->setLabel('odDatuma')
         ->setAttrib('id', 'odDatuma')
         ->setAttrib('name', 'odDatuma')
+        //->setAtrrib('type', 'date')
         ->setAttrib('class', 'form-control validate[requested]')
         ->setAttrib('tabindex', 1);
         

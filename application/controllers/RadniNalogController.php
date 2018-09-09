@@ -15,7 +15,7 @@ class RadniNalogController extends Zend_Controller_Action
         // action body
     }
     
-    public function dodajNalogAction()
+    public function radniNalogUnosAction()
     {
         $request = $this->getRequest();
         $form = new Application_Form_RadniNalogUnos();       
@@ -55,19 +55,15 @@ class RadniNalogController extends Zend_Controller_Action
                 
                 $radniNalog->save();   
                 
-                $this->redirect(Constants::$radniNalogIndexPutanja);
-            } else {
-                
-                var_dump($form->getErrors());
-                exit;
-            }
+                $this->redirect(Constants::$radniNalogPrikazPutanja);
+            } 
         }
         
         $this->view->form = $form;
         
     }
     
-    public function listajNalogeAction()
+    public function radniNalogPrikazAction()
     {
         
         $request = $this->getRequest();
@@ -81,7 +77,7 @@ class RadniNalogController extends Zend_Controller_Action
         //var_dump($radniNalozi);
         //exit;
         
-        $filterForma = new Application_Form_FilterNalozi();
+        $filterForma = new Application_Form_RadniNaloziPrikaz();
         
         $filteriJednako = array();
         $filteriManjeOd = array();
@@ -128,6 +124,16 @@ class RadniNalogController extends Zend_Controller_Action
         
         $this->view->radniNalozi = $radniNalozi;
         $this->view->form = $filterForma;
+    }
+    
+    public function radniNalogBrisanjeAction()
+    {
+        $request = $this->getRequest();
+        $id = $request->getParam('id', null);
+        $radniNalogModel = new Application_Model_RadniNalog();
+        $radniNalogModel->setId($id);
+        $radniNalogModel->deleteRowByPrimaryKey();
+        $this->redirect('radniNalog/radni-nalog-prikaz');
     }
 
 

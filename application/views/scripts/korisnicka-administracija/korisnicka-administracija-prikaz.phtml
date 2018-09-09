@@ -22,13 +22,26 @@
 				<table class="table table-condensed">
 					<tr>
 						<th style="width: 10px">#</th>
-						<th>Naziv</th>
+						<th>Korisničko ime</th>
+						<th>Ime</th>
+						<th>Prezime</th>
+						<th>e-mail</th>
+						<th>Tekefon</th>
+						<th>Rola</th>
 						<th style="width: 80px">Promena/Brisanje</th>
 					</tr>
 <?php foreach ($this->korisnici as $korisnik):?>
                 	<tr>
 						<td><?php echo ++$redniBroj . ".";?></td>
 						<td><?php echo $korisnik['username'];?></td>
+						<td><?php echo $korisnik['ime'];?></td>
+						<td><?php echo $korisnik['prezime'];?></td>
+						<td><?php echo $korisnik['email'];?></td>
+						<td><?php echo $korisnik['tel'];?></td>
+						<td><?php
+						$rola = new Application_Model_Mymapper_Rola();
+						echo $rola->opisRoleSelectByID($korisnik['id_rola']); ?>
+						</td>
 						<td>
 							<div>
 								<a href="<?php echo URL_PREFIX . Constants::$izmeniKorisnikaPutanja . "?id=" . $korisnik['id']; ?>"
@@ -38,10 +51,7 @@
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								
 								
-								<a href="#"
-									data-href="<?php echo URL_PREFIX . Constants::$obrisiKorisnikaPutanja . $korisnik['id']; ?>"
-									data-toggle="modal"
-									data-target="#confirm-delete">								
+								<a href="<?php echo URL_PREFIX . Constants::$obrisiKorisnikaPutanja . "?id=" . $korisnik['id']; ?>">								
 									<i class="fa fa-minus-square-o text-red"></i>
 								</a>
 							</div>						
@@ -55,36 +65,10 @@
 		<hr>
 		<div class="row no-print">
         	<div class="col-xs-12">
-          		<a href="<?php echo Constants::$dodajKorisnikaPutanja?>" id="novi" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Dodaj korisnicku podrsku</a>
+          		<a href="<?php echo Constants::$dodajKorisnikaPutanja?>" id="novi" class="btn btn-success pull-right"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;Dodaj radnika</a>
           	</div>
       	</div>	
 	</section>
 	
-<div class="modal modal-danger fade" id="confirm-delete">
 
-   	<div class="modal-dialog">
-   	
-       	<div class="modal-content">
-       	
-           	<div class="modal-header">
-               	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              		<span aria-hidden="true">&times;</span>
-               	</button>
-               	<h4 class="modal-title">Brisanje unete korisnicke podrske</h4>
-           	</div>
-           	
-           	<div class="modal-body">
-               	<p>Uneta korisnicka podrska ce biti obrisana</p>
-            </div>
-           	
-           	<div class="modal-footer">
-              	<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Odustani</button>
-               	<a href="<?php echo URL_PREFIX;?>/korisnickaAdministracija/brisanje-korisnika?id=<?php echo $korisnik['id']; ?>" class="btn btn-outline">&times;&nbsp;&nbsp;Obriši</a>
-           	</div>
-           	
-        </div>
-        
-	</div>
-	
-</div>
 

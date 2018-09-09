@@ -35,10 +35,7 @@
 									<i class="fa fa-pencil-square-o text-blue"></i>
 								</a>
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<a  href="#"
-									data-href="<?php echo URL_PREFIX;?>/administracija/tip-racunara-brisanje?id=<?php echo $tipRacunara['id']; ?>"
-									data-toggle="modal"
-									data-target="#confirm-delete">								
+								<a  href="<?php echo URL_PREFIX;?>/administracija/tip-racunara-brisanje?id=<?php echo $tipRacunara['id']; ?>">								
 									<i class="fa fa-minus-square-o text-red"></i>
 								</a>
 							</div>
@@ -56,31 +53,3 @@
           	</div>
       	</div>	
 	</section>
-	
-<div class="modal modal-danger fade" id="confirm-delete">
-
-   	<div class="modal-dialog">
-   	
-       	<div class="modal-content">
-       	
-           	<div class="modal-header">
-               	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              		<span aria-hidden="true">&times;</span>
-               	</button>
-               	<h4 class="modal-title">Brisanje unetog tipa racunara</h4>
-           	</div>
-           	
-           	<div class="modal-body">
-               	<p>Uneti tip racunara bice obrisan&hellip;</p>
-            </div>
-           	
-           	<div class="modal-footer">
-              	<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Odustani</button>
-               	<a href="<?php echo URL_PREFIX;?>/administracija/tip-racunara-brisanje?id=<?php echo $tipRacunara['id']; ?>" class="btn btn-outline">&times;&nbsp;&nbsp;Obriši</a>
-           	</div>
-           	
-        </div>
-        
-	</div>
-	
-</div>

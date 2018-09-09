@@ -52,13 +52,15 @@ class AdministracijaController extends Zend_Controller_Action
     }
 
     public function operativniSistemBrisanjeAction()
-    {
+    {   
+        
         $request = $this->getRequest();
         $id = $request->getParam('id', null);
         $operativniSistemModel = new Application_Model_OperativniSistem();
         $operativniSistemModel->setId($id);
-        $operativniSistemModel->deleteRowByPrimaryKey();
+        $operativniSistemModel->deleteRowByPrimaryKey();        
         $this->redirect('administracija/operativni-sistem-prikaz');
+
     }
 
     public function kvarPrikazAction()

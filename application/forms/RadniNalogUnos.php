@@ -47,7 +47,7 @@ class Application_Form_RadniNalogUnos extends Zend_Form
         ->setAttrib('id', 'racunar')
         ->setAttrib('name', 'racunar')
         ->setAttrib('class', 'form-control validate[requested]')
-        ->setAttrib('tabindex', 1);
+        ->setAttrib('tabindex', 2);
         $racunarId->setMultiOptions($map2);
         
         $kvarId = new Zend_Form_Element_Select('kvar');
@@ -56,22 +56,25 @@ class Application_Form_RadniNalogUnos extends Zend_Form
         ->setAttrib('id', 'kvar')
         ->setAttrib('name', 'kvar')
         ->setAttrib('class', 'form-control validate[requested]')
-        ->setAttrib('tabindex', 1);
+        ->setAttrib('tabindex', 3);
         $kvarId->setMultiOptions($map3);
         
-        $opis = new Zend_Form_Element_Text('opisKvara');
+        //$opis = new Zend_Form_Element_Text('opisKvara');
+        $opis = new Zend_Form_Element_Textarea('opisKvara');
         $opis->setLabel('opis kvara')
         ->setAttrib('id', 'opisKvara')
         ->setAttrib('name', 'opisKvara')
+        ->setAttrib('cols', '50')
+        ->setAttrib('rows', '3')        
         ->setAttrib('class', 'form-control validate[requested]')
-        ->setAttrib('tabindex', 1)
+        ->setAttrib('tabindex', 4)
         ->setRequired(true);
         
         $submit = new Zend_Form_Element_Button('submit');
         $submit->setAttrib('type', 'submit')
         ->setLabel('Kreiraj')
         ->setAttrib('class', 'btn btn-sucess')
-        ->setAttrib('tabindex', 2);        
+        ->setAttrib('tabindex', 5);        
         
         $this->addElements(array($korisnickaPodrskaId,$kvarId,$racunarId,$opis,$submit));
         $this->setMethod('post');
