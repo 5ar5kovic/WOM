@@ -107,7 +107,7 @@ class RadniNalogController extends Zend_Controller_Action
         $page = $this->_request->getParam('page');
         if(empty($page)){
             $page=1;
-        }        
+        }
         
         $myMapper = new Application_Model_Mymapper_RadniNalog();
         //var_dump($radniNalozi);
@@ -119,7 +119,7 @@ class RadniNalogController extends Zend_Controller_Action
         $filteriManjeOd = array();
         $filteriVeceOd = array();
         $filteriLike = array();
-                    
+        
         $username = $request->getParam('username');
         $kvar = $request->getParam('kvar');
         $racunar = $request->getParam('racunar');
@@ -144,11 +144,11 @@ class RadniNalogController extends Zend_Controller_Action
             $filteriManjeOd["vreme_kreiranja"] = $doDatuma;
         }
         if($status != null && $status!= "" && (int)$status != 0){
-            $filteriJednako["id_status"] = $status;     
-        }  
+            $filteriJednako["id_status"] = $status;
+        }
         if($opis != null && $opis!= ""){
             $filteriLike["opis_kvara"] = $opis;
-        }  
+        }
         
         $data = array();
         $data['username'] = $username;

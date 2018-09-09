@@ -69,7 +69,7 @@ class Application_Form_RadniNaloziPrikaz extends Zend_Form
         ->setAttrib('id', 'racunar')
         ->setAttrib('name', 'racunar')
         ->setAttrib('class', 'form-control validate[requested]')
-        ->setAttrib('tabindex', 1);
+        ->setAttrib('tabindex', 2);
         $racunar->setMultiOptions($map2);
         
         $kvar = new Zend_Form_Element_Select('kvar');
@@ -78,7 +78,7 @@ class Application_Form_RadniNaloziPrikaz extends Zend_Form
         ->setAttrib('id', 'kvar')
         ->setAttrib('name', 'kvar')
         ->setAttrib('class', 'form-control validate[requested]')
-        ->setAttrib('tabindex', 1);
+        ->setAttrib('tabindex', 3);
         $kvar->setMultiOptions($map3);
         
         
@@ -89,7 +89,7 @@ class Application_Form_RadniNaloziPrikaz extends Zend_Form
         ->setAttrib('name', 'odDatuma')
         //->setAtrrib('type', 'date')
         ->setAttrib('class', 'form-control validate[requested]')
-        ->setAttrib('tabindex', 1);
+        ->setAttrib('tabindex', 4);
         
         $doDatuma = new Zend_Form_Element_Text('doDatuma');
         $doDatuma->setRequired(true)
@@ -97,7 +97,7 @@ class Application_Form_RadniNaloziPrikaz extends Zend_Form
         ->setAttrib('id', 'doDatuma')
         ->setAttrib('name', 'doDatuma')
         ->setAttrib('class', 'form-control validate[requested]')
-        ->setAttrib('tabindex', 1);
+        ->setAttrib('tabindex', 5);
         
         $status = new Zend_Form_Element_Select('status');
         $status->setRequired(true)
@@ -105,7 +105,7 @@ class Application_Form_RadniNaloziPrikaz extends Zend_Form
         ->setAttrib('id', 'status')
         ->setAttrib('name', 'status')
         ->setAttrib('class', 'form-control validate[requested]')
-        ->setAttrib('tabindex', 1);
+        ->setAttrib('tabindex', 6);
         $status->addMultiOptions(array(
             '0' => 'Sve',
             '1' => 'Ceka',
@@ -121,26 +121,26 @@ class Application_Form_RadniNaloziPrikaz extends Zend_Form
         ->setAttrib('name', 'opis')
         ->setAttrib('class', 'form-control validate[requested]')
         ->setAttrib('placeholder', 'Pretrazi po opisu...')
-        ->setAttrib('tabindex', 1);
+        ->setAttrib('tabindex', 7);
         
         $trazi = new Zend_Form_Element_Submit('trazi');
         $trazi->setAttrib('type', 'submit')
         ->setLabel('Trazi')
         ->setAttrib('id', 'trazi')
-        ->setAttrib('name', 'action')
+        ->setAttrib('name', 'trazi')
         ->setAttrib('value', 'Trazi')
         ->setAttrib('class', 'btn btn-sucess')
-        ->setAttrib('tabindex', 2);
+        ->setAttrib('tabindex', 8);
         
         $generisi = new Zend_Form_Element_Submit('generisi');
         $generisi->setAttrib('type', 'submit')
         ->setLabel("Štampaj u PDF")
         ->setAttrib('id', 'generisi')
-        ->setAttrib('name', 'action')
+        ->setAttrib('name', 'generisi')
         ->setAttrib('value', 'Generisi')
-        ->setAttrib('formaction', 'pdf/spisak-radni-nalog')
+        ->setAttrib('formaction', '/../pdf/spisak-radni-nalog')
         ->setAttrib('class', 'btn btn-danger pull-right btnExport')
-        ->setAttrib('tabindex', 2);
+        ->setAttrib('tabindex', 9);
         
         
 
