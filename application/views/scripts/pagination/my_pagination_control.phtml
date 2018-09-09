@@ -22,7 +22,7 @@
 			    }
 			    
 			}
-			    echo $newUrl ?>"><i class="md md-skip-previous"></i></a>
+			    echo $newUrl ?>"><i class="fa fa-angle-double-left"></i></a>
 		</li>
 		
 		<!-- Previous page link -->
@@ -89,7 +89,7 @@
 		<li class="<?php if (!isset($this->next)) echo 'disabled';?>">
 			<a class="pag-link" href="<?php if(isset($_GET['page'])){
 			    $newUrl = basename($_SERVER['REQUEST_URI']);
-			    str_replace("page=".$_GET['page'],"page=".$this->last,$newUrl);
+			    $newUrl = str_replace("page=".$_GET['page'],"page=".$this->last,$newUrl);
 			} else {
 			    $newUrl = basename($_SERVER['REQUEST_URI']);
 			    if(count($_GET) > 0){
@@ -99,7 +99,7 @@
 			    }
 			    
 			}
-			    echo $newUrl ?>"><i class="md md-skip-next"></i></a>
+			    echo $newUrl ?>"><i class="fa fa-angle-double-right"></i></a>
 		</li>
 	</ul>
 <?php endif; ?>

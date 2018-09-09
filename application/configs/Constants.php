@@ -21,6 +21,7 @@ class Constants
     public static $promenaLozinke = "promena-lozinke";
     public static $dodajKorisnika = "dodaj-korisnika";
     public static $korisnickaAdministracijaPrikaz = "korisnicka-administracija-prikaz";
+    public static $korisnickaAdministracijaPrikazZaSupervizore = "korisnicka-administracija-za-supervizore-prikaz";
     public static $zaboravljenaLozinka = "zaboravljena-lozinka";
     public static $execute = "execute";    
     public static $operativni_sistem_prikaz = "operativni-sistem-prikaz"; 

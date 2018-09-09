@@ -30,6 +30,8 @@ class Application_Model_WomAcl extends Zend_Acl {
         
         $this->addResource(new Zend_Acl_Resource(Constants::$korisnickaAdministracija));
         $this->addResource(new Zend_Acl_Resource(Constants::$korisnickaAdministracija . "/" . Constants::$index), Constants::$korisnickaAdministracija);
+        $this->addResource(new Zend_Acl_Resource(Constants::$korisnickaAdministracija . "/" . Constants::$korisnickaAdministracijaPrikaz),Constants::$korisnickaAdministracija);
+        $this->addResource(new Zend_Acl_Resource(Constants::$korisnickaAdministracija . "/" . Constants::$korisnickaAdministracijaPrikazZaSupervizore),Constants::$korisnickaAdministracija);
         $this->addResource(new Zend_Acl_Resource(Constants::$korisnickaAdministracija . "/" . Constants::$dodajKorisnika),Constants::$korisnickaAdministracija);
         
         $this->addResource(new Zend_Acl_Resource(Constants::$racunar));
@@ -73,11 +75,10 @@ class Application_Model_WomAcl extends Zend_Acl {
         //$this->deny('2',Constants::$authentication, Constants::$login);
         //$this->deny('2',Constants::$authentication, Constants::$zaboravljenaLozinka);
         $this->allow('2', Constants::$profil);
-        $this->allow('4', Constants::$korisnickaAdministracija, Constants::$dodajKorisnika);
         $this->allow('4', Constants::$racunar);
         $this->allow('8', Constants::$administracija);
         $this->allow('2', Constants::$administracija, Constants::$index);
-        $this->allow('8', Constants::$korisnickaAdministracija);
+        $this->allow('4', Constants::$korisnickaAdministracija);
         $this->allow('8', Constants::$dbupdate);
         $this->allow('8', Constants::$error);
         $this->allow('8', Constants::$index);

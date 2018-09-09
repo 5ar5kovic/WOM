@@ -34,4 +34,11 @@ class Application_Model_Mymapper_KorisnickaPodrska extends Application_Model_Map
         //exit;
         return $result;
     }
+    public function korisnickaPodrskaZaSupervizoreSelectKorisnike() {
+        $where = $this->getDbTable()->select()->where("id_rola < ?", 4);
+        $result = $this->getDbTable()->fetchAll($where);
+        //var_dump($result);
+        //exit;
+        return $result;
+    }
 }

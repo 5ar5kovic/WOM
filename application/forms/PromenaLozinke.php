@@ -18,6 +18,7 @@ class Application_Form_PromenaLozinke extends Zend_Form {
         ->setAttrib('name', 'pass1')
         ->setAttrib('class', 'form-control validate[requested]')
         ->setAttrib('tabindex', 1)
+        ->setAttrib('onKeyUp', 'checkPasswordMatch();')
         ->setRequired(true);
         
         $pass2 = new Zend_Form_Element_Password('pass2');
@@ -26,6 +27,7 @@ class Application_Form_PromenaLozinke extends Zend_Form {
         ->setAttrib('name', 'pass2')
         ->setAttrib('class', 'form-control validate[requested]')
         ->setAttrib('tabindex', 1)
+        ->setAttrib('onKeyUp', 'checkPasswordMatch();')
         ->setRequired(true);
         
         $submit = new Zend_Form_Element_Button('submit');

@@ -1,0 +1,74 @@
+<?php include_once APPLICATION_PATH . "/configs/Constants.php";?>
+<script type="text/javascript">
+ $(document).ready(function(){
+ 	$('#novi').click(function(event){
+ 		event.preventDefault();
+		location.href = '<?php echo URL_PREFIX.Constants::$korisnickaAdministracijaPrikazPutanja;?>';
+ 	});
+ 	
+ });
+</script>
+<?php $redniBroj = 0;?>
+	<section class="invoice">
+		<div class="row">
+        	<div class="col-xs-12">
+          		<h2 class="page-header">
+            		KORISNICKA PODRSKA          
+          		</h2>
+        	</div>
+      	</div>
+		  <div class="row">
+			<div class="box-body no-padding">
+				<table class="table table-condensed">
+					<tr>
+						<th style="width: 10px">#</th>
+						<th>Korisničko ime</th>
+						<th>Ime</th>
+						<th>Prezime</th>
+						<th>e-mail</th>
+						<th>Tekefon</th>
+						<th>Rola</th>
+						<th style="width: 80px">Promena/Brisanje</th>
+					</tr>
+<?php foreach ($this->korisnici as $korisnik):?>
+                	<tr>
+						<td><?php echo ++$redniBroj . ".";?></td>
+						<td><?php echo $korisnik['username'];?></td>
+						<td><?php echo $korisnik['ime'];?></td>
+						<td><?php echo $korisnik['prezime'];?></td>
+						<td><?php echo $korisnik['email'];?></td>
+						<td><?php echo $korisnik['tel'];?></td>
+						<td><?php
+						$rola = new Application_Model_Mymapper_Rola();
+						echo $rola->opisRoleSelectByID($korisnik['id_rola']); ?>
+						</td>
+						<td>
+							<div>
+								<a href="<?php echo URL_PREFIX . Constants::$izmeniKorisnikaPutanja . "?id=" . $korisnik['id']; ?>"
+									class="btn btn-xs btn-teal tooltips">	
+									<i class="fa fa-pencil-square-o text-blue"></i>
+								</a>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								
+								
+								<a href="<?php echo URL_PREFIX . Constants::$obrisiKorisnikaPutanja . "?id=" . $korisnik['id']; ?>">								
+									<i class="fa fa-minus-square-o text-red"></i>
+								</a>
+							</div>						
+					</td>
+
+					</tr>
+<?php endforeach;?>
+                </table>
+			</div>
+		</div>
+		<hr>
+		<div class="row no-print">
+        	<div class="col-xs-12">
+          		<a href="<?php echo Constants::$dodajKorisnikaPutanja?>" id="novi" class="btn btn-success pull-right"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;Dodaj radnika</a>
+          	</div>
+      	</div>	
+	</section>
+	
+
+

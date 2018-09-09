@@ -21,6 +21,13 @@ class KorisnickaAdministracijaController extends Zend_Controller_Action
         $this->view->korisnici = $korisnici;
     }
     
+    public function korisnickaAdministracijaZaSupervizorePrikazAction()
+    {
+        $myMapper = new Application_Model_Mymapper_KorisnickaPodrska();
+        $korisnici = $myMapper->korisnickaPodrskaZaSupervizoreSelectKorisnike();
+        $this->view->korisnici = $korisnici;
+    }
+    
     public function dodajKorisnikaAction() {
         $request = $this->getRequest();
         
@@ -104,7 +111,7 @@ class KorisnickaAdministracijaController extends Zend_Controller_Action
                 $this->redirect('korisnickaAdministracija/index?result=failed2');
             }
             
-            $this->redirect('korisnickaAdministracija/index');
+            $this->redirect('korisnickaAdministracija/korisnicka-administracija-prikaz');
                         
         } else {
             $kpModel = new Application_Model_KorisnickaPodrska();

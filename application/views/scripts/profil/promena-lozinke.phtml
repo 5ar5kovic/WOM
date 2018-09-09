@@ -1,2 +1,78 @@
-<?php echo $this->form;
-?>
+<?php
+include_once APPLICATION_PATH . "/configs/Constants.php";
+$this->form; ?>
+<script src="jquery-3.3.1.min.js"></script>
+<script>
+function checkPasswordMatch() {
+    var password = $("#pass1").val();
+    var confirmPassword = $("#pass2").val();
+
+    if (password != "" && confirmPassword != "") {
+        if (password != confirmPassword) {
+            $("#checkPasswordMatch").html("Passwords do not match!");
+    		document.getElementById("checkPasswordMatch").style.color = "red";
+        }
+        else {
+            $("#checkPasswordMatch").html("Passwords match.");
+        	document.getElementById("checkPasswordMatch").style.color = "green";
+        }
+    }
+    else {
+        $("#checkPasswordMatch").html("");
+    }
+}
+$(document).ready(function () {
+	   $("#pass1, #pass2").keyup(checkPasswordMatch);
+	});
+</script>
+
+<div class="box box-info">
+	<div class="box-header with-border">
+    	<h3 class="box-title"><?php echo "Promena lozinke" ?></h3>
+    </div>
+    <form class="form-horizontal" name="frmPromenaLozinke" id="frmPromenaLozinke" action="<?php echo URL_PREFIX.Constants::$promenaLozinke?>" method="post">
+    
+<div class="box-body">
+        		<div class="form-group">
+            		<label for="korisnicka" class="col-sm-2 control-label">Stara lozinka: </label>
+
+                  	<div class="col-sm-6">
+                    	<?php echo $this->form->stari; ?>
+                  	</div>
+                </div>
+            </div>
+            
+            <div class="box-body">
+        		<div class="form-group">
+            		<label for="korisnicka" class="col-sm-2 control-label">Nova lozinka: </label>
+
+                  	<div class="col-sm-6">
+                    	<?php echo $this->form->pass1; ?>
+                  	</div>
+                </div>
+            </div>
+            
+            <div class="box-body">
+        		<div class="form-group">
+            		<label for="korisnicka" class="col-sm-2 control-label">Nova lozinka ponovljena: </label>
+
+                  	<div class="col-sm-6">
+                    	<?php echo $this->form->pass2; ?>
+                  	</div>
+                </div>
+            </div>
+            
+             <div class="box-body">
+             <div class="form-group">
+             <label for="korisnicka" class="col-sm-2 control-label"></label>
+            <div class="col-sm-6" id="checkPasswordMatch"></div>
+            </div>
+            </div>
+            
+               <div class="box-footer">
+					<?php  echo $this->form->submit; ?>
+              </div>
+            
+     </form>
+     
+     </div>

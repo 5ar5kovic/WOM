@@ -1,2 +1,4 @@
 2018-09-09T10:24:16+00:00 INFO (6): Ne moze da se obrise korisnik sa id-jem 2 zato sto jos uvek ima radnih naloga koji su povezani sa njim!
 2018-09-09T10:31:20+00:00 INFO (6): Korisnik sa id-jem 23 je promenio password
+2018-09-09T11:18:11+00:00 INFO (6): Korisnik sa id-jem 24 je promenio password
+2018-09-09T11:18:29+00:00 INFO (6): Korisnik sa id-jem 24 je promenio password

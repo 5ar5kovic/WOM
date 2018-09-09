@@ -129,7 +129,7 @@
                   
                     <li class="header">GLAVNA NAVIGACIJA</li>
                     <li class="active">
-                    	<a href="<?php echo Constants::$index?>"><i class="fa fa-calendar"></i>Kalendar aktivnosti</a>
+                    	<a href="<?php echo Constants::$index?>"><i class="fa fa-calendar"></i>Pocetna</a>
 
  <?php 
     if($auth->hasIdentity()){
@@ -211,7 +211,7 @@
                         </span>
                       </a>
                       <ul class="treeview-menu">
-                      	<li><a href="<?php echo $this->url(array('controller'=>Constants::$korisnickaAdministracija, 'action'=>Constants::$dodajKorisnika)); ?>"><i class="fa fa-circle-o"></i>Korisnicka podrska</a></li>
+                      	<li><a href="<?php echo $this->url(array('controller'=>Constants::$korisnickaAdministracija, 'action'=>Constants::$korisnickaAdministracijaPrikazZaSupervizore)); ?>"><i class="fa fa-circle-o"></i>Korisnicka podrska</a></li>
                       	<li><a href="<?php echo $this->url(array('controller'=>Constants::$racunar, 'action'=>Constants::$racunar_prikaz)); ?>"><i class="fa fa-circle-o"></i>Racunari</a></li>
                       </ul>
    					</li>
@@ -231,7 +231,7 @@
                         </span>
                       </a>
                       <ul class="treeview-menu">
-                      	<li><a href="<?php echo $this->url(array('controller'=>'radniNalog', 'action'=>'listaj-naloge')); ?>"><i class="fa fa-circle-o"></i>Radni nalog prikaz</a></li>
+                      	<li><a href="<?php echo $this->url(array('controller'=>'radniNalog', 'action'=>Constants::$radni_nalog_prikaz)); ?>"><i class="fa fa-circle-o"></i>Radni nalog prikaz</a></li>
                       </ul>
                     </li>
   <?php 
