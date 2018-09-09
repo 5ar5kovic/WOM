@@ -119,12 +119,22 @@ class KorisnickaAdministracijaController extends Zend_Controller_Action
     
     public function brisanjeKorisnikaAction()
     {
+        
+        $writer = new Zend_Log_Writer_Stream('..\logs\ourLog.txt');
+        $logger = new Zend_Log($writer);        
+        
         $request = $this->getRequest();
         $id = (int)$request->getParam('id', null);
         $korisnickaPodrskaModel = new Application_Model_KorisnickaPodrska();
         $korisnickaPodrskaModel->setId($id);
-        $korisnickaPodrskaModel->deleteRowByPrimaryKey();
+        try{            
+            $korisnickaPodrskaModel->deleteRowByPrimaryKey();
+        } catch (Exception $ex){
+            $logger->info('Ne moze da se obrise korisnik sa id-jem '.$id . " zato sto jos uvek ima radnih naloga koji su povezani sa njim!");
+            $this->redirect('korisnickaAdministracija/korisnicka-administracija-prikaz?failed=true');
+        }
         $this->redirect('korisnickaAdministracija/korisnicka-administracija-prikaz');
+        
     }
     
 }

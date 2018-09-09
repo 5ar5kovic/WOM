@@ -1,0 +1,1 @@
+2018-09-09T10:18:55+00:00 INFO (6): Ne moze da se obrise korisnik sa id-jem 2 zato sto jos uvek ima radnih naloga koji su povezani sa njim!

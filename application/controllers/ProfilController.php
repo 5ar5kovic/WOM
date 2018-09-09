@@ -42,6 +42,11 @@ class ProfilController extends Zend_Controller_Action
                     $korisnik->setFromArray($data);
                     $korisnik->save();
                     
+                    $writer = new Zend_Log_Writer_Stream('..\logs\ourLog.txt');
+                    $logger = new Zend_Log($writer);
+                    $logger->info('Korisnik sa id-jem '.Utils::getUserId() . " je promenio password");
+                    
+                    
                     $this->redirect(Constants::$loginPutanja);
                 
                 }
