@@ -128,8 +128,15 @@ class Application_Model_Mymapper_RadniNalog extends Application_Model_Mapper_Rad
         $select = $select->setIntegrityCheck(false);
         
         $paginator = new Zend_Paginator(new Zend_Paginator_Adapter_DbTableSelect($select));
-        $paginator->setItemCountPerPage(Constants::$redovaPoStrani);
-        $paginator->setCurrentPageNumber($page);
+        
+        //ako ocu sve da mi se izlista
+        if($page == -1){
+            $paginator->setItemCountPerPage(10100);
+            $paginator->setCurrentPageNumber(1);            
+        } else {
+            $paginator->setItemCountPerPage(Constants::$redovaPoStrani);
+            $paginator->setCurrentPageNumber($page);            
+        }
         return $paginator;
         
         //$rowSet = $this->getDbTable()->fetchAll($select);

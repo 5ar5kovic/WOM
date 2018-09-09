@@ -5,7 +5,7 @@ class Constants
             
     public static $duzinaRandomStringaZaPromenuPassworda = 70;
     public static $formatVremena = "Y-m-d";
-    public static $redovaPoStrani = 3;
+    public static $redovaPoStrani = 5;
     
     
     public static $authentication = "authentication";

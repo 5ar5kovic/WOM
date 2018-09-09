@@ -27,9 +27,9 @@ class PdfController extends Zend_Controller_Action
 
        $pdf->SetCreator(PDF_CREATOR);
        $pdf->SetAuthor('SpecNazTeam 9815');
-       $pdf->SetTitle('Spisak unetih računara');
-       $pdf->SetSubject('Izveštaj');
-       $pdf->SetKeywords('PDF, računari, spisak');
+       $pdf->SetTitle('Spisak unetih raÄ�unara');
+       $pdf->SetSubject('IzveÅ¡taj');
+       $pdf->SetKeywords('PDF, raÄ�unari, spisak');
        
        
        $pdf->SetHeaderData('', 0, "Work Order Management", '');
@@ -45,7 +45,7 @@ class PdfController extends Zend_Controller_Action
        $pdf->AddPage();
        
        $pdf->SetFont('dejavusans', 'B', 16, '', true);
-       $naslov = 'SPISAK RAČUNARA';
+       $naslov = 'SPISAK RAÄŒUNARA';
        $pdf->Write(0, $naslov, '', 0, 'C', true, 0, false, false, 0);
        
        $razmak = "<br />";
@@ -58,9 +58,9 @@ class PdfController extends Zend_Controller_Action
 		    <tr>
 		        <td bgcolor="#cccccc" width="8%" align="center">R.br.</td>
 		        <td bgcolor="#cccccc" width="15%" align="center">Naziv</td>
-		        <td bgcolor="#cccccc" width="15%" align="center">Tip računara</td>
+		        <td bgcolor="#cccccc" width="15%" align="center">Tip raÄ�unara</td>
 		        <td bgcolor="#cccccc" width="15%" style="text-align: left; vertical-align: middle;">Operativni sistem</td>
-		        <td bgcolor="#cccccc" width="15%" align="center">Matična ploča</td>
+		        <td bgcolor="#cccccc" width="15%" align="center">MatiÄ�na ploÄ�a</td>
 		        <td bgcolor="#cccccc" width="15%" align="center">Procesor</td>
                 <td bgcolor="#cccccc" width="17%" align="center">Korisnik</td>
 		    </tr>';
@@ -129,8 +129,8 @@ class PdfController extends Zend_Controller_Action
         
         $pdf->SetCreator(PDF_CREATOR);
         $pdf->SetAuthor('SpecNazTeam 9815');
-        $pdf->SetTitle('Spisak radnika korisničke podrške');
-        $pdf->SetSubject('Izveštaj');
+        $pdf->SetTitle('Spisak radnika korisniÄ�ke podrÅ¡ke');
+        $pdf->SetSubject('IzveÅ¡taj');
         $pdf->SetKeywords('PDF, radnici, spisak');
         
         
@@ -147,7 +147,7 @@ class PdfController extends Zend_Controller_Action
         $pdf->AddPage();
         
         $pdf->SetFont('dejavusans', 'B', 16, '', true);
-        $naslov = 'SPISAK RADNIKA KORISNIČKE PODRŠKE';
+        $naslov = 'SPISAK RADNIKA KORISNIÄŒKE PODRÅ KE';
         $pdf->Write(0, $naslov, '', 0, 'C', true, 0, false, false, 0);
         
         $razmak = "<br />";
@@ -159,7 +159,7 @@ class PdfController extends Zend_Controller_Action
         '<table border="1" cellspacing="0" cellpadding="1" >
 		    <tr>
 		        <td bgcolor="#cccccc" width="8%" align="center">R.br.</td>
-		        <td bgcolor="#cccccc" width="15%" align="center">Korisničko ime</td>
+		        <td bgcolor="#cccccc" width="15%" align="center">KorisniÄ�ko ime</td>
 		        <td bgcolor="#cccccc" width="15%" align="center">Ime</td>
 		        <td bgcolor="#cccccc" width="15%" style="text-align: left; vertical-align: middle;">Prezime</td>
 		        <td bgcolor="#cccccc" width="22%" align="center">e-mail</td>
@@ -242,7 +242,7 @@ class PdfController extends Zend_Controller_Action
             $filteriLike["opis_kvara"] = $opis;
         }
         
-        $radniNalozi = $myMapper->radniNaloziSelect($filteriJednako,$filteriManjeOd,$filteriVeceOd,$filteriLike,$page);
+        $radniNalozi = $myMapper->radniNaloziSelect($filteriJednako,$filteriManjeOd,$filteriVeceOd,$filteriLike,-1);
         
         
         $this->_helper->layout->disableLayout();
@@ -255,7 +255,7 @@ class PdfController extends Zend_Controller_Action
         $pdf->SetCreator(PDF_CREATOR);
         $pdf->SetAuthor('SpecNazTeam 9815');
         $pdf->SetTitle('Spisak radnih naloga');
-        $pdf->SetSubject('Izveštaj');
+        $pdf->SetSubject('IzveÅ¡taj');
         $pdf->SetKeywords('PDF, radni nalozi, spisak');
         
         
@@ -286,12 +286,12 @@ class PdfController extends Zend_Controller_Action
 		    <tr>
 		        <td bgcolor="#cccccc"  align="center">R.br.</td>
 		        <td bgcolor="#cccccc"  align="center">Radnik</td>
-		        <td bgcolor="#cccccc"  align="center">Računar</td>
+		        <td bgcolor="#cccccc"  align="center">RaÄ�unar</td>
 		        <td bgcolor="#cccccc"  style="text-align: left; vertical-align: middle;">Kvar</td>
 		        <td bgcolor="#cccccc"  align="center">Datum kreiranja</td>
 		        <td bgcolor="#cccccc"  align="center">Status</td>
                 <td bgcolor="#cccccc"  align="center">Opis kvara</td>
-                <td bgcolor="#cccccc"  align="center">Datum završetka</td>
+                <td bgcolor="#cccccc"  align="center">Datum zavrÅ¡etka</td>
 		    </tr>';
         $sub_tbl = '';           
         

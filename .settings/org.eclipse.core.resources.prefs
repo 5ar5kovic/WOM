@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+encoding//application/controllers/PdfController.php=UTF-8
 encoding//application/forms/ZaboravljenaLozinka.php=UTF-8
 encoding//application/views/scripts/pagination/my_pagination_control.phtml=UTF-8
 encoding//application/views/scripts/radni-nalog/radni-nalog-prikaz.phtml=UTF-8
