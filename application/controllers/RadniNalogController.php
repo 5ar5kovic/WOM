@@ -82,6 +82,7 @@ class RadniNalogController extends Zend_Controller_Action
         $filteriJednako = array();
         $filteriManjeOd = array();
         $filteriVeceOd = array();
+        $filteriLike = array();
                     
         $username = $request->getParam('username');
         $kvar = $request->getParam('kvar');
@@ -89,6 +90,7 @@ class RadniNalogController extends Zend_Controller_Action
         $odDatuma = $request->getParam('odDatuma');
         $doDatuma = $request->getParam('doDatuma');
         $status = $request->getParam('status');
+        $opis = $request->getParam('opis');
         
         if($username != null && $username!= "" && (int)$username != 0){
             $filteriJednako["id_korisnicka"] = $username;
@@ -108,6 +110,9 @@ class RadniNalogController extends Zend_Controller_Action
         if($status != null && $status!= "" && (int)$status != 0){
             $filteriJednako["id_status"] = $status;     
         }  
+        if($opis != null && $opis!= ""){
+            $filteriLike["opis_kvara"] = $opis;
+        }  
         
         $data = array();
         $data['username'] = $username;
@@ -116,11 +121,12 @@ class RadniNalogController extends Zend_Controller_Action
         $data['odDatuma'] = $odDatuma;
         $data['doDatuma'] = $doDatuma;
         $data['status'] = $status;
+        $data['opis'] = $opis;
         
         
         $filterForma->populate($data);
         
-        $radniNalozi = $myMapper->radniNaloziSelect($filteriJednako,$filteriManjeOd,$filteriVeceOd,$page);     
+        $radniNalozi = $myMapper->radniNaloziSelect($filteriJednako,$filteriManjeOd,$filteriVeceOd,$filteriLike,$page);
         
         $this->view->radniNalozi = $radniNalozi;
         $this->view->form = $filterForma;

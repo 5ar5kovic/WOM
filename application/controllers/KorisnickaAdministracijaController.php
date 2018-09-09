@@ -68,7 +68,7 @@ class KorisnickaAdministracijaController extends Zend_Controller_Action
             Utils::sendEmail("pozivNaPlatformuTemplate","Registracija na WOM",$email,$templateParams,$ime.$prezime);
             
             
-            $this->redirect('korisnickaAdministracija/index');
+            $this->redirect('korisnickaAdministracija/korisnicka-administracija-prikaz');
             
             
         }

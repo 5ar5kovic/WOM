@@ -5,7 +5,7 @@ include_once APPLICATION_PATH . "/configs/Constants.php";
 class Application_Model_Mymapper_RadniNalog extends Application_Model_Mapper_RadniNalog
 {
 
-    public function radniNaloziSelect($filteriJednako,$filteriManjeOd,$filteriVeceOd,$page)
+    public function radniNaloziSelect($filteriJednako,$filteriManjeOd,$filteriVeceOd,$filteriLike,$page)
     {
         $auth = Zend_Auth::getInstance();
         $role = $auth->getStorage()->read()->id_rola;
@@ -108,6 +108,13 @@ class Application_Model_Mymapper_RadniNalog extends Application_Model_Mapper_Rad
             $brisiZadnja4 = true;
             foreach($filteriVeceOd as $key => $value){
                 $whereString = $whereString . "DATE($key) >= '$value' AND ";
+            }
+        }
+        
+        if (count($filteriLike) > 0) {
+            $brisiZadnja4 = true;
+            foreach($filteriLike as $key => $value){
+                $whereString = $whereString . "$key LIKE '%$value%' AND ";
             }
         }
         

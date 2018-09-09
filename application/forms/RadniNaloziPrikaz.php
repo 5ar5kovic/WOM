@@ -8,6 +8,7 @@ class Application_Form_RadniNaloziPrikaz extends Zend_Form
     protected $_odDatuma;
     protected $_doDatuma;
     protected $_status;
+    protected $_opis; 
     
     public function init() {
         
@@ -113,14 +114,38 @@ class Application_Form_RadniNaloziPrikaz extends Zend_Form
             '4' => 'Odbacen'
         ));
         
-        $submit = new Zend_Form_Element_Button('submit');
-        $submit->setAttrib('type', 'submit')
+        $opis = new Zend_Form_Element_Text('opis');
+        $opis->setRequired(true)
+        ->setLabel('opis')
+        ->setAttrib('id', 'opis')
+        ->setAttrib('name', 'opis')
+        ->setAttrib('class', 'form-control validate[requested]')
+        ->setAttrib('placeholder', 'Pretrazi po opisu...')
+        ->setAttrib('tabindex', 1);
+        
+        $trazi = new Zend_Form_Element_Submit('trazi');
+        $trazi->setAttrib('type', 'submit')
         ->setLabel('Trazi')
+        ->setAttrib('id', 'trazi')
+        ->setAttrib('name', 'action')
+        ->setAttrib('value', 'Trazi')
         ->setAttrib('class', 'btn btn-sucess')
         ->setAttrib('tabindex', 2);
+        
+        $generisi = new Zend_Form_Element_Submit('generisi');
+        $generisi->setAttrib('type', 'submit')
+        ->setLabel("Štampaj u PDF")
+        ->setAttrib('id', 'generisi')
+        ->setAttrib('name', 'action')
+        ->setAttrib('value', 'Generisi')
+        ->setAttrib('formaction', 'pdf/spisak-radni-nalog')
+        ->setAttrib('class', 'btn btn-danger pull-right btnExport')
+        ->setAttrib('tabindex', 2);
+        
+        
 
         
-        $this->addElements(array($username,$racunar,$kvar,$odDatuma,$doDatuma,$status,$submit));
+        $this->addElements(array($username,$racunar,$kvar,$odDatuma,$doDatuma,$status,$opis,$trazi,$generisi));
         $this->setMethod('post');
         $this->setElementDecorators(array("ViewHelper"),null, false);
     }

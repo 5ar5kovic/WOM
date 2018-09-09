@@ -83,7 +83,7 @@ class Application_Model_WomAcl extends Zend_Acl {
         $this->allow('8', Constants::$error);
         $this->allow('8', Constants::$index);
         $this->allow('2', Constants::$radniNalog, Constants::$radni_nalog_prikaz);
-        $this->allow('4', Constants::$radniNalog, Constants::$radni_nalog_unos);
+        $this->allow('2', Constants::$radniNalog, Constants::$radni_nalog_unos);
         $this->allow('4', 'pdf');
         $this->allow('4', 'pdf', 'pdf/spisak-racunara');
         

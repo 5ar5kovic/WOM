@@ -64,27 +64,37 @@
                     <?php echo $this->form->status; ?>
             	</div>
 			</div>
+			
+			<div class="form-group">
+				<label for="opis" class="col-sm-2 control-label">Opis: </label>
+				<div class="col-sm-2">
+                    <?php echo $this->form->opis; ?>
+            	</div>
+			</div>
+			
 			<!-- /.box-body -->
 			<div class="box-footer">
-    				<?php  echo $this->form->submit; ?>
+    				<?php  echo $this->form->trazi; ?>
+    				<?php  echo $this->form->generisi; ?>
               </div>
-			<!-- /.box-footer -->
+             <!-- /.box-footer -->
 		</div>
 	</form>
 
 
 	<div class="row">
 		<div class="box-body no-padding">
+				
 			<table class="table table-condensed">
 				<tr>
 					<th style="width: 10px">#</th>
 					<th>Id</th>
-					<th>Dodeljeno</th>
+					<th>Radnik</th>
 					<th>Racunar</th>
 					<th>Kvar</th>
 					<th>Datum kreiranja</th>
 					<th>Status</th>
-					<th>Opis kvara</th>					
+					<th>Opis kvara</th> 
 					<th>Datum zavrsetka</th>
 					<th style="width: 80px">Promena/Brisanje</th>
 				</tr>
@@ -98,7 +108,6 @@
 					<td><?php echo $radniNalog['vreme_kreiranja'];?></td>
 					<td><?php echo $radniNalog['status'];?></td>
 					<td><?php echo $radniNalog['opis_kvara'];?></td>
-					
 					<td><?php echo $radniNalog['vreme_zavrsetka'];?></td>
 					<td>
 							<div>
