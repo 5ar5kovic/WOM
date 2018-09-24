@@ -9,3 +9,4 @@ Aplikacija je razvijena u *Zend Framework-u 1.12 (ZF)*.
 2) Petar Petković - petar.petkovic@pmf.edu.rs
 3) Ivan Jocić - ivan.jocic@pmf.edu.rs
 ```
+![alt text](https://raw.githubusercontent.com/5ar5kovic/WOM/master/data/slikaBaze.png "Logo Title Text 1")
