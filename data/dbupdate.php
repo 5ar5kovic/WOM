@@ -121,10 +121,10 @@ create table if not exists korisnicka_podrska (
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `username` varchar(60) NOT NULL,
     `password` varchar(100) NOT NULL,
-    `ime` varchar(60) NOT NULL,
-    `prezime` varchar(60) NOT NULL,    
+    `ime` varchar(60),
+    `prezime` varchar(60),    
     `email` varchar(60) NOT NULL,
-    `tel` varchar(50) NOT NULL,
+    `tel` varchar(50),
     `id_rola` int(11) NOT NULL,
     PRIMARY KEY (`id`),
     FOREIGN KEY (`id_rola`) REFERENCES rola (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
@@ -192,12 +192,12 @@ $dbUpdate[$id]['id'] = $id;
 $dbUpdate[$id]['query'] = "
 create table if not exists radni_nalog (
     `id` int(11) NOT NULL AUTO_INCREMENT,
-    `id_korisnicka` int(11) NOT NULL,
-    `id_racunar` int(11) NOT NULL,
-    `id_kvar` int(11) NOT NULL,
-    `vreme_kreiranja` DATETIME NOT NULL,
-    `id_status` int(11) NOT NULL,
-    `opis_kvara` text NOT NULL,
+    `id_korisnicka` int(11),
+    `id_racunar` int(11),
+    `id_kvar` int(11),
+    `vreme_kreiranja` DATETIME,
+    `id_status` int(11),
+    `opis_kvara` text,
     `opis_resenja` text,
     `vreme_zavrsetka` DATETIME,
     PRIMARY KEY (`id`),
@@ -242,7 +242,7 @@ $dbUpdate[$id]['opis'] = 'Unos role administrator';
 //unos statusa - ceka
 $id = 16;
 $dbUpdate[$id]['id'] = $id;
-$dbUpdate[$id]['query'] = "INSERT INTO status (id,status) VALUES (1,'ÄŒeka');";
+$dbUpdate[$id]['query'] = "INSERT INTO status (id,status) VALUES (1,'Čeka');";
 $dbUpdate[$id]['params'] = array();
 $dbUpdate[$id]['opis'] = 'Unos statusa ÄŒeka';
 
@@ -256,14 +256,14 @@ $dbUpdate[$id]['opis'] = 'Unos statusa U radu';
 //unos statusa - zavrsen
 $id = 18;
 $dbUpdate[$id]['id'] = $id;
-$dbUpdate[$id]['query'] = "INSERT INTO status (id,status) VALUES (3,'ZavrÅ¡en');";
+$dbUpdate[$id]['query'] = "INSERT INTO status (id,status) VALUES (3,'Završen');";
 $dbUpdate[$id]['params'] = array();
 $dbUpdate[$id]['opis'] = 'Unos statusa ZavrÅ¡en';
 
 //unos statusa - odbacen
 $id = 19;
 $dbUpdate[$id]['id'] = $id;
-$dbUpdate[$id]['query'] = "INSERT INTO status (id,status) VALUES (4,'OdbaÄ�en');";
+$dbUpdate[$id]['query'] = "INSERT INTO status (id,status) VALUES (4,'Odbačen');";
 $dbUpdate[$id]['params'] = array();
 $dbUpdate[$id]['opis'] = 'Unos statusa OdbaÄ�en';
 
